@@ -14,10 +14,20 @@ struct ChatMessage: Identifiable {
     let sender: MessageSender
     let content: String
     
+    init(id: String, date: Date, sender: MessageSender, content: String) {
+        self.id = id
+        self.date = date
+        self.sender = sender
+        self.content = content
+    }
+    
     init(chatResponse: AIChatResponse) {
         id = chatResponse.id
         date = chatResponse.created
-        sender = MessageSender(role: chatResponse.role)
-        content = chatResponse.choices.first?.message.content ?? ""
+
+        let message = chatResponse.choices.first?.message
+
+        sender = MessageSender(role: message?.role ?? .assistant)
+        content = message?.content ?? ""
     }
 }

@@ -26,6 +26,15 @@ struct MessageView: View {
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView(viewModel: MessageViewModel())
+        MessageView(
+            viewModel: MessageViewModel(
+                chatMessage: ChatMessage(
+                    id: "",
+                    date: Date(),
+                    sender: MessageSender(role: .user),
+                    content: ""
+                )
+            )
+        )
     }
 }

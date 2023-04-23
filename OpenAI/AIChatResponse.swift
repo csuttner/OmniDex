@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct AIChatResponse: Decodable {
-    let id: String
-    let object: String
-    let created: Date
-    let choices: [AIChatChoice]
-    let usage: AIChatUsage
+public struct AIChatResponse: Decodable {
+    public let id: String
+    public let object: String
+    public let created: Date
+    public let choices: [AIChatChoice]
+    public let usage: AIChatUsage
 }
 
-struct AIChatChoice: Decodable {
-    let index: Int
-    let message: AIChatMessage
-    let finishReason: String
+public struct AIChatChoice: Decodable {
+    public let index: Int
+    public let message: AIChatMessage
+    public let finishReason: String
 }
 
-struct AIChatUsage: Decodable {
-    let promptTokens: Int
-    let completionTokens: Int
-    let totalTokens: Int
+public struct AIChatUsage: Decodable {
+    public let promptTokens: Int
+    public let completionTokens: Int
+    public let totalTokens: Int
 }

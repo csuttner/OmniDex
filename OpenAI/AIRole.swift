@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AIRole: String, Codable {
+public enum AIRole: String, Codable {
     case user
     case assistant
     case system

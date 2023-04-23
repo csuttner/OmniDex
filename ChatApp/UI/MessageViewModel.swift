@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OpenAI
 
 class MessageViewModel: ObservableObject {
     @Published var isLoading: Bool
@@ -14,14 +15,8 @@ class MessageViewModel: ObservableObject {
     let imageName: String
     
     init(chatMessage: ChatMessage) {
-        imageName = chatMessage.role.imageName
+        imageName = chatMessage.sender.imageName
         content = chatMessage.content
         isLoading = false
-    }
-    
-    init() {
-        imageName = OpenAIRole.assistant.imageName
-        content = ""
-        isLoading = true
     }
 }

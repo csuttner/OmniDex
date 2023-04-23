@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AIChatMessage: Codable {
-    let role: AIRole
-    let content: String
+public struct AIChatMessage: Codable {
+    public let role: AIRole
+    public let content: String
 }
