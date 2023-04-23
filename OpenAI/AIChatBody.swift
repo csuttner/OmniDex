@@ -1,15 +1,15 @@
 //
-//  ChatBody.swift
-//  ChatApp
+//  AIChatBody.swift
+//  OpenAI
 //
 //  Created by Clay Suttner on 4/23/23.
 //
 
 import Foundation
 
-struct ChatBody: Encodable {
-    let model: OpenAIModel
-    let messages: [ChatMessage]
+struct AIChatBody: Encodable {
+    let model: AILanguageModel
+    let messages: [AIChatMessage]
     let temperature: Double?
     let topP: Double?
     let n: Int?
@@ -20,7 +20,7 @@ struct ChatBody: Encodable {
     let logitBias: [String: Double]?
     let user: String?
     
-    init(messages: [ChatMessage]) {
+    init(messages: [AIChatMessage]) {
         self.messages = messages
 
         model = .gpt3_5Turbo

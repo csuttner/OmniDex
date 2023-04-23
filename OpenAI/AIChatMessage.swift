@@ -1,13 +1,13 @@
 //
-//  ChatMessage.swift
-//  ChatApp
+//  AIChatMessage.swift
+//  OpenAI
 //
 //  Created by Clay Suttner on 4/23/23.
 //
 
 import Foundation
 
-struct ChatMessage: Codable {
-    let role: OpenAIRole
+struct AIChatMessage: Codable {
+    let role: AIRole
     let content: String
 }

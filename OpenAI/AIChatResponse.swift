@@ -1,27 +1,27 @@
 //
-//  ChatResponse.swift
-//  ChatApp
+//  AIChatResponse.swift
+//  OpenAI
 //
 //  Created by Clay Suttner on 4/23/23.
 //
 
 import Foundation
 
-struct ChatResponse: Decodable {
+struct AIChatResponse: Decodable {
     let id: String
     let object: String
-    let created: Int
-    let choices: [ChatChoice]
-    let usage: ChatUsage
+    let created: Date
+    let choices: [AIChatChoice]
+    let usage: AIChatUsage
 }
 
-struct ChatChoice: Decodable {
+struct AIChatChoice: Decodable {
     let index: Int
-    let message: ChatMessage
+    let message: AIChatMessage
     let finishReason: String
 }
 
-struct ChatUsage: Decodable {
+struct AIChatUsage: Decodable {
     let promptTokens: Int
     let completionTokens: Int
     let totalTokens: Int

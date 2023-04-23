@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  ChatApp
+//  OpenAI
 //
 //  Created by Clay Suttner on 4/23/23.
 //
