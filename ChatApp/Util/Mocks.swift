@@ -9,7 +9,7 @@ import Foundation
 import OpenAI
 
 enum Mocks {
-    static let chatViewModel = ChatViewModel(chatMessages: chatMessages)
+    static let chatViewModel = ChatViewModel(chatMessages: chatMessages, prompt: "")
     
     static let chatMessageViewModel = ChatMessageViewModel(
         chatMessage: makeChatMessage(role: .user, content: Constants.Mock.nearbyLocations)

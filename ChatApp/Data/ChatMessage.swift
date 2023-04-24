@@ -15,6 +15,18 @@ struct ChatMessage: Identifiable {
     let content: String
     let isLoading: Bool
     
+    static let loadingMessage = ChatMessage(
+        id: "",
+        date: Date(),
+        sender: MessageSender(role: .assistant),
+        content: "",
+        isLoading: true
+    )
+    
+    var aiChatMessage: AIChatMessage {
+        AIChatMessage(role: sender.role, content: content)
+    }
+    
     init(id: String, date: Date, sender: MessageSender, content: String, isLoading: Bool = true) {
         self.id = id
         self.date = date
@@ -23,11 +35,11 @@ struct ChatMessage: Identifiable {
         self.isLoading = isLoading
     }
     
-    init(chatResponse: AIChatResponse) {
-        id = chatResponse.id
-        date = chatResponse.created
+    init(replyResponse: AIReplyResponse) {
+        id = replyResponse.id
+        date = replyResponse.created
 
-        let message = chatResponse.choices.first?.message
+        let message = replyResponse.choices.first?.message
 
         sender = MessageSender(role: message?.role ?? .assistant)
         content = message?.content ?? ""

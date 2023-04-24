@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AIChatBody: Encodable {
+struct AIPromptBody: Encodable {
     let model: AILanguageModel
     let messages: [AIChatMessage]
     let temperature: Double?

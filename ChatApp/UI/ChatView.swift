@@ -12,15 +12,25 @@ struct ChatView: View {
     
     var body: some View {
         VStack {
-            ForEach(viewModel.chatMessages) { chatMessage in
-                ChatMessageView(
-                    viewModel: ChatMessageViewModel(
-                        chatMessage: chatMessage
+            Spacer()
+            
+            LazyVStack {
+                ForEach(viewModel.chatMessages) { chatMessage in
+                    ChatMessageView(
+                        viewModel: ChatMessageViewModel(
+                            chatMessage: chatMessage
+                        )
                     )
-                )
+                }
             }
+            
+            TextField(Constants.Chat.sendAMessage, text: $viewModel.prompt)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+                .onSubmit {
+                    viewModel.submit()
+                }
         }
-        .padding()
     }
 }
 

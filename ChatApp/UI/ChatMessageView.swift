@@ -28,12 +28,12 @@ struct ChatMessageView: View {
                         .foregroundColor(.white)
                 }
             }
+            .frame(minHeight: 24)
             .padding(8)
             .background(
                 ChatMessageShape(isUser: viewModel.isUser)
                     .foregroundColor(viewModel.isUser ? .blue : .gray)
             )
-            
             
             if viewModel.isUser {
                 Image(systemName: viewModel.imageName)
@@ -43,6 +43,7 @@ struct ChatMessageView: View {
             maxWidth: .infinity,
             alignment: viewModel.isUser ? .trailing : .leading
         )
+        .padding()
     }
 
 }

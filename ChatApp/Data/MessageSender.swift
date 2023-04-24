@@ -9,19 +9,24 @@ import Foundation
 import OpenAI
 
 struct MessageSender {
-    let imageName: String
-    let isUser: Bool
+    let role: AIRole
     
-    init(role: AIRole) {
+    var isUser: Bool {
+        role == .user
+    }
+    
+    var imageName: String {
         switch role {
         case .user:
-            imageName = "person.circle"
+            return "person.circle"
         case .assistant:
-            imageName = "network"
+            return "network"
         case .system:
-            imageName = "tv"
+            return "tv"
         }
-        
-        isUser = role == .user
+    }
+    
+    init(role: AIRole) {
+        self.role = role
     }
 }

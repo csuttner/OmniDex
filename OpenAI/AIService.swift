@@ -7,10 +7,10 @@
 
 import Foundation
 
-class AIService {
+public class AIService {
     private init() {}
     
-    static let shared = AIService()
+    public static let shared = AIService()
     
     private let encoder = JSONEncoder()
     
@@ -21,19 +21,20 @@ class AIService {
         return decoder
     }()
     
-    func sendChat(newMessage: String, history: [AIChatMessage]) async throws -> AIChatResponse {
+    public func submit(prompt: String, history: [AIChatMessage]) async throws -> AIReplyResponse {
         var request = URLRequest(url: Constants.URLs.completions)
         var chatHistory = history
-        chatHistory.append(AIChatMessage(role: .user, content: newMessage))
+        chatHistory.append(AIChatMessage(role: .user, content: prompt))
         
+        request.httpMethod = "POST"
         request.setValue(Constants.Headers.applicationJson, forHTTPHeaderField: Constants.Headers.contentType)
         request.setValue(Constants.Headers.bearerToken, forHTTPHeaderField: Constants.Headers.authorization)
-        request.httpBody = try encoder.encode(AIChatBody(messages: chatHistory))
+        request.httpBody = try encoder.encode(AIPromptBody(messages: chatHistory))
         
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { throw AINetworkError.invalidResponse }
         guard statusCode == 200 else { throw AINetworkError.badStatusCode(statusCode) }
         
-        return try decoder.decode(AIChatResponse.self, from: data)
+        return try decoder.decode(AIReplyResponse.self, from: data)
     }
 }

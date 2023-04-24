@@ -14,10 +14,10 @@
 		F307673029F5C61900B93286 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2C29F5A19500EC757F /* Secrets.swift */; };
 		F307673929F5C73200B93286 /* AIChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1F29F59DBE00EC757F /* AIChatMessage.swift */; };
 		F307673A29F5C73200B93286 /* AIRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2729F59EAF00EC757F /* AIRole.swift */; };
-		F307673B29F5C73200B93286 /* AIChatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1D29F59DB800EC757F /* AIChatResponse.swift */; };
+		F307673B29F5C73200B93286 /* AIReplyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1D29F59DB800EC757F /* AIReplyResponse.swift */; };
 		F307673C29F5C73200B93286 /* AINetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2929F5A08000EC757F /* AINetworkError.swift */; };
 		F307673D29F5C73200B93286 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1829F58E3C00EC757F /* AIService.swift */; };
-		F307673E29F5C73200B93286 /* AIChatBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1B29F59DAF00EC757F /* AIChatBody.swift */; };
+		F307673E29F5C73200B93286 /* AIPromptBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1B29F59DAF00EC757F /* AIPromptBody.swift */; };
 		F307673F29F5C73200B93286 /* AILanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2529F59EA300EC757F /* AILanguageModel.swift */; };
 		F307674329F5C7E900B93286 /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307674229F5C7E900B93286 /* MessageSender.swift */; };
 		F3257E0B29F58DB100EC757F /* ChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E0A29F58DB100EC757F /* ChatAppApp.swift */; };
@@ -68,8 +68,8 @@
 		F3257E0E29F58DB200EC757F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3257E1129F58DB200EC757F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F3257E1829F58E3C00EC757F /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
-		F3257E1B29F59DAF00EC757F /* AIChatBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatBody.swift; sourceTree = "<group>"; };
-		F3257E1D29F59DB800EC757F /* AIChatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatResponse.swift; sourceTree = "<group>"; };
+		F3257E1B29F59DAF00EC757F /* AIPromptBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIPromptBody.swift; sourceTree = "<group>"; };
+		F3257E1D29F59DB800EC757F /* AIReplyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIReplyResponse.swift; sourceTree = "<group>"; };
 		F3257E1F29F59DBE00EC757F /* AIChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatMessage.swift; sourceTree = "<group>"; };
 		F3257E2129F59E1000EC757F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F3257E2529F59EA300EC757F /* AILanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AILanguageModel.swift; sourceTree = "<group>"; };
@@ -109,8 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				F3257E1829F58E3C00EC757F /* AIService.swift */,
-				F3257E1B29F59DAF00EC757F /* AIChatBody.swift */,
-				F3257E1D29F59DB800EC757F /* AIChatResponse.swift */,
+				F3257E1B29F59DAF00EC757F /* AIPromptBody.swift */,
+				F3257E1D29F59DB800EC757F /* AIReplyResponse.swift */,
 				F3257E1F29F59DBE00EC757F /* AIChatMessage.swift */,
 				F3257E2529F59EA300EC757F /* AILanguageModel.swift */,
 				F3257E2729F59EAF00EC757F /* AIRole.swift */,
@@ -315,8 +315,8 @@
 				F307673D29F5C73200B93286 /* AIService.swift in Sources */,
 				F307673029F5C61900B93286 /* Secrets.swift in Sources */,
 				F307673F29F5C73200B93286 /* AILanguageModel.swift in Sources */,
-				F307673B29F5C73200B93286 /* AIChatResponse.swift in Sources */,
-				F307673E29F5C73200B93286 /* AIChatBody.swift in Sources */,
+				F307673B29F5C73200B93286 /* AIReplyResponse.swift in Sources */,
+				F307673E29F5C73200B93286 /* AIPromptBody.swift in Sources */,
 				F307672F29F5C61900B93286 /* Constants.swift in Sources */,
 				F307673C29F5C73200B93286 /* AINetworkError.swift in Sources */,
 				F307673929F5C73200B93286 /* AIChatMessage.swift in Sources */,

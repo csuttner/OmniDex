@@ -8,6 +8,10 @@
 import Foundation
 
 enum Constants {
+    enum Chat {
+        static let sendAMessage = "Send a message..."
+    }
+    
     enum Mock {
         static let no = "No."
         static let glad = "I'm glad you found that helpful."
