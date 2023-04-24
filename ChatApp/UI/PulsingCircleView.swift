@@ -12,9 +12,16 @@ struct PulsingCircleView: View {
     
     private let color: Color
     private let animation: Animation
+    private let diameter: Double
     
-    init(color: Color = .gray, duration: Double = 0.35, delay: Double = 0.0) {
+    init(
+        color: Color = .white,
+        duration: Double = 0.35,
+        delay: Double = 0.0,
+        diameter: Double = 16.0
+    ) {
         self.color = color
+        self.diameter = diameter
 
         animation = Animation
             .easeInOut(duration: duration)
@@ -26,7 +33,7 @@ struct PulsingCircleView: View {
         HStack {
             Circle()
                 .fill(color)
-                .frame(width: 24, height: 24)
+                .frame(width: diameter, height: diameter)
                 .opacity(opacity)
                 .animation(animation, value: opacity)
                 .onAppear {

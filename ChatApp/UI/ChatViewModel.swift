@@ -14,9 +14,3 @@ class ChatViewModel: ObservableObject {
         self.chatMessages = chatMessages
     }
 }
-
-extension ChatViewModel {
-    static let mock = ChatViewModel(
-        chatMessages: []
-    )
-}

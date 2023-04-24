@@ -12,8 +12,12 @@ struct ChatView: View {
     
     var body: some View {
         VStack {
-            ForEach($viewModel.chatMessages) { chatMessage in
-                MessageView(viewModel: MessageViewModel(chatMessage: chatMessage.wrappedValue))
+            ForEach(viewModel.chatMessages) { chatMessage in
+                ChatMessageView(
+                    viewModel: ChatMessageViewModel(
+                        chatMessage: chatMessage
+                    )
+                )
             }
         }
         .padding()
@@ -22,6 +26,6 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(viewModel: ChatViewModel.mock)
+        ChatView(viewModel: Mocks.chatViewModel)
     }
 }

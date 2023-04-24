@@ -13,12 +13,14 @@ struct ChatMessage: Identifiable {
     let date: Date
     let sender: MessageSender
     let content: String
+    let isLoading: Bool
     
-    init(id: String, date: Date, sender: MessageSender, content: String) {
+    init(id: String, date: Date, sender: MessageSender, content: String, isLoading: Bool = true) {
         self.id = id
         self.date = date
         self.sender = sender
         self.content = content
+        self.isLoading = isLoading
     }
     
     init(chatResponse: AIChatResponse) {
@@ -29,5 +31,6 @@ struct ChatMessage: Identifiable {
 
         sender = MessageSender(role: message?.role ?? .assistant)
         content = message?.content ?? ""
+        isLoading = false
     }
 }
