@@ -16,6 +16,8 @@ struct ChatMessageView: View {
         HStack(alignment: .bottom) {
             if !viewModel.isUser {
                 Image(systemName: viewModel.imageName)
+                    .resizable()
+                    .frame(width: 24, height: 24)
             }
             
             HStack {
@@ -37,13 +39,16 @@ struct ChatMessageView: View {
             
             if viewModel.isUser {
                 Image(systemName: viewModel.imageName)
+                    .resizable()
+                    .frame(width: 24, height: 24)
             }
         }
         .frame(
             maxWidth: .infinity,
             alignment: viewModel.isUser ? .trailing : .leading
         )
-        .padding()
+        .padding([.leading, .trailing], 16)
+        .padding([.top, .bottom], 8)
     }
 
 }

@@ -11,6 +11,16 @@ import OpenAI
 class ChatViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
     @Published var prompt: String
+    @Published var errorDescription: Error?
+    
+    private var promptMessage: ChatMessage {
+        ChatMessage(
+            id: UUID().uuidString,
+            date: Date(),
+            sender: .init(role: .user),
+            content: prompt
+        )
+    }
     
     init(chatMessages: [ChatMessage], prompt: String) {
         self.chatMessages = chatMessages
@@ -19,6 +29,8 @@ class ChatViewModel: ObservableObject {
     
     func submit() {
         let history = chatMessages.map(\.aiChatMessage)
+        
+        chatMessages.append(promptMessage)
 
         chatMessages.append(ChatMessage.loadingMessage)
         
@@ -33,7 +45,7 @@ class ChatViewModel: ObservableObject {
                 }
 
             } catch {
-                print(error.localizedDescription)
+                errorDescription = error.localizedDescription
             }
         }
     }

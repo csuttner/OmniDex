@@ -23,6 +23,12 @@ enum Mocks {
         [
             makeChatMessage(role: .assistant, content: Constants.Mock.glad),
             makeChatMessage(role: .user, content: Constants.Mock.nearbyLocations),
+            makeChatMessage(role: .assistant, content: Constants.Mock.glad),
+            makeChatMessage(role: .user, content: Constants.Mock.nearbyLocations),
+            makeChatMessage(role: .assistant, content: Constants.Mock.glad),
+            makeChatMessage(role: .user, content: Constants.Mock.nearbyLocations),
+            makeChatMessage(role: .assistant, content: Constants.Mock.glad),
+            makeChatMessage(role: .user, content: Constants.Mock.nearbyLocations),
             makeChatMessage(role: .assistant, content: Constants.Mock.no),
             makeChatMessage(role: .user, content: "", isLoading: true)
         ]

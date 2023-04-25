@@ -183,8 +183,8 @@
 				F3257E0C29F58DB100EC757F /* ChatView.swift */,
 				F3257E2F29F5A56700EC757F /* ChatViewModel.swift */,
 				F3257E3129F5A5C500EC757F /* ChatMessageView.swift */,
-				F36525DE29F5EDCC008AAE15 /* ChatMessageShape.swift */,
 				F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */,
+				F36525DE29F5EDCC008AAE15 /* ChatMessageShape.swift */,
 				F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */,
 				F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */,
 			);
