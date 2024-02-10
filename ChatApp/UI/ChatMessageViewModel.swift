@@ -20,5 +20,19 @@ struct ChatMessageViewModel {
         imageName = chatMessage.sender.imageName
         isUser = chatMessage.sender.isUser
     }
+    
+    init(isLoading: Bool, content: String, imageName: String, isUser: Bool) {
+        self.isLoading = isLoading
+        self.content = content
+        self.imageName = imageName
+        self.isUser = isUser
+    }
+    
+    static let loading = ChatMessageViewModel(
+        isLoading: true,
+        content: "",
+        imageName: "",
+        isUser: false
+    )
 }
 

@@ -23,6 +23,10 @@ struct ChatView: View {
                             )
                         )
                     }
+                    
+                    if viewModel.isLoading {
+                        ChatMessageView(viewModel: .loading)
+                    }
                 }
                 .onReceive(viewModel.$chatMessages) { messages in
                     if let id = messages.last?.id {
@@ -42,6 +46,14 @@ struct ChatView: View {
                     promptIsFocused = false
                     viewModel.prompt = ""
                 }
+        }
+        .alert(item: $viewModel.error) { error in
+            Alert(
+                title: Text(error.localizedDescription),
+                dismissButton: .default(Text("OK")) {
+                    viewModel.error = nil
+                }
+            )
         }
     }
 }

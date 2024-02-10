@@ -11,7 +11,8 @@ import OpenAI
 class ChatViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
     @Published var prompt: String
-    @Published var errorDescription: String?
+    @Published var error: ErrorItem?
+    @Published var isLoading: Bool
     
     private var promptMessage: ChatMessage {
         ChatMessage(
@@ -25,27 +26,33 @@ class ChatViewModel: ObservableObject {
     init(chatMessages: [ChatMessage], prompt: String) {
         self.chatMessages = chatMessages
         self.prompt = prompt
+        
+        isLoading = false
     }
     
     func submit() {
-        let history = chatMessages.map(\.aiChatMessage)
+        isLoading = true
         
+        let history = chatMessages.map(\.aiChatMessage)
         chatMessages.append(promptMessage)
-
         chatMessages.append(ChatMessage.loadingMessage)
         
         Task.init {
             do {
-                let response = try await AIService.shared.submit(prompt: prompt, history: history)
+                let response = try await AIService.shared.fetchChatCompletion(prompt: prompt, history: history)
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.chatMessages.removeLast()
-                    
                     self?.chatMessages.append(ChatMessage(replyResponse: response))
+                    self?.isLoading = false
                 }
 
             } catch {
-                errorDescription = error.localizedDescription
+//                print(error)
+
+                DispatchQueue.main.async { [weak self] in
+                    self?.isLoading = false
+                }
             }
         }
     }

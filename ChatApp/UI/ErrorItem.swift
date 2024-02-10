@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct ErrorItem: Identifiable {
+    let id = UUID()
+    let title = "Error"
+    let localizedDescription: String
+    
+    init(error: Error) {
+        localizedDescription = error.localizedDescription
+    }
+}

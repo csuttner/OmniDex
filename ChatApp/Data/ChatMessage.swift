@@ -35,7 +35,7 @@ struct ChatMessage: Identifiable {
         self.isLoading = isLoading
     }
     
-    init(replyResponse: AIReplyResponse) {
+    init(replyResponse: AIChatCompletionResponse) {
         id = replyResponse.id
         date = replyResponse.created
 
