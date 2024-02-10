@@ -31,7 +31,7 @@
 		F3257E3829F5B4E800EC757F /* ChatMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */; };
 		F356360029F5DB640099CC30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35635FF29F5DB640099CC30 /* Constants.swift */; };
 		F356360229F5DBCE0099CC30 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F356360129F5DBCE0099CC30 /* Mocks.swift */; };
-		F36525DF29F5EDCC008AAE15 /* ChatMessageShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36525DE29F5EDCC008AAE15 /* ChatMessageShape.swift */; };
+		F3711FED2B77DFF90096A084 /* MaskedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,7 @@
 		F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageViewModel.swift; sourceTree = "<group>"; };
 		F35635FF29F5DB640099CC30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F356360129F5DBCE0099CC30 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
-		F36525DE29F5EDCC008AAE15 /* ChatMessageShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageShape.swift; sourceTree = "<group>"; };
+		F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedCornerShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +184,7 @@
 				F3257E2F29F5A56700EC757F /* ChatViewModel.swift */,
 				F3257E3129F5A5C500EC757F /* ChatMessageView.swift */,
 				F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */,
-				F36525DE29F5EDCC008AAE15 /* ChatMessageShape.swift */,
+				F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */,
 				F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */,
 				F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */,
 			);
@@ -334,11 +334,11 @@
 				F3257E3029F5A56700EC757F /* ChatViewModel.swift in Sources */,
 				F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */,
 				F3257E0D29F58DB100EC757F /* ChatView.swift in Sources */,
-				F36525DF29F5EDCC008AAE15 /* ChatMessageShape.swift in Sources */,
 				F356360029F5DB640099CC30 /* Constants.swift in Sources */,
 				F3257E3829F5B4E800EC757F /* ChatMessageViewModel.swift in Sources */,
 				F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */,
 				F3257E0B29F58DB100EC757F /* ChatAppApp.swift in Sources */,
+				F3711FED2B77DFF90096A084 /* MaskedCornerShape.swift in Sources */,
 				F3257E3229F5A5C500EC757F /* ChatMessageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

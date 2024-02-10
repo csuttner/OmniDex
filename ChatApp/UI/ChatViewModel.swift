@@ -11,7 +11,7 @@ import OpenAI
 class ChatViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
     @Published var prompt: String
-    @Published var errorDescription: Error?
+    @Published var errorDescription: String?
     
     private var promptMessage: ChatMessage {
         ChatMessage(

@@ -33,7 +33,7 @@ struct ChatMessageView: View {
             .frame(minHeight: 24)
             .padding(8)
             .background(
-                ChatMessageShape(isUser: viewModel.isUser)
+                MaskedCornerShape(cornerRadius: 8, isUser: viewModel.isUser)
                     .foregroundColor(viewModel.isUser ? .blue : .gray)
             )
             
