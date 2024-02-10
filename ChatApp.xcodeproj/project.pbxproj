@@ -40,6 +40,7 @@
 		F3711FFC2B7802D40096A084 /* JSONDecoder+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FFB2B7802D40096A084 /* JSONDecoder+Shared.swift */; };
 		F3711FFE2B7809110096A084 /* APIErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FFD2B7809110096A084 /* APIErrorResponse.swift */; };
 		F37120012B7818D90096A084 /* PillTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120002B7818D90096A084 /* PillTextFieldStyle.swift */; };
+		F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		F3711FFB2B7802D40096A084 /* JSONDecoder+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Shared.swift"; sourceTree = "<group>"; };
 		F3711FFD2B7809110096A084 /* APIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorResponse.swift; sourceTree = "<group>"; };
 		F37120002B7818D90096A084 /* PillTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillTextFieldStyle.swift; sourceTree = "<group>"; };
+		F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissableScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */,
 				F37120002B7818D90096A084 /* PillTextFieldStyle.swift */,
 				F3711FEE2B77E6AB0096A084 /* ErrorItem.swift */,
+				F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */,
 				F37120022B78229F0096A084 /* Chat */,
 			);
 			path = UI;
@@ -384,6 +387,7 @@
 			files = (
 				F356360229F5DBCE0099CC30 /* Mocks.swift in Sources */,
 				F3711FEF2B77E6AB0096A084 /* ErrorItem.swift in Sources */,
+				F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */,
 				F37120012B7818D90096A084 /* PillTextFieldStyle.swift in Sources */,
 				F307672B29F5C4AE00B93286 /* ChatMessage.swift in Sources */,
 				F307674329F5C7E900B93286 /* MessageSender.swift in Sources */,

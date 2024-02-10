@@ -15,18 +15,22 @@ struct ChatView: View {
     var body: some View {
         VStack(spacing: 0) {
             ScrollViewReader { proxy in
-                ScrollView {
-                    ForEach(viewModel.chatMessages) { chatMessage in
-                        ChatMessageView(
-                            viewModel: ChatMessageViewModel(
-                                chatMessage: chatMessage
+                KeyboardDismissableScrollView {
+                    LazyVStack (alignment: .leading) {
+                        ForEach(viewModel.chatMessages) { chatMessage in
+                            ChatMessageView(
+                                viewModel: ChatMessageViewModel(
+                                    chatMessage: chatMessage
+                                )
                             )
-                        )
+                        }
                     }
                 }
                 .onReceive(viewModel.$chatMessages) { messages in
-                    if let id = messages.last?.id {
-                        proxy.scrollTo(id)
+                    withAnimation {
+                        if let id = messages.last?.id {
+                            proxy.scrollTo(id, anchor: .bottom)
+                        }
                     }
                 }
             }
