@@ -1,5 +1,5 @@
 //
-//  AIReplyResponse.swift
+//  AIChatCompletionResponse.swift
 //  OpenAI
 //
 //  Created by Clay Suttner on 4/23/23.
@@ -7,22 +7,18 @@
 
 import Foundation
 
-public struct AIReplyResponse: Decodable {
+public struct AIChatCompletionResponse: Decodable {
     public let id: String
-    public let object: String
+    public let choices: [AIChatCompletionChoice]
     public let created: Date
-    public let choices: [AIReplyChoice]
+    public let model: String
+    public let systemFingerprint: String
+    public let object: String
     public let usage: AIChatUsage
     
     var messages: [AIChatMessage] {
-        choices.map(\.message)
+        choices.compactMap(\.message)
     }
-}
-
-public struct AIReplyChoice: Decodable {
-    public let index: Int
-    public let message: AIChatMessage
-    public let finishReason: String
 }
 
 public struct AIChatUsage: Decodable {
