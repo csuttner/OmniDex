@@ -1,5 +1,5 @@
 //
-//  AIAPIError.swift
+//  APIError.swift
 //  OpenAI
 //
 //  Created by Clay Suttner on 4/23/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AIAPIError: LocalizedError {
+public struct APIError: LocalizedError {
     public let statusCode: Int
     public let message: String
     
@@ -18,7 +18,7 @@ public struct AIAPIError: LocalizedError {
     init?(data: Data, httpResponse: HTTPURLResponse) {
         if 
             !(200...299).contains(httpResponse.statusCode),
-            let errorResponse = try? JSONDecoder().decode(AIAPIErrorResponse.self, from: data) {
+            let errorResponse = try? JSONDecoder().decode(APIErrorResponse.self, from: data) {
             self.statusCode = httpResponse.statusCode
             self.message = errorResponse.error.message
         } else {

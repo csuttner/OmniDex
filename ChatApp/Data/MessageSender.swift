@@ -9,7 +9,7 @@ import Foundation
 import OpenAI
 
 struct MessageSender {
-    let role: AIRole
+    let role: Role
     
     var isUser: Bool {
         role == .user
@@ -26,7 +26,7 @@ struct MessageSender {
         }
     }
     
-    init(role: AIRole) {
+    init(role: Role) {
         self.role = role
     }
 }

@@ -14,7 +14,7 @@ struct ErrorItem: Identifiable {
     let message: String
     
     init(error: Error) {
-        if error is AIAPIError {
+        if error is APIError {
             title = Constants.Error.apiError
         } else {
             title = Constants.Error.error

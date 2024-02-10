@@ -23,11 +23,17 @@ struct ChatMessage: Identifiable {
         isLoading: true
     )
     
-    var aiChatMessage: AIChatMessage {
-        AIChatMessage(role: sender.role, content: content)
+    var aiChatMessage: OpenAI.ChatMessage {
+        OpenAI.ChatMessage(role: sender.role, content: content)
     }
     
-    init(id: String, date: Date, sender: MessageSender, content: String, isLoading: Bool = true) {
+    init(
+        id: String,
+        date: Date,
+        sender: MessageSender,
+        content: String,
+        isLoading: Bool = true
+    ) {
         self.id = id
         self.date = date
         self.sender = sender
@@ -35,7 +41,7 @@ struct ChatMessage: Identifiable {
         self.isLoading = isLoading
     }
     
-    init(replyResponse: AIChatCompletionResponse) {
+    init(replyResponse: ChatCompletionResponse) {
         id = replyResponse.id
         date = replyResponse.created
 

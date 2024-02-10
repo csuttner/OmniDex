@@ -34,7 +34,7 @@ enum Mocks {
         ]
     }
     
-    private static func makeChatMessage(role: AIRole = .user, content: String = "", isLoading: Bool = false) -> ChatMessage {
+    private static func makeChatMessage(role: Role = .user, content: String = "", isLoading: Bool = false) -> ChatMessage {
         ChatMessage(
             id: UUID().uuidString,
             date: Date(),

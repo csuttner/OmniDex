@@ -1,5 +1,5 @@
 //
-//  AIService.swift
+//  APIService.swift
 //  OpenAI
 //
 //  Created by Clay Suttner on 4/23/23.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-public class AIService {
+public class APIService {
     private init() {}
     
-    public static let shared = AIService()
+    public static let shared = APIService()
     
     public func fetchChatCompletion(
         prompt: String,
-        history: [AIChatMessage]
-    ) async throws -> AIChatCompletionResponse {
+        history: [ChatMessage]
+    ) async throws -> ChatCompletionResponse {
         try await fetchDecodable(.chatCompletion(prompt, history))
     }
     
@@ -28,7 +28,7 @@ public class AIService {
             throw URLError(.badServerResponse)
         }
 
-        if let apiError = AIAPIError(data: data, httpResponse: httpResponse) {
+        if let apiError = APIError(data: data, httpResponse: httpResponse) {
             throw apiError
         }
 
@@ -37,7 +37,7 @@ public class AIService {
 }
 
 enum AIServiceRouter {
-    case chatCompletion(String, [AIChatMessage])
+    case chatCompletion(String, [ChatMessage])
     
     private static let baseURL = "https://api.openai.com/v1"
     
@@ -61,8 +61,8 @@ enum AIServiceRouter {
     var body: Encodable? {
         switch self {
         case .chatCompletion(let prompt, var history):
-            history.append(AIChatMessage(role: .user, content: prompt))
-            return AIChatCompletionRequest(messages: history)
+            history.append(ChatMessage(role: .user, content: prompt))
+            return ChatCompletionRequest(messages: history)
         }
     }
     

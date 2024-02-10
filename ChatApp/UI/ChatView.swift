@@ -49,7 +49,7 @@ struct ChatView: View {
         .alert(item: $viewModel.errorItem) { errorItem in
             Alert(
                 title: Text(errorItem.title),
-                message: Text(errorItem.localizedDescription),
+                message: Text(errorItem.message),
                 dismissButton: .default(Text("OK")) {
                     viewModel.errorItem = nil
                 }

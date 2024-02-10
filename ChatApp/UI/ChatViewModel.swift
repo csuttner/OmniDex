@@ -39,7 +39,10 @@ class ChatViewModel: ObservableObject {
         
         Task.init {
             do {
-                let response = try await AIService.shared.fetchChatCompletion(prompt: prompt, history: history)
+                let response = try await APIService.shared.fetchChatCompletion(
+                    prompt: prompt,
+                    history: history
+                )
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.prompt = ""
