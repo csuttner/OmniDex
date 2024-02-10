@@ -23,7 +23,7 @@ struct ChatView: View {
                             )
                         )
                     }
-                    
+
                     if viewModel.isLoading {
                         ChatMessageView(viewModel: .loading)
                     }
@@ -44,14 +44,14 @@ struct ChatView: View {
                 .onSubmit {
                     viewModel.submit()
                     promptIsFocused = false
-                    viewModel.prompt = ""
                 }
         }
-        .alert(item: $viewModel.error) { error in
+        .alert(item: $viewModel.errorItem) { errorItem in
             Alert(
-                title: Text(error.localizedDescription),
+                title: Text(errorItem.title),
+                message: Text(errorItem.localizedDescription),
                 dismissButton: .default(Text("OK")) {
-                    viewModel.error = nil
+                    viewModel.errorItem = nil
                 }
             )
         }

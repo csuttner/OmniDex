@@ -11,7 +11,7 @@ import OpenAI
 class ChatViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
     @Published var prompt: String
-    @Published var error: ErrorItem?
+    @Published var errorItem: ErrorItem?
     @Published var isLoading: Bool
     
     private var promptMessage: ChatMessage {
@@ -42,15 +42,15 @@ class ChatViewModel: ObservableObject {
                 let response = try await AIService.shared.fetchChatCompletion(prompt: prompt, history: history)
                 
                 DispatchQueue.main.async { [weak self] in
+                    self?.prompt = ""
                     self?.chatMessages.removeLast()
                     self?.chatMessages.append(ChatMessage(replyResponse: response))
                     self?.isLoading = false
                 }
 
             } catch {
-//                print(error)
-
                 DispatchQueue.main.async { [weak self] in
+                    self?.errorItem = ErrorItem(error: error)
                     self?.isLoading = false
                 }
             }

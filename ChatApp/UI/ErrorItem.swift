@@ -5,14 +5,21 @@
 //  Created by Clay Suttner on 2/10/24.
 //
 
+import OpenAI
 import Foundation
 
 struct ErrorItem: Identifiable {
     let id = UUID()
-    let title = "Error"
-    let localizedDescription: String
+    let title: String
+    let message: String
     
     init(error: Error) {
-        localizedDescription = error.localizedDescription
+        if error is AIAPIError {
+            title = Constants.Error.apiError
+        } else {
+            title = Constants.Error.error
+        }
+
+        message = error.localizedDescription
     }
 }

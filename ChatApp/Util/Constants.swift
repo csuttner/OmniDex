@@ -12,6 +12,11 @@ enum Constants {
         static let sendAMessage = "Send a message..."
     }
     
+    enum Error {
+        static let apiError = "API Error"
+        static let error = "Error"
+    }
+    
     enum Mock {
         static let no = "No."
         static let glad = "I'm glad you found that helpful."

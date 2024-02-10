@@ -12,7 +12,7 @@ public struct AIChatCompletionResponse: Decodable {
     public let choices: [AIChatCompletionChoice]
     public let created: Date
     public let model: String
-    public let systemFingerprint: String
+    public let systemFingerprint: String?
     public let object: String
     public let usage: AIChatUsage
     

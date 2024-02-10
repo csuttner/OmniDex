@@ -12,15 +12,6 @@ public class AIService {
     
     public static let shared = AIService()
     
-    private let encoder = JSONEncoder()
-    
-    private let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .secondsSince1970
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return decoder
-    }()
-    
     public func fetchChatCompletion(
         prompt: String,
         history: [AIChatMessage]
@@ -30,12 +21,18 @@ public class AIService {
     
     private func fetchDecodable<T: Decodable>(_ router: AIServiceRouter) async throws -> T {
         let request = try router.asURLRequest()
-        
+
         let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard (response is HTTPURLResponse) else { throw URLError(.badServerResponse) }
-        
-        return try decoder.decode(T.self, from: data)
+
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw URLError(.badServerResponse)
+        }
+
+        if let apiError = AIAPIError(data: data, httpResponse: httpResponse) {
+            throw apiError
+        }
+
+        return try JSONDecoder.shared.decode(T.self, from: data)
     }
 }
 
@@ -51,10 +48,11 @@ enum AIServiceRouter {
         
         var request = URLRequest(url: url)
         
-        headers.forEach { request.setValue($0.value, forHTTPHeaderField: $0.field) }
+        request.httpMethod = httpMethod.rawValue
+        request.httpHeaders = httpHeaders
         
         if let body {
-            request.httpBody = try JSONEncoder().encode(body)
+            request.httpBody = try JSONEncoder.shared.encode(body)
         }
         
         return request
@@ -62,13 +60,13 @@ enum AIServiceRouter {
     
     var body: Encodable? {
         switch self {
-        case var .chatCompletion(prompt, history):
+        case .chatCompletion(let prompt, var history):
             history.append(AIChatMessage(role: .user, content: prompt))
             return AIChatCompletionRequest(messages: history)
         }
     }
     
-    var headers: [HTTPHeader] {
+    var httpHeaders: [HTTPHeader] {
         [.contentType, .authorization]
     }
     
@@ -79,7 +77,7 @@ enum AIServiceRouter {
         }
     }
     
-    var method: HTTPMethod {
+    var httpMethod: HTTPMethod {
         switch self {
         case .chatCompletion:
             return .post
