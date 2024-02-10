@@ -23,23 +23,18 @@ struct ChatView: View {
                             )
                         )
                     }
-
-                    if viewModel.isLoading {
-                        ChatMessageView(viewModel: .loading)
-                    }
                 }
                 .onReceive(viewModel.$chatMessages) { messages in
                     if let id = messages.last?.id {
                         proxy.scrollTo(id)
-                        promptIsFocused = false
                     }
                 }
             }
             
-            TextField(Constants.Chat.sendAMessage, text: $viewModel.prompt)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField(Constants.Chat.message, text: $viewModel.prompt)
+                .textFieldStyle(PillTextFieldStyle())
                 .padding()
-                .background(.regularMaterial)
+                .submitLabel(.send)
                 .focused($promptIsFocused)
                 .onSubmit {
                     viewModel.submit()

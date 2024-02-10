@@ -32,7 +32,7 @@ struct ChatMessage: Identifiable {
         date: Date,
         sender: MessageSender,
         content: String,
-        isLoading: Bool = true
+        isLoading: Bool
     ) {
         self.id = id
         self.date = date

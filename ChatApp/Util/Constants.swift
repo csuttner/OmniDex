@@ -9,7 +9,7 @@ import Foundation
 
 enum Constants {
     enum Chat {
-        static let sendAMessage = "Send a message..."
+        static let message = "Message"
     }
     
     enum Error {

@@ -10,8 +10,6 @@ import SwiftUI
 struct ChatMessageView: View {
     let viewModel: ChatMessageViewModel
     
-    @State private var height: CGFloat = .zero
-    
     var body: some View {
         HStack(alignment: .bottom) {
             if !viewModel.isUser {

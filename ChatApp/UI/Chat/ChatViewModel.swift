@@ -12,30 +12,26 @@ class ChatViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
     @Published var prompt: String
     @Published var errorItem: ErrorItem?
-    @Published var isLoading: Bool
     
     private var promptMessage: ChatMessage {
         ChatMessage(
             id: UUID().uuidString,
             date: Date(),
             sender: .init(role: .user),
-            content: prompt
+            content: prompt,
+            isLoading: false
         )
     }
     
     init(chatMessages: [ChatMessage], prompt: String) {
         self.chatMessages = chatMessages
         self.prompt = prompt
-        
-        isLoading = false
     }
     
     func submit() {
-        isLoading = true
-        
         let history = chatMessages.map(\.aiChatMessage)
         chatMessages.append(promptMessage)
-        chatMessages.append(ChatMessage.loadingMessage)
+        chatMessages.append(.loadingMessage)
         
         Task.init {
             do {
@@ -46,15 +42,13 @@ class ChatViewModel: ObservableObject {
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.prompt = ""
-                    self?.chatMessages.removeLast()
+                    self?.chatMessages.removeAll { $0.isLoading }
                     self?.chatMessages.append(ChatMessage(replyResponse: response))
-                    self?.isLoading = false
                 }
 
             } catch {
                 DispatchQueue.main.async { [weak self] in
                     self?.errorItem = ErrorItem(error: error)
-                    self?.isLoading = false
                 }
             }
         }
