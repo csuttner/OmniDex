@@ -29,7 +29,7 @@ struct ChatView: View {
                 .onReceive(viewModel.$chatMessages) { messages in
                     withAnimation {
                         if let id = messages.last?.id {
-                            proxy.scrollTo(id, anchor: .bottom)
+                            proxy.scrollTo(id, anchor: .top)
                         }
                     }
                 }
