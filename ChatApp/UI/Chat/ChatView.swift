@@ -10,14 +10,18 @@ import SwiftUI
 struct ChatView: View {
     @ObservedObject var viewModel: ChatViewModel
     
+    @State private var selectedImage: UIImage?
+    
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack(alignment: .bottom) {
             ChatScrollView(chatMessages: $viewModel.chatMessages)
 
-            ChatTextField(text: $viewModel.prompt)
-                .onSubmit {
-                    viewModel.submit()
-                }
+            ChatInputBar(
+                selectedImage: $selectedImage,
+                text: $viewModel.prompt
+            ) {
+                viewModel.submit()
+            }
         }
         .alert(item: $viewModel.errorItem) { errorItem in
             Alert(

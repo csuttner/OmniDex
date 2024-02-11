@@ -15,7 +15,7 @@ struct ChatMessageStyle {
     let accentColor: Color
     
     init(isUser: Bool) {
-        accentColor = isUser ? .blue : .gray
+        accentColor = isUser ? Color(Constants.Color.interactive) : .gray
     }
 }
 
