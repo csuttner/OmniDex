@@ -10,39 +10,13 @@ import SwiftUI
 struct ChatView: View {
     @ObservedObject var viewModel: ChatViewModel
     
-    @FocusState private var promptIsFocused: Bool
-    
     var body: some View {
         VStack(spacing: 0) {
-            ScrollViewReader { proxy in
-                KeyboardDismissableScrollView {
-                    LazyVStack (alignment: .leading) {
-                        ForEach(viewModel.chatMessages) { chatMessage in
-                            ChatMessageView(
-                                viewModel: ChatMessageViewModel(
-                                    chatMessage: chatMessage
-                                )
-                            )
-                        }
-                    }
-                }
-                .onReceive(viewModel.$chatMessages) { messages in
-                    withAnimation {
-                        if let id = messages.last?.id {
-                            proxy.scrollTo(id, anchor: .top)
-                        }
-                    }
-                }
-            }
-            
-            TextField(Constants.Chat.message, text: $viewModel.prompt)
-                .textFieldStyle(PillTextFieldStyle())
-                .padding()
-                .submitLabel(.send)
-                .focused($promptIsFocused)
+            ChatScrollView(chatMessages: $viewModel.chatMessages)
+
+            ChatTextField(text: $viewModel.prompt)
                 .onSubmit {
                     viewModel.submit()
-                    promptIsFocused = false
                 }
         }
         .alert(item: $viewModel.errorItem) { errorItem in

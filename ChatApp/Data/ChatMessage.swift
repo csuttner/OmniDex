@@ -41,14 +41,20 @@ struct ChatMessage: Identifiable {
         self.isLoading = isLoading
     }
     
-    init(replyResponse: ChatCompletionResponse) {
-        id = replyResponse.id
-        date = replyResponse.created
+    init(response: ChatCompletionResponse) {
+        id = response.id
+        date = response.created
 
-        let message = replyResponse.choices.first?.message
+        let message = response.choices.first?.message
 
         sender = MessageSender(role: message?.role ?? .assistant)
         content = message?.content ?? ""
         isLoading = false
+    }
+}
+
+extension ChatMessage: Equatable {
+    static func == (lhs: ChatMessage, rhs: ChatMessage) -> Bool {
+        lhs.id == rhs.id
     }
 }

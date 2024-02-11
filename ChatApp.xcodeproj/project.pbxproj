@@ -41,6 +41,8 @@
 		F3711FFE2B7809110096A084 /* APIErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FFD2B7809110096A084 /* APIErrorResponse.swift */; };
 		F37120012B7818D90096A084 /* PillTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120002B7818D90096A084 /* PillTextFieldStyle.swift */; };
 		F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */; };
+		F37120082B7833F70096A084 /* ChatScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120072B7833F70096A084 /* ChatScrollView.swift */; };
+		F371200A2B783BFB0096A084 /* ChatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120092B783BFB0096A084 /* ChatTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		F3711FFD2B7809110096A084 /* APIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorResponse.swift; sourceTree = "<group>"; };
 		F37120002B7818D90096A084 /* PillTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillTextFieldStyle.swift; sourceTree = "<group>"; };
 		F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissableScrollView.swift; sourceTree = "<group>"; };
+		F37120072B7833F70096A084 /* ChatScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScrollView.swift; sourceTree = "<group>"; };
+		F37120092B783BFB0096A084 /* ChatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				F3257E0C29F58DB100EC757F /* ChatView.swift */,
+				F37120072B7833F70096A084 /* ChatScrollView.swift */,
+				F37120092B783BFB0096A084 /* ChatTextField.swift */,
 				F3257E2F29F5A56700EC757F /* ChatViewModel.swift */,
 				F3257E3129F5A5C500EC757F /* ChatMessageView.swift */,
 				F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */,
@@ -390,10 +396,12 @@
 				F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */,
 				F37120012B7818D90096A084 /* PillTextFieldStyle.swift in Sources */,
 				F307672B29F5C4AE00B93286 /* ChatMessage.swift in Sources */,
+				F371200A2B783BFB0096A084 /* ChatTextField.swift in Sources */,
 				F307674329F5C7E900B93286 /* MessageSender.swift in Sources */,
 				F3257E3029F5A56700EC757F /* ChatViewModel.swift in Sources */,
 				F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */,
 				F3257E0D29F58DB100EC757F /* ChatView.swift in Sources */,
+				F37120082B7833F70096A084 /* ChatScrollView.swift in Sources */,
 				F356360029F5DB640099CC30 /* Constants.swift in Sources */,
 				F3257E3829F5B4E800EC757F /* ChatMessageViewModel.swift in Sources */,
 				F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */,
