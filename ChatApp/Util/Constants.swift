@@ -8,12 +8,11 @@
 import Foundation
 
 enum Constants {
-    enum Chat {
-        static let message = "Message"
+    enum Common {
+        static let error = "Error"
     }
     
-    enum Error {
-        static let apiError = "API Error"
-        static let error = "Error"
+    enum Chat {
+        static let message = "Message"
     }
 }

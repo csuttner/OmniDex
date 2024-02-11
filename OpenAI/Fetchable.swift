@@ -22,7 +22,7 @@ extension Fetchable {
         if let apiError = APIError(data: data, httpResponse: httpResponse) {
             throw apiError
         }
-
+        
         return try JSONDecoder.shared.decode(T.self, from: data)
     }
 }

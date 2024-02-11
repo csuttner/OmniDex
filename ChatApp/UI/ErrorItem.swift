@@ -14,12 +14,13 @@ struct ErrorItem: Identifiable {
     let message: String
     
     init(error: Error) {
-        if error is APIError {
-            title = Constants.Error.apiError
+        if let detailedError = error as? DetailedError {
+            title = detailedError.detailedErrorType
+            message = detailedError.detailedDescription
+            
         } else {
-            title = Constants.Error.error
+            title = Constants.Common.error
+            message = error.localizedDescription
         }
-
-        message = error.localizedDescription
     }
 }

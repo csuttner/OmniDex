@@ -40,7 +40,7 @@ struct ChatMessage: Identifiable {
         id = response.id
         date = response.created
         sender = MessageSender(role: message?.role ?? .assistant)
-        content = message?.content ?? ""
+        content = message?.textContent ?? ""
     }
 }
 
