@@ -54,10 +54,10 @@ struct ChatMessageView: View {
 
 struct ChatMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatMessageView(viewModel: Mocks.chatMessageViewModel)
+        ChatMessageView(viewModel: Mock.chatMessageViewModel)
             .padding()
         
-        ChatMessageView(viewModel: Mocks.chatMessageViewModelLoading)
+        ChatMessageView(viewModel: Mock.chatMessageViewModelLoading)
             .padding()
     }
 }

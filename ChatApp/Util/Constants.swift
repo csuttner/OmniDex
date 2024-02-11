@@ -16,10 +16,4 @@ enum Constants {
         static let apiError = "API Error"
         static let error = "Error"
     }
-    
-    enum Mock {
-        static let no = "No."
-        static let glad = "I'm glad you found that helpful."
-        static let nearbyLocations = "Can you also provide a list of nearby locations?"
-    }
 }

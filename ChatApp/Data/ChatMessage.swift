@@ -16,10 +16,7 @@ struct ChatMessage: Identifiable {
     let isLoading: Bool
     
     static let loadingMessage = ChatMessage(
-        id: "",
-        date: Date(),
         sender: MessageSender(role: .assistant),
-        content: "",
         isLoading: true
     )
     
@@ -28,15 +25,29 @@ struct ChatMessage: Identifiable {
     }
     
     init(
-        id: String,
-        date: Date,
+        id: String = UUID().uuidString,
+        date: Date = Date(),
         sender: MessageSender,
-        content: String,
-        isLoading: Bool
+        content: String = "",
+        isLoading: Bool = false
     ) {
         self.id = id
         self.date = date
         self.sender = sender
+        self.content = content
+        self.isLoading = isLoading
+    }
+    
+    init(
+        id: String = UUID().uuidString,
+        date: Date = Date(),
+        role: Role,
+        content: String = "",
+        isLoading: Bool = false
+    ) {
+        self.id = id
+        self.date = date
+        sender = MessageSender(role: role)
         self.content = content
         self.isLoading = isLoading
     }

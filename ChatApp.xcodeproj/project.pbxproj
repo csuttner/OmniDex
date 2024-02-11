@@ -29,7 +29,7 @@
 		F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */; };
 		F3257E3829F5B4E800EC757F /* ChatMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */; };
 		F356360029F5DB640099CC30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35635FF29F5DB640099CC30 /* Constants.swift */; };
-		F356360229F5DBCE0099CC30 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F356360129F5DBCE0099CC30 /* Mocks.swift */; };
+		F356360229F5DBCE0099CC30 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F356360129F5DBCE0099CC30 /* Mock.swift */; };
 		F3711FED2B77DFF90096A084 /* MaskedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */; };
 		F3711FEF2B77E6AB0096A084 /* ErrorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FEE2B77E6AB0096A084 /* ErrorItem.swift */; };
 		F3711FF12B77F0330096A084 /* ChatCompletionChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FF02B77F0330096A084 /* ChatCompletionChunk.swift */; };
@@ -46,6 +46,9 @@
 		F380E6382B784B7E007456D3 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6372B784B7E007456D3 /* ChatService.swift */; };
 		F380E63A2B784BD8007456D3 /* ServiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6392B784BD8007456D3 /* ServiceRouter.swift */; };
 		F380E63C2B784C86007456D3 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E63B2B784C86007456D3 /* Fetchable.swift */; };
+		F380E6402B7859C0007456D3 /* MockChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E63F2B7859C0007456D3 /* MockChatService.swift */; };
+		F380E6422B7859FB007456D3 /* ChatCompletionResponse+MockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6412B7859FB007456D3 /* ChatCompletionResponse+MockResponse.swift */; };
+		F380E6442B785C53007456D3 /* MockConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6432B785C53007456D3 /* MockConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +98,7 @@
 		F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircleView.swift; sourceTree = "<group>"; };
 		F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageViewModel.swift; sourceTree = "<group>"; };
 		F35635FF29F5DB640099CC30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		F356360129F5DBCE0099CC30 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		F356360129F5DBCE0099CC30 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedCornerShape.swift; sourceTree = "<group>"; };
 		F3711FEE2B77E6AB0096A084 /* ErrorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorItem.swift; sourceTree = "<group>"; };
 		F3711FF02B77F0330096A084 /* ChatCompletionChunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionChunk.swift; sourceTree = "<group>"; };
@@ -112,6 +115,9 @@
 		F380E6372B784B7E007456D3 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		F380E6392B784BD8007456D3 /* ServiceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRouter.swift; sourceTree = "<group>"; };
 		F380E63B2B784C86007456D3 /* Fetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
+		F380E63F2B7859C0007456D3 /* MockChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatService.swift; sourceTree = "<group>"; };
+		F380E6412B7859FB007456D3 /* ChatCompletionResponse+MockResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatCompletionResponse+MockResponse.swift"; sourceTree = "<group>"; };
+		F380E6432B785C53007456D3 /* MockConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +199,7 @@
 				F307672929F5C42D00B93286 /* Data */,
 				F3257E2E29F5A51D00EC757F /* UI */,
 				F35635FE29F5DB530099CC30 /* Util */,
+				F380E63E2B7857AC007456D3 /* Test */,
 				F3257E0E29F58DB200EC757F /* Assets.xcassets */,
 				F3257E1029F58DB200EC757F /* Preview Content */,
 			);
@@ -223,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				F35635FF29F5DB640099CC30 /* Constants.swift */,
-				F356360129F5DBCE0099CC30 /* Mocks.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -272,6 +278,17 @@
 				F3711FF82B77FA350096A084 /* Data */,
 			);
 			path = "Chat Service";
+			sourceTree = "<group>";
+		};
+		F380E63E2B7857AC007456D3 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				F356360129F5DBCE0099CC30 /* Mock.swift */,
+				F380E6432B785C53007456D3 /* MockConstants.swift */,
+				F380E63F2B7859C0007456D3 /* MockChatService.swift */,
+				F380E6412B7859FB007456D3 /* ChatCompletionResponse+MockResponse.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,16 +427,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F356360229F5DBCE0099CC30 /* Mocks.swift in Sources */,
+				F380E6442B785C53007456D3 /* MockConstants.swift in Sources */,
+				F356360229F5DBCE0099CC30 /* Mock.swift in Sources */,
 				F3711FEF2B77E6AB0096A084 /* ErrorItem.swift in Sources */,
 				F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */,
 				F37120012B7818D90096A084 /* PillTextFieldStyle.swift in Sources */,
 				F307672B29F5C4AE00B93286 /* ChatMessage.swift in Sources */,
+				F380E6422B7859FB007456D3 /* ChatCompletionResponse+MockResponse.swift in Sources */,
 				F380E6382B784B7E007456D3 /* ChatService.swift in Sources */,
 				F371200A2B783BFB0096A084 /* ChatTextField.swift in Sources */,
 				F307674329F5C7E900B93286 /* MessageSender.swift in Sources */,
 				F3257E3029F5A56700EC757F /* ChatViewModel.swift in Sources */,
 				F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */,
+				F380E6402B7859C0007456D3 /* MockChatService.swift in Sources */,
 				F3257E0D29F58DB100EC757F /* ChatView.swift in Sources */,
 				F37120082B7833F70096A084 /* ChatScrollView.swift in Sources */,
 				F356360029F5DB640099CC30 /* Constants.swift in Sources */,

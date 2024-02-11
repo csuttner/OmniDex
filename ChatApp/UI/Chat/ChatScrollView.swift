@@ -35,5 +35,5 @@ struct ChatScrollView: View {
 }
 
 #Preview {
-    ChatScrollView(chatMessages: .constant([]))
+    ChatScrollView(chatMessages: .constant(Mock.chatMessages))
 }

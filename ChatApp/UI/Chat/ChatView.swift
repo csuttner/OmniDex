@@ -33,6 +33,6 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(viewModel: Mocks.chatViewModel)
+        ChatView(viewModel: Mock.chatViewModel)
     }
 }
