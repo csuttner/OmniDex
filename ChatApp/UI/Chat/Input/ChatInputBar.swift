@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ChatInputBar: View {
-    @Binding var selectedImage: UIImage?
     @Binding var text: String
+    @Binding var selectedImage: UIImage?
     
     var onSubmit: (() -> Void)?
     
@@ -51,7 +51,7 @@ struct ChatInputBar: View {
             }
             
             HStack(alignment: .center, spacing: stackSpacing) {
-                ImagePickerButton(selectedImage: $selectedImage)
+                ChatImagePickerButton(selectedImage: $selectedImage)
                     .frame(
                         width: buttonDimension,
                         height: buttonDimension
@@ -76,7 +76,7 @@ struct ChatInputBar: View {
 
 #Preview {
     ChatInputBar(
-        selectedImage: .constant(UIImage(named: "Lambo")!),
-        text: .constant(Constants.Chat.message)
+        text: .constant(Constants.Chat.message),
+        selectedImage: .constant(UIImage(named: "Lambo"))
     )
 }

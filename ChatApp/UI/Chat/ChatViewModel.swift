@@ -5,12 +5,14 @@
 //  Created by Clay Suttner on 4/23/23.
 //
 
+import UIKit
 import Foundation
 import OpenAI
 
 class ChatViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
     @Published var prompt: String
+    @Published var image: UIImage?
     @Published var errorItem: ErrorItem?
     
     private let chatService: ChatService

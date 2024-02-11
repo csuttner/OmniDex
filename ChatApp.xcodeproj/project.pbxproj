@@ -56,10 +56,13 @@
 		F3B3584D2B7944EA00E2FA3F /* URLError+DetailedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3584C2B7944EA00E2FA3F /* URLError+DetailedError.swift */; };
 		F3B3584F2B794F1700E2FA3F /* ChatContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3584E2B794F1700E2FA3F /* ChatContent.swift */; };
 		F3B358512B79571D00E2FA3F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358502B79571D00E2FA3F /* ImagePicker.swift */; };
-		F3B358552B79590300E2FA3F /* ImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358542B79590300E2FA3F /* ImagePickerButton.swift */; };
+		F3B358552B79590300E2FA3F /* ChatImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358542B79590300E2FA3F /* ChatImagePickerButton.swift */; };
 		F3B358572B795D4000E2FA3F /* ChatImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358562B795D4000E2FA3F /* ChatImagePreviewView.swift */; };
 		F3B358592B7968DF00E2FA3F /* ChatInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358582B7968DF00E2FA3F /* ChatInputBar.swift */; };
 		F3B3585B2B79778600E2FA3F /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3585A2B79778600E2FA3F /* UIImage+Resize.swift */; };
+		F3B3585D2B79831400E2FA3F /* ChatImageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3585C2B79831400E2FA3F /* ChatImageBubble.swift */; };
+		F3B358612B798A5C00E2FA3F /* ChatMessageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358602B798A5C00E2FA3F /* ChatMessageStyle.swift */; };
+		F3B85DBE2B798F0800B2564C /* UIImage+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B85DBD2B798F0800B2564C /* UIImage+Base64.swift */; };
 		F3BD5E532B789CE400D63E0F /* FlipGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD5E522B789CE400D63E0F /* FlipGroup.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,10 +140,13 @@
 		F3B3584C2B7944EA00E2FA3F /* URLError+DetailedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLError+DetailedError.swift"; sourceTree = "<group>"; };
 		F3B3584E2B794F1700E2FA3F /* ChatContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatContent.swift; sourceTree = "<group>"; };
 		F3B358502B79571D00E2FA3F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		F3B358542B79590300E2FA3F /* ImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerButton.swift; sourceTree = "<group>"; };
+		F3B358542B79590300E2FA3F /* ChatImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImagePickerButton.swift; sourceTree = "<group>"; };
 		F3B358562B795D4000E2FA3F /* ChatImagePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImagePreviewView.swift; sourceTree = "<group>"; };
 		F3B358582B7968DF00E2FA3F /* ChatInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
 		F3B3585A2B79778600E2FA3F /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		F3B3585C2B79831400E2FA3F /* ChatImageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageBubble.swift; sourceTree = "<group>"; };
+		F3B358602B798A5C00E2FA3F /* ChatMessageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageStyle.swift; sourceTree = "<group>"; };
+		F3B85DBD2B798F0800B2564C /* UIImage+Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Base64.swift"; sourceTree = "<group>"; };
 		F3BD5E522B789CE400D63E0F /* FlipGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,6 +263,7 @@
 			children = (
 				F35635FF29F5DB640099CC30 /* Constants.swift */,
 				F3B3585A2B79778600E2FA3F /* UIImage+Resize.swift */,
+				F3B85DBD2B798F0800B2564C /* UIImage+Base64.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -292,17 +299,9 @@
 			isa = PBXGroup;
 			children = (
 				F3257E0C29F58DB100EC757F /* ChatView.swift */,
-				F3B358542B79590300E2FA3F /* ImagePickerButton.swift */,
-				F3B358562B795D4000E2FA3F /* ChatImagePreviewView.swift */,
-				F3B358582B7968DF00E2FA3F /* ChatInputBar.swift */,
-				F37120072B7833F70096A084 /* ChatScrollView.swift */,
 				F3257E2F29F5A56700EC757F /* ChatViewModel.swift */,
-				F3257E3129F5A5C500EC757F /* ChatMessageView.swift */,
-				F380E6472B786A70007456D3 /* ChatTextBubble.swift */,
-				F380E6452B78697F007456D3 /* ChatUserCircle.swift */,
-				F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */,
-				F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */,
-				F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */,
+				F3B3585E2B7985E100E2FA3F /* Input */,
+				F3B3585F2B79860300E2FA3F /* Messages */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -325,6 +324,32 @@
 				F380E6412B7859FB007456D3 /* ChatCompletionResponse+MockResponse.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		F3B3585E2B7985E100E2FA3F /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				F3B358542B79590300E2FA3F /* ChatImagePickerButton.swift */,
+				F3B358562B795D4000E2FA3F /* ChatImagePreviewView.swift */,
+				F3B358582B7968DF00E2FA3F /* ChatInputBar.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		F3B3585F2B79860300E2FA3F /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				F37120072B7833F70096A084 /* ChatScrollView.swift */,
+				F3257E3129F5A5C500EC757F /* ChatMessageView.swift */,
+				F3B358602B798A5C00E2FA3F /* ChatMessageStyle.swift */,
+				F380E6472B786A70007456D3 /* ChatTextBubble.swift */,
+				F3B3585C2B79831400E2FA3F /* ChatImageBubble.swift */,
+				F380E6452B78697F007456D3 /* ChatUserCircle.swift */,
+				F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */,
+				F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */,
+				F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,7 +501,9 @@
 				F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */,
 				F380E6482B786A70007456D3 /* ChatTextBubble.swift in Sources */,
 				F307672B29F5C4AE00B93286 /* ChatMessage.swift in Sources */,
+				F3B358612B798A5C00E2FA3F /* ChatMessageStyle.swift in Sources */,
 				F380E6422B7859FB007456D3 /* ChatCompletionResponse+MockResponse.swift in Sources */,
+				F3B85DBE2B798F0800B2564C /* UIImage+Base64.swift in Sources */,
 				F380E6382B784B7E007456D3 /* ChatService.swift in Sources */,
 				F380E6462B78697F007456D3 /* ChatUserCircle.swift in Sources */,
 				F3B358592B7968DF00E2FA3F /* ChatInputBar.swift in Sources */,
@@ -484,6 +511,7 @@
 				F3257E3029F5A56700EC757F /* ChatViewModel.swift in Sources */,
 				F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */,
 				F3B3585B2B79778600E2FA3F /* UIImage+Resize.swift in Sources */,
+				F3B3585D2B79831400E2FA3F /* ChatImageBubble.swift in Sources */,
 				F380E6402B7859C0007456D3 /* MockChatService.swift in Sources */,
 				F3257E0D29F58DB100EC757F /* ChatView.swift in Sources */,
 				F37120082B7833F70096A084 /* ChatScrollView.swift in Sources */,
@@ -492,7 +520,7 @@
 				F3BD5E532B789CE400D63E0F /* FlipGroup.swift in Sources */,
 				F3257E3829F5B4E800EC757F /* ChatMessageViewModel.swift in Sources */,
 				F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */,
-				F3B358552B79590300E2FA3F /* ImagePickerButton.swift in Sources */,
+				F3B358552B79590300E2FA3F /* ChatImagePickerButton.swift in Sources */,
 				F3257E0B29F58DB100EC757F /* ChatAppApp.swift in Sources */,
 				F3711FED2B77DFF90096A084 /* MaskedCornerShape.swift in Sources */,
 				F3257E3229F5A5C500EC757F /* ChatMessageView.swift in Sources */,

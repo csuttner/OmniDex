@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct ImagePickerButton: View {
+struct ChatImagePickerButton: View {
     @Binding var selectedImage: UIImage?
+
     @State private var isImagePickerPresented = false
     
     var body: some View {
@@ -27,5 +28,7 @@ struct ImagePickerButton: View {
 }
 
 #Preview {
-    ImagePickerButton(selectedImage: .constant(nil))
+    ChatImagePickerButton(
+        selectedImage: .constant(nil)
+    )
 }

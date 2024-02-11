@@ -15,7 +15,7 @@ struct ChatTextBubble: View {
     var style: ChatMessageStyle {
         ChatMessageStyle(isUser: isUser)
     }
-    
+
     var body: some View {
         HStack {
             if isLoading {

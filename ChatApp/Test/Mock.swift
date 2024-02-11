@@ -5,6 +5,7 @@
 //  Created by Clay Suttner on 4/23/23.
 //
 
+import UIKit
 import Foundation
 import OpenAI
 
@@ -17,9 +18,11 @@ enum Mock {
         chatMessage: ChatMessage(role: .user, content: MockConstants.nearbyLocations)
     )
     
-    static let chatMessageViewModelLoading = ChatMessageViewModel(
-        chatMessage: ChatMessage(role: .user, isLoading: true)
-    )
+    static var chatMessageViewModelWithImage: ChatMessageViewModel {
+        var vm = chatMessageViewModel
+        vm.image = UIImage(named: "Lambo")!.base64String
+        return vm
+    }
     
     static var chatMessages: [ChatMessage] {
         [

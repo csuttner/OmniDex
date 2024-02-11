@@ -9,8 +9,13 @@ import Foundation
 
 import SwiftUI
 
+private extension CGSize {
+    static let lowResSize = CGSize(width: 512, height: 512)
+}
+
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
+
     @Environment(\.presentationMode) var presentationMode
 
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -24,8 +29,10 @@ struct ImagePicker: UIViewControllerRepresentable {
             _ picker: UIImagePickerController,
             didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
         ) {
-            if let image = info[.originalImage] as? UIImage {
-                parent.selectedImage = image
+            if 
+                let image = info[.originalImage] as? UIImage,
+                let resizedImage = image.resize(to: .lowResSize) {
+                parent.selectedImage = resizedImage
             }
 
             parent.presentationMode.wrappedValue.dismiss()
