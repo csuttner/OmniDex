@@ -15,7 +15,7 @@
 		F307673A29F5C73200B93286 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2729F59EAF00EC757F /* Role.swift */; };
 		F307673B29F5C73200B93286 /* ChatCompletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1D29F59DB800EC757F /* ChatCompletionResponse.swift */; };
 		F307673C29F5C73200B93286 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2929F5A08000EC757F /* APIError.swift */; };
-		F307673D29F5C73200B93286 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1829F58E3C00EC757F /* APIService.swift */; };
+		F307673D29F5C73200B93286 /* OpenAIChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1829F58E3C00EC757F /* OpenAIChatService.swift */; };
 		F307673E29F5C73200B93286 /* ChatCompletionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1B29F59DAF00EC757F /* ChatCompletionRequest.swift */; };
 		F307673F29F5C73200B93286 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2529F59EA300EC757F /* LanguageModel.swift */; };
 		F307674329F5C7E900B93286 /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307674229F5C7E900B93286 /* MessageSender.swift */; };
@@ -43,6 +43,9 @@
 		F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */; };
 		F37120082B7833F70096A084 /* ChatScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120072B7833F70096A084 /* ChatScrollView.swift */; };
 		F371200A2B783BFB0096A084 /* ChatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120092B783BFB0096A084 /* ChatTextField.swift */; };
+		F380E6382B784B7E007456D3 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6372B784B7E007456D3 /* ChatService.swift */; };
+		F380E63A2B784BD8007456D3 /* ServiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6392B784BD8007456D3 /* ServiceRouter.swift */; };
+		F380E63C2B784C86007456D3 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E63B2B784C86007456D3 /* Fetchable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +81,7 @@
 		F3257E0C29F58DB100EC757F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		F3257E0E29F58DB200EC757F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3257E1129F58DB200EC757F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F3257E1829F58E3C00EC757F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		F3257E1829F58E3C00EC757F /* OpenAIChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatService.swift; sourceTree = "<group>"; };
 		F3257E1B29F59DAF00EC757F /* ChatCompletionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionRequest.swift; sourceTree = "<group>"; };
 		F3257E1D29F59DB800EC757F /* ChatCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionResponse.swift; sourceTree = "<group>"; };
 		F3257E1F29F59DBE00EC757F /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
@@ -106,6 +109,9 @@
 		F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissableScrollView.swift; sourceTree = "<group>"; };
 		F37120072B7833F70096A084 /* ChatScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScrollView.swift; sourceTree = "<group>"; };
 		F37120092B783BFB0096A084 /* ChatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextField.swift; sourceTree = "<group>"; };
+		F380E6372B784B7E007456D3 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		F380E6392B784BD8007456D3 /* ServiceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRouter.swift; sourceTree = "<group>"; };
+		F380E63B2B784C86007456D3 /* Fetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +136,10 @@
 		F307671F29F5C32000B93286 /* OpenAI */ = {
 			isa = PBXGroup;
 			children = (
-				F3257E1829F58E3C00EC757F /* APIService.swift */,
+				F380E63B2B784C86007456D3 /* Fetchable.swift */,
+				F380E6392B784BD8007456D3 /* ServiceRouter.swift */,
 				F3711FFF2B78140E0096A084 /* Error */,
-				F3711FF82B77FA350096A084 /* Data */,
+				F380E63D2B784CAE007456D3 /* Chat Service */,
 				F307672C29F5C5F800B93286 /* Util */,
 			);
 			path = OpenAI;
@@ -143,6 +150,7 @@
 			children = (
 				F307672A29F5C4AE00B93286 /* ChatMessage.swift */,
 				F307674229F5C7E900B93286 /* MessageSender.swift */,
+				F380E6372B784B7E007456D3 /* ChatService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -257,6 +265,15 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		F380E63D2B784CAE007456D3 /* Chat Service */ = {
+			isa = PBXGroup;
+			children = (
+				F3257E1829F58E3C00EC757F /* OpenAIChatService.swift */,
+				F3711FF82B77FA350096A084 /* Data */,
+			);
+			path = "Chat Service";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -369,7 +386,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F307673D29F5C73200B93286 /* APIService.swift in Sources */,
+				F380E63A2B784BD8007456D3 /* ServiceRouter.swift in Sources */,
+				F307673D29F5C73200B93286 /* OpenAIChatService.swift in Sources */,
 				F3711FF32B77F1770096A084 /* ChatCompletionChoice.swift in Sources */,
 				F307673029F5C61900B93286 /* Secrets.swift in Sources */,
 				F3711FFE2B7809110096A084 /* APIErrorResponse.swift in Sources */,
@@ -381,6 +399,7 @@
 				F3711FF12B77F0330096A084 /* ChatCompletionChunk.swift in Sources */,
 				F3711FF72B77F8B20096A084 /* HTTPMethod.swift in Sources */,
 				F3711FF52B77F89E0096A084 /* HTTPHeader.swift in Sources */,
+				F380E63C2B784C86007456D3 /* Fetchable.swift in Sources */,
 				F3711FFC2B7802D40096A084 /* JSONDecoder+Shared.swift in Sources */,
 				F307673929F5C73200B93286 /* ChatMessage.swift in Sources */,
 				F307673A29F5C73200B93286 /* Role.swift in Sources */,
@@ -396,6 +415,7 @@
 				F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */,
 				F37120012B7818D90096A084 /* PillTextFieldStyle.swift in Sources */,
 				F307672B29F5C4AE00B93286 /* ChatMessage.swift in Sources */,
+				F380E6382B784B7E007456D3 /* ChatService.swift in Sources */,
 				F371200A2B783BFB0096A084 /* ChatTextField.swift in Sources */,
 				F307674329F5C7E900B93286 /* MessageSender.swift in Sources */,
 				F3257E3029F5A56700EC757F /* ChatViewModel.swift in Sources */,

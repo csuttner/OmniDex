@@ -8,15 +8,19 @@
 import Foundation
 import OpenAI
 
-@MainActor
 class ChatViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
     @Published var prompt: String
     @Published var errorItem: ErrorItem?
     
-    private var promptMessage: ChatMessage?
+    private let chatService: ChatService
     
-    init(chatMessages: [ChatMessage], prompt: String) {
+    init(
+        chatService: ChatService,
+        chatMessages: [ChatMessage] = [],
+        prompt: String = ""
+    ) {
+        self.chatService = chatService
         self.chatMessages = chatMessages
         self.prompt = prompt
     }
@@ -31,7 +35,7 @@ class ChatViewModel: ObservableObject {
         
         Task.init {
             do {
-                let response = try await APIService.shared.fetchChatCompletion(
+                let response = try await chatService.fetchChatCompletion(
                     prompt: promptMessage.content,
                     history: history
                 )

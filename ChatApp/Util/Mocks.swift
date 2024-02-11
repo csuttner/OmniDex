@@ -9,7 +9,7 @@ import Foundation
 import OpenAI
 
 enum Mocks {
-    static let chatViewModel = ChatViewModel(chatMessages: chatMessages, prompt: "")
+    static let chatViewModel = ChatViewModel(chatService: MockChatService(), chatMessages: chatMessages, prompt: "")
     
     static let chatMessageViewModel = ChatMessageViewModel(
         chatMessage: makeChatMessage(role: .user, content: Constants.Mock.nearbyLocations)
@@ -41,6 +41,20 @@ enum Mocks {
             sender: MessageSender(role: role),
             content: content,
             isLoading: isLoading
+        )
+    }
+}
+
+class MockChatService: ChatService {
+    func fetchChatCompletion(prompt: String, history: [OpenAI.ChatMessage]) async throws -> OpenAI.ChatCompletionResponse {
+        ChatCompletionResponse(
+            id: "",
+            choices: [],
+            created: Date(),
+            model: "",
+            systemFingerprint: nil,
+            object: "",
+            usage: ChatUsage(promptTokens: 0, completionTokens: 0, totalTokens: 0)
         )
     }
 }

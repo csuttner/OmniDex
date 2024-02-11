@@ -7,36 +7,15 @@
 
 import Foundation
 
-public class APIService {
-    private init() {}
-    
-    public static let shared = APIService()
-    
-    public func fetchChatCompletion(
-        prompt: String,
-        history: [ChatMessage]
-    ) async throws -> ChatCompletionResponse {
-        try await fetchDecodable(.chatCompletion(prompt, history))
-    }
-    
-    private func fetchDecodable<T: Decodable>(_ router: AIServiceRouter) async throws -> T {
-        let request = try router.asURLRequest()
+public class OpenAIChatService: Fetchable {
+    public init () {}
 
-        let (data, response) = try await URLSession.shared.data(for: request)
-
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw URLError(.badServerResponse)
-        }
-
-        if let apiError = APIError(data: data, httpResponse: httpResponse) {
-            throw apiError
-        }
-
-        return try JSONDecoder.shared.decode(T.self, from: data)
+    public func fetchChatCompletion(prompt: String, history: [ChatMessage]) async throws -> ChatCompletionResponse {
+        try await fetchDecodable(ChatServiceRouter.chatCompletion(prompt, history))
     }
 }
 
-enum AIServiceRouter {
+enum ChatServiceRouter: ServiceRouter {
     case chatCompletion(String, [ChatMessage])
     
     private static let baseURL = "https://api.openai.com/v1"
