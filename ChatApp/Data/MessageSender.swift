@@ -18,9 +18,9 @@ struct MessageSender {
     var imageName: String {
         switch role {
         case .user:
-            return "person.circle"
+            return "Clay"
         case .assistant:
-            return "network"
+            return "Robot"
         case .system:
             return "tv"
         }
