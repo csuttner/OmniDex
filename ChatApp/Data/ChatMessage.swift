@@ -9,14 +9,14 @@ import Foundation
 import OpenAI
 
 struct ChatMessage: Identifiable {
-    let id: String
-    let date: Date
-    let sender: MessageSender
-    let content: String
-    let isLoading: Bool
+    var id = UUID().uuidString
+    var date = Date()
+    var sender: MessageSender
+    var content = ""
+    var isLoading = false
     
     static let loadingMessage = ChatMessage(
-        sender: MessageSender(role: .assistant),
+        role: .assistant,
         isLoading: true
     )
     
@@ -24,43 +24,23 @@ struct ChatMessage: Identifiable {
         OpenAI.ChatMessage(role: sender.role, content: content)
     }
     
-    init(
-        id: String = UUID().uuidString,
-        date: Date = Date(),
-        sender: MessageSender,
-        content: String = "",
-        isLoading: Bool = false
-    ) {
-        self.id = id
-        self.date = date
-        self.sender = sender
-        self.content = content
+    init(role: Role, isLoading: Bool) {
+        sender = MessageSender(role: role)
         self.isLoading = isLoading
     }
     
-    init(
-        id: String = UUID().uuidString,
-        date: Date = Date(),
-        role: Role,
-        content: String = "",
-        isLoading: Bool = false
-    ) {
-        self.id = id
-        self.date = date
+    init(role: Role, content: String) {
         sender = MessageSender(role: role)
         self.content = content
-        self.isLoading = isLoading
     }
     
     init(response: ChatCompletionResponse) {
-        id = response.id
-        date = response.created
-
         let message = response.choices.first?.message
 
+        id = response.id
+        date = response.created
         sender = MessageSender(role: message?.role ?? .assistant)
         content = message?.content ?? ""
-        isLoading = false
     }
 }
 

@@ -12,8 +12,8 @@ import SwiftUI
 struct ChatAppApp: App {
     var body: some Scene {
         WindowGroup {
-            Mock.chatView
-//            ChatView(viewModel: ChatViewModel(chatService: OpenAIChatService()))
+//            Mock.chatView
+            ChatView(viewModel: ChatViewModel(chatService: OpenAIChatService()))
         }
     }
 }

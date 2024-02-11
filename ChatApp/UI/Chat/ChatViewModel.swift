@@ -26,7 +26,7 @@ class ChatViewModel: ObservableObject {
     }
     
     func submit() {
-        let promptMessage = makePromptMessage()
+        let promptMessage = ChatMessage(role: .user, content: prompt)
         let history = chatMessages.map(\.aiChatMessage)
 
         prompt = ""
@@ -62,15 +62,5 @@ class ChatViewModel: ObservableObject {
             self?.errorItem = ErrorItem(error: error)
             self?.prompt = promptMessage.content
         }
-    }
-    
-    private func makePromptMessage() -> ChatMessage {
-        ChatMessage(
-            id: UUID().uuidString,
-            date: Date(),
-            sender: .init(role: .user),
-            content: prompt,
-            isLoading: false
-        )
     }
 }
