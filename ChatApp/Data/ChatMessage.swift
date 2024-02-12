@@ -12,7 +12,8 @@ struct ChatMessage: Identifiable {
     var id = UUID().uuidString
     var date = Date()
     var sender: MessageSender
-    var content = ""
+    var text = ""
+    var image: String?
     var isLoading = false
     
     static let loadingMessage = ChatMessage(
@@ -21,7 +22,7 @@ struct ChatMessage: Identifiable {
     )
     
     var aiChatMessage: OpenAI.ChatMessage {
-        OpenAI.ChatMessage(role: sender.role, content: content)
+        OpenAI.ChatMessage(role: sender.role, text: text, image: image)
     }
     
     init(role: Role, isLoading: Bool) {
@@ -29,9 +30,10 @@ struct ChatMessage: Identifiable {
         self.isLoading = isLoading
     }
     
-    init(role: Role, content: String) {
+    init(role: Role, text: String, image: String? = nil) {
         sender = MessageSender(role: role)
-        self.content = content
+        self.text = text
+        self.image = image
     }
     
     init(response: ChatCompletionResponse) {
@@ -40,7 +42,8 @@ struct ChatMessage: Identifiable {
         id = response.id
         date = response.created
         sender = MessageSender(role: message?.role ?? .assistant)
-        content = message?.textContent ?? ""
+        text = message?.textContent ?? ""
+        image = message?.imageContent ?? ""
     }
 }
 

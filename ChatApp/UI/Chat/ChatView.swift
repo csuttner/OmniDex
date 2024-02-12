@@ -15,7 +15,7 @@ struct ChatView: View {
             ChatScrollView(chatMessages: $viewModel.chatMessages)
 
             ChatInputBar(
-                text: $viewModel.prompt,
+                text: $viewModel.text,
                 selectedImage: $viewModel.image
             ) {
                 viewModel.submit()

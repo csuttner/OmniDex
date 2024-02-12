@@ -10,13 +10,13 @@ import Foundation
 public class OpenAIChatService: Fetchable {
     public init () {}
 
-    public func fetchChatCompletion(prompt: String, history: [ChatMessage]) async throws -> ChatCompletionResponse {
-        try await fetchDecodable(ChatServiceRouter.chatCompletion(prompt, history))
+    public func fetchChatCompletion(text: String, image: String?, history: [ChatMessage]) async throws -> ChatCompletionResponse {
+        try await fetchDecodable(ChatServiceRouter.chatCompletion(text, image, history))
     }
 }
 
 enum ChatServiceRouter: ServiceRouter {
-    case chatCompletion(String, [ChatMessage])
+    case chatCompletion(String, String?, [ChatMessage])
     
     private static let baseURL = "https://api.openai.com/v1"
     
@@ -39,8 +39,8 @@ enum ChatServiceRouter: ServiceRouter {
     
     var body: Encodable? {
         switch self {
-        case .chatCompletion(let prompt, var history):
-            history.append(ChatMessage(role: .user, content: prompt))
+        case .chatCompletion(let prompt, let image, var history):
+            history.append(ChatMessage(role: .user, text: prompt, image: image))
             return ChatCompletionRequest(messages: history)
         }
     }

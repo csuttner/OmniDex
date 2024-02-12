@@ -16,13 +16,31 @@ public struct ChatMessage: Codable {
         switch content {
         case let .string(string):
             return string
+
         case let .array(array):
             return array.first { $0.type == .text }?.text
         }
     }
     
-    public init(role: Role, content: String) {
+    public var imageContent: String? {
+        guard case let .array(array) = content else {
+            return nil
+        }
+
+        return array.first { $0.type == .image }?.imageUrl?.url
+    }
+    
+    public init(role: Role, text: String, image: String? = nil) {
         self.role = role
-        self.content = .string(content)
+        
+        if let image, !image.isEmpty {
+            self.content = .array([
+                ChatContentItem(text: text),
+                ChatContentItem(image: image)
+            ])
+
+        } else {
+            self.content = .string(text)
+        }
     }
 }

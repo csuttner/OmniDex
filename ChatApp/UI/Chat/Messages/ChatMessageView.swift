@@ -8,41 +8,41 @@
 import SwiftUI
 
 struct ChatMessageView: View {
-    let viewModel: ChatMessageViewModel
+    let message: ChatMessage
     
     var style: ChatMessageStyle {
-        ChatMessageStyle(isUser: viewModel.isUser)
+        ChatMessageStyle(isUser: message.sender.isUser)
     }
     
     var body: some View {
-        VStack(alignment: viewModel.isUser ? .trailing : .leading, spacing: style.padding) {
+        VStack(alignment: message.sender.isUser ? .trailing : .leading, spacing: style.padding) {
             if
-                let imageString = viewModel.image,
+                let imageString = message.image,
                 let image = UIImage.fromBase64(imageString) {
                 ChatImageBubble(
                     image: image,
-                    isUser: viewModel.isUser
+                    isUser: message.sender.isUser
                 )
-                .padding(viewModel.isUser ? .trailing : .leading, style.minHeight + style.padding)
+                .padding(message.sender.isUser ? .trailing : .leading, style.minHeight + style.padding)
             }
             
             HStack(alignment: .bottom, spacing: style.padding) {
-                FlipGroup(if: viewModel.isUser) {
+                FlipGroup(if: message.sender.isUser) {
                     ChatUserCircle(
-                        imageName: viewModel.senderImageName,
+                        imageName: message.sender.imageName,
                         style: style
                     )
                     
                     ChatTextBubble(
-                        isLoading: viewModel.isLoading,
-                        content: viewModel.text,
-                        isUser: viewModel.isUser
+                        isLoading: message.isLoading,
+                        content: message.text,
+                        isUser: message.sender.isUser
                     )
                 }
             }
             .frame(
                 maxWidth: .infinity,
-                alignment: viewModel.isUser ? .trailing : .leading
+                alignment: message.sender.isUser ? .trailing : .leading
             )
         }
         .padding([.leading, .trailing], style.padding * 2)
@@ -53,7 +53,7 @@ struct ChatMessageView: View {
 struct ChatMessageView_Previews: PreviewProvider {
     static var previews: some View {
         ChatMessageView(
-            viewModel: Mock.chatMessageViewModelWithImage
+            message: Mock.chatMessageWithImage
         )
         .padding()
     }

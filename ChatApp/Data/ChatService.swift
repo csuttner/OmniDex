@@ -8,7 +8,7 @@
 import OpenAI
 
 protocol ChatService {
-    func fetchChatCompletion(prompt: String, history: [OpenAI.ChatMessage]) async throws -> ChatCompletionResponse
+    func fetchChatCompletion(text: String, image: String?, history: [OpenAI.ChatMessage]) async throws -> ChatCompletionResponse
 }
 
 extension OpenAIChatService: ChatService {}

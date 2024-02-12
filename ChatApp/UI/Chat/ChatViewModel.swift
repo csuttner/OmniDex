@@ -11,7 +11,7 @@ import OpenAI
 
 class ChatViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
-    @Published var prompt: String
+    @Published var text: String
     @Published var image: UIImage?
     @Published var errorItem: ErrorItem?
     
@@ -24,28 +24,35 @@ class ChatViewModel: ObservableObject {
     ) {
         self.chatService = chatService
         self.chatMessages = chatMessages
-        self.prompt = prompt
+        self.text = prompt
     }
     
     func submit() {
-        let promptMessage = ChatMessage(role: .user, content: prompt)
+        let newMessage = ChatMessage(
+            role: .user,
+            text: text,
+            image: image?.base64String
+        )
+
         let history = chatMessages.map(\.aiChatMessage)
 
-        prompt = ""
-        chatMessages.append(promptMessage)
+        text = ""
+        image = nil
+        chatMessages.append(newMessage)
         chatMessages.append(.loadingMessage)
         
         Task.init {
             do {
                 let response = try await chatService.fetchChatCompletion(
-                    prompt: promptMessage.content,
+                    text: newMessage.text,
+                    image: newMessage.image,
                     history: history
                 )
 
                 handle(response: response)
 
             } catch {
-                handle(error: error, promptMessage: promptMessage)
+                handle(error: error, newMessage: newMessage)
             }
         }
     }
@@ -57,12 +64,13 @@ class ChatViewModel: ObservableObject {
         }
     }
     
-    private func handle(error: Error, promptMessage: ChatMessage) {
+    private func handle(error: Error, newMessage: ChatMessage) {
         DispatchQueue.main.async { [weak self] in
             self?.chatMessages.removeAll { $0.isLoading }
-            self?.chatMessages.removeAll { $0 == promptMessage }
+            self?.chatMessages.removeAll { $0 == newMessage }
             self?.errorItem = ErrorItem(error: error)
-            self?.prompt = promptMessage.content
+            self?.text = newMessage.text
+            self?.image = UIImage.fromBase64(newMessage.image) 
         }
     }
 }

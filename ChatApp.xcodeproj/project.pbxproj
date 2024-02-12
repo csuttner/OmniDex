@@ -17,7 +17,7 @@
 		F307673C29F5C73200B93286 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2929F5A08000EC757F /* APIError.swift */; };
 		F307673D29F5C73200B93286 /* OpenAIChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1829F58E3C00EC757F /* OpenAIChatService.swift */; };
 		F307673E29F5C73200B93286 /* ChatCompletionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1B29F59DAF00EC757F /* ChatCompletionRequest.swift */; };
-		F307673F29F5C73200B93286 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2529F59EA300EC757F /* LanguageModel.swift */; };
+		F307673F29F5C73200B93286 /* AIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2529F59EA300EC757F /* AIModel.swift */; };
 		F307674329F5C7E900B93286 /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307674229F5C7E900B93286 /* MessageSender.swift */; };
 		F3257E0B29F58DB100EC757F /* ChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E0A29F58DB100EC757F /* ChatAppApp.swift */; };
 		F3257E0D29F58DB100EC757F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E0C29F58DB100EC757F /* ChatView.swift */; };
@@ -27,7 +27,6 @@
 		F3257E3229F5A5C500EC757F /* ChatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3129F5A5C500EC757F /* ChatMessageView.swift */; };
 		F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */; };
 		F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */; };
-		F3257E3829F5B4E800EC757F /* ChatMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */; };
 		F356360029F5DB640099CC30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35635FF29F5DB640099CC30 /* Constants.swift */; };
 		F356360229F5DBCE0099CC30 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F356360129F5DBCE0099CC30 /* Mock.swift */; };
 		F3711FED2B77DFF90096A084 /* MaskedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */; };
@@ -103,7 +102,7 @@
 		F3257E1B29F59DAF00EC757F /* ChatCompletionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionRequest.swift; sourceTree = "<group>"; };
 		F3257E1D29F59DB800EC757F /* ChatCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionResponse.swift; sourceTree = "<group>"; };
 		F3257E1F29F59DBE00EC757F /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
-		F3257E2529F59EA300EC757F /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
+		F3257E2529F59EA300EC757F /* AIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIModel.swift; sourceTree = "<group>"; };
 		F3257E2729F59EAF00EC757F /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		F3257E2929F5A08000EC757F /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		F3257E2C29F5A19500EC757F /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -111,7 +110,6 @@
 		F3257E3129F5A5C500EC757F /* ChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageView.swift; sourceTree = "<group>"; };
 		F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsesLoadingView.swift; sourceTree = "<group>"; };
 		F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircleView.swift; sourceTree = "<group>"; };
-		F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageViewModel.swift; sourceTree = "<group>"; };
 		F35635FF29F5DB640099CC30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F356360129F5DBCE0099CC30 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedCornerShape.swift; sourceTree = "<group>"; };
@@ -194,7 +192,7 @@
 		F307672C29F5C5F800B93286 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				F3257E2529F59EA300EC757F /* LanguageModel.swift */,
+				F3257E2529F59EA300EC757F /* AIModel.swift */,
 				F3711FF42B77F89E0096A084 /* HTTPHeader.swift */,
 				F3711FF62B77F8B20096A084 /* HTTPMethod.swift */,
 				F3257E2C29F5A19500EC757F /* Secrets.swift */,
@@ -345,7 +343,6 @@
 				F380E6472B786A70007456D3 /* ChatTextBubble.swift */,
 				F3B3585C2B79831400E2FA3F /* ChatImageBubble.swift */,
 				F380E6452B78697F007456D3 /* ChatUserCircle.swift */,
-				F3257E3729F5B4E800EC757F /* ChatMessageViewModel.swift */,
 				F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */,
 				F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */,
 			);
@@ -471,7 +468,7 @@
 				F3711FFE2B7809110096A084 /* APIErrorResponse.swift in Sources */,
 				F3B3584D2B7944EA00E2FA3F /* URLError+DetailedError.swift in Sources */,
 				F3711FFA2B7802CA0096A084 /* JSONEncoder+Shared.swift in Sources */,
-				F307673F29F5C73200B93286 /* LanguageModel.swift in Sources */,
+				F307673F29F5C73200B93286 /* AIModel.swift in Sources */,
 				F3B3584B2B7944D100E2FA3F /* DetailedError.swift in Sources */,
 				F307673B29F5C73200B93286 /* ChatCompletionResponse.swift in Sources */,
 				F307673E29F5C73200B93286 /* ChatCompletionRequest.swift in Sources */,
@@ -518,7 +515,6 @@
 				F3B358572B795D4000E2FA3F /* ChatImagePreviewView.swift in Sources */,
 				F356360029F5DB640099CC30 /* Constants.swift in Sources */,
 				F3BD5E532B789CE400D63E0F /* FlipGroup.swift in Sources */,
-				F3257E3829F5B4E800EC757F /* ChatMessageViewModel.swift in Sources */,
 				F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */,
 				F3B358552B79590300E2FA3F /* ChatImagePickerButton.swift in Sources */,
 				F3257E0B29F58DB100EC757F /* ChatAppApp.swift in Sources */,

@@ -14,14 +14,11 @@ struct ChatScrollView: View {
         ScrollViewReader { proxy in
             KeyboardDismissableScrollView {
                 LazyVStack (alignment: .leading) {
-                    ForEach(chatMessages) { chatMessage in
-                        ChatMessageView(
-                            viewModel: ChatMessageViewModel(
-                                chatMessage: chatMessage
-                            )
-                        )
+                    ForEach(chatMessages) { message in
+                        ChatMessageView(message: message)
                     }
                 }
+                .padding(.bottom, 60)
             }
             .onChange(of: chatMessages) { messages in
                 withAnimation {
