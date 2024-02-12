@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChatImagePreviewView: View {
     @Binding var image: UIImage?
-    
+
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
             if let image {
@@ -19,7 +19,7 @@ struct ChatImagePreviewView: View {
                     .frame(width: 100, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
-            
+
             Button(action: {
                 image = nil
             }) {

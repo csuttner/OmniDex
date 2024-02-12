@@ -1,5 +1,5 @@
 //
-//  ClientError.swift
+//  DecodingError+DetailedError.swift
 //  OpenAI
 //
 //  Created by Clay Suttner on 2/11/24.
@@ -14,20 +14,20 @@ extension DecodingError: DetailedError {
 
     public var detailedDescription: String {
         switch self {
-        case .typeMismatch(let type, let context):
-            return "Type '\(type)' mismatch: \(context.formattedDescription)"
-            
-        case .valueNotFound(let value, let context):
-            return "Value '\(value)' not found: \(context.formattedDescription)"
-            
-        case .keyNotFound(let codingKey, let context):
-            return "Key '\(codingKey)' not found: \(context.formattedDescription)"
-            
-        case .dataCorrupted(let context):
-            return context.debugDescription
-            
+        case let .typeMismatch(type, context):
+            "Type '\(type)' mismatch: \(context.formattedDescription)"
+
+        case let .valueNotFound(value, context):
+            "Value '\(value)' not found: \(context.formattedDescription)"
+
+        case let .keyNotFound(codingKey, context):
+            "Key '\(codingKey)' not found: \(context.formattedDescription)"
+
+        case let .dataCorrupted(context):
+            context.debugDescription
+
         default:
-            return "Unknown"
+            "Unknown"
         }
     }
 }

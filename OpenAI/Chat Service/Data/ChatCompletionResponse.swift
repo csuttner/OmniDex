@@ -15,12 +15,20 @@ public struct ChatCompletionResponse: Decodable {
     public let systemFingerprint: String?
     public let object: String
     public let usage: ChatUsage
-    
+
     var messages: [ChatMessage] {
         choices.compactMap(\.message)
     }
-    
-    public init(id: String, choices: [ChatCompletionChoice], created: Date, model: String, systemFingerprint: String?, object: String, usage: ChatUsage) {
+
+    public init(
+        id: String,
+        choices: [ChatCompletionChoice],
+        created: Date,
+        model: String,
+        systemFingerprint: String?,
+        object: String,
+        usage: ChatUsage
+    ) {
         self.id = id
         self.choices = choices
         self.created = created
@@ -35,8 +43,12 @@ public struct ChatUsage: Decodable {
     public let promptTokens: Int
     public let completionTokens: Int
     public let totalTokens: Int
-    
-    public init(promptTokens: Int, completionTokens: Int, totalTokens: Int) {
+
+    public init(
+        promptTokens: Int,
+        completionTokens: Int,
+        totalTokens: Int
+    ) {
         self.promptTokens = promptTokens
         self.completionTokens = completionTokens
         self.totalTokens = totalTokens

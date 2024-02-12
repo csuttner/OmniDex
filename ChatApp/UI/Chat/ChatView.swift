@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     @ObservedObject var viewModel: ChatViewModel
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             ChatScrollView(chatMessages: $viewModel.chatMessages)

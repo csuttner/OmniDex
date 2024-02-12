@@ -10,7 +10,7 @@ import Foundation
 struct HTTPHeader {
     let field: String
     let value: String
-    
+
     static let contentType = HTTPHeader(field: "Content-Type", value: "application/json")
     static let authorization = HTTPHeader(field: "Authorization", value: "Bearer \(Secrets.apiKey)")
 }

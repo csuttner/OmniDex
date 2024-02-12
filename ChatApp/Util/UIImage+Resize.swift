@@ -10,8 +10,8 @@ import UIKit
 extension UIImage {
     func resize(to size: CGSize) -> UIImage? {
         let aspectFitSize = self.size.aspectFill(to: size)
-        
-        return UIGraphicsImageRenderer(size: size).image { (context) in
+
+        return UIGraphicsImageRenderer(size: size).image { _ in
             let rect = CGRect(
                 origin: CGPoint(
                     x: (size.width - aspectFitSize.width) / 2.0,
@@ -27,7 +27,7 @@ extension UIImage {
 
 extension CGSize {
     func aspectFill(to boundingSize: CGSize) -> CGSize {
-        let aspectRatio = self.width / self.height
+        let aspectRatio = width / height
         let boundingAspectRatio = boundingSize.width / boundingSize.height
         var newSize = boundingSize
 

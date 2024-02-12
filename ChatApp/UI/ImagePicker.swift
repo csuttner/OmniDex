@@ -26,25 +26,26 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
 
         func imagePickerController(
-            _ picker: UIImagePickerController,
-            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+            _: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
         ) {
-            if 
+            if
                 let image = info[.originalImage] as? UIImage,
-                let resizedImage = image.resize(to: .lowResSize) {
+                let resizedImage = image.resize(to: .lowResSize)
+            {
                 parent.selectedImage = resizedImage
             }
 
             parent.presentationMode.wrappedValue.dismiss()
         }
 
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        func imagePickerControllerDidCancel(_: UIImagePickerController) {
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self)
+        Coordinator(parent: self)
     }
 
     func makeUIViewController(
@@ -56,7 +57,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(
-        _ uiViewController: UIImagePickerController,
-        context: UIViewControllerRepresentableContext<ImagePicker>
+        _: UIImagePickerController,
+        context _: UIViewControllerRepresentableContext<ImagePicker>
     ) {}
 }

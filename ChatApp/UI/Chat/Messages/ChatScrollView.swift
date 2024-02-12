@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ChatScrollView: View {
     @Binding var chatMessages: [ChatMessage]
-    
+
     var body: some View {
         ScrollViewReader { proxy in
             KeyboardDismissableScrollView {
-                LazyVStack (alignment: .leading) {
+                LazyVStack(alignment: .leading) {
                     ForEach(chatMessages) { message in
                         ChatMessageView(message: message)
                     }

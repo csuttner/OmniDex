@@ -1,5 +1,5 @@
 //
-//  ImagePickerView.swift
+//  ChatImagePickerButton.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 2/11/24.
@@ -11,7 +11,7 @@ struct ChatImagePickerButton: View {
     @Binding var selectedImage: UIImage?
 
     @State private var isImagePickerPresented = false
-    
+
     var body: some View {
         Button(action: {
             isImagePickerPresented.toggle()

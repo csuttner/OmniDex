@@ -9,30 +9,31 @@ import SwiftUI
 
 struct ChatMessageView: View {
     let message: ChatMessage
-    
+
     var style: ChatMessageStyle {
         ChatMessageStyle(isUser: message.sender.isUser)
     }
-    
+
     var body: some View {
         VStack(alignment: message.sender.isUser ? .trailing : .leading, spacing: style.padding) {
             if
                 let imageString = message.image,
-                let image = UIImage.fromBase64(imageString) {
+                let image = UIImage.fromBase64(imageString)
+            {
                 ChatImageBubble(
                     image: image,
                     isUser: message.sender.isUser
                 )
                 .padding(message.sender.isUser ? .trailing : .leading, style.minHeight + style.padding)
             }
-            
+
             HStack(alignment: .bottom, spacing: style.padding) {
                 FlipGroup(if: message.sender.isUser) {
                     ChatUserCircle(
                         imageName: message.sender.imageName,
                         style: style
                     )
-                    
+
                     ChatTextBubble(
                         isLoading: message.isLoading,
                         content: message.text,

@@ -10,7 +10,7 @@ import Foundation
 enum ChatContent: Codable {
     case string(String)
     case array([ChatContentItem])
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
@@ -20,10 +20,10 @@ enum ChatContent: Codable {
             try container.encode(arrayValue)
         }
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        
+
         if let string = try? container.decode(String.self) {
             self = .string(string)
         }

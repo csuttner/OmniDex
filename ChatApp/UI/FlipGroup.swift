@@ -8,9 +8,9 @@
 import SwiftUI
 
 @ViewBuilder
-func FlipGroup<V1: View, V2: View>(
+func FlipGroup(
     if value: Bool,
-    @ViewBuilder _ content: @escaping () -> TupleView<(V1, V2)>
+    @ViewBuilder _ content: @escaping () -> TupleView<(some View, some View)>
 ) -> some View {
     let pair = content()
 

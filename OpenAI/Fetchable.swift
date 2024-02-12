@@ -15,14 +15,15 @@ extension Fetchable {
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        guard let httpResponse = response as? HTTPURLResponse else {
+        guard let httpResponse = response as? HTTPURLResponse
+        else {
             throw URLError(.badServerResponse)
         }
 
         if let apiError = APIError(data: data, httpResponse: httpResponse) {
             throw apiError
         }
-        
+
         return try JSONDecoder.shared.decode(T.self, from: data)
     }
 }

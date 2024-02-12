@@ -11,7 +11,7 @@ struct ChatCompletionRequest: Encodable {
     let messages: [ChatMessage]
     let model: AIModel
     let maxTokens = 1000
-    
+
     init(messages: [ChatMessage]) {
         self.messages = messages
 

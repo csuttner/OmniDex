@@ -10,22 +10,22 @@ import OpenAI
 
 struct MessageSender {
     let role: Role
-    
+
     var isUser: Bool {
         role == .user
     }
-    
+
     var imageName: String {
         switch role {
         case .user:
-            return "Clay"
+            "Clay"
         case .assistant:
-            return "Robot"
+            "Robot"
         case .system:
-            return "tv"
+            "tv"
         }
     }
-    
+
     init(role: Role) {
         self.role = role
     }

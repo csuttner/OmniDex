@@ -5,8 +5,8 @@
 //  Created by Clay Suttner on 2/10/24.
 //
 
-import OpenAI
 import Foundation
+import OpenAI
 
 extension ChatCompletionResponse {
     static func mockResponse(message: OpenAI.ChatMessage) -> ChatCompletionResponse {
@@ -19,7 +19,7 @@ extension ChatCompletionResponse {
                     message: message,
                     logprobs: nil,
                     finishReason: nil
-                )
+                ),
             ],
             created: Date(),
             model: "",

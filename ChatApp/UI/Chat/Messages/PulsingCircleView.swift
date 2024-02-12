@@ -9,11 +9,11 @@ import SwiftUI
 
 struct PulsingCircleView: View {
     @State private var opacity = 0.0
-    
+
     private let color: Color
     private let animation: Animation
     private let diameter: Double
-    
+
     init(
         color: Color = .white,
         duration: Double = 0.35,

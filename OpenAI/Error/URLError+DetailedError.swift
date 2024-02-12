@@ -11,7 +11,7 @@ extension URLError: DetailedError {
     public var detailedErrorType: String {
         Constants.Error.urlError
     }
-    
+
     public var detailedDescription: String {
         localizedDescription
     }

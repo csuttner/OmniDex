@@ -10,19 +10,18 @@ import SwiftUI
 struct ChatInputBar: View {
     @Binding var text: String
     @Binding var selectedImage: UIImage?
-    
+
     var onSubmit: (() -> Void)?
-    
+
     private let buttonDimension: CGFloat = 36
     private let stackSpacing: CGFloat = 6
     private let cornerRadius: CGFloat = 20
-    
+
     @ViewBuilder
     private var textFieldShape: some View {
         if selectedImage == nil {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .strokeBorder(.gray)
-
         } else {
             MaskedCornerShape(
                 cornerRadius: cornerRadius,
@@ -47,16 +46,15 @@ struct ChatInputBar: View {
                         .stroke(.gray)
                     )
                     .padding([.leading], buttonDimension + stackSpacing)
-                    
             }
-            
+
             HStack(alignment: .center, spacing: stackSpacing) {
                 ChatImagePickerButton(selectedImage: $selectedImage)
                     .frame(
                         width: buttonDimension,
                         height: buttonDimension
                     )
-                
+
                 TextField(Constants.Chat.message, text: $text)
                     .submitLabel(.send)
                     .cornerRadius(cornerRadius)

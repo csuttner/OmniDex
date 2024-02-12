@@ -13,7 +13,7 @@ struct ChatMessageStyle {
     var lineWidth: CGFloat = 1
     var padding: CGFloat = 8
     let accentColor: Color
-    
+
     init(isUser: Bool) {
         accentColor = isUser
             ? Color(Constants.Color.interactive)

@@ -11,7 +11,7 @@ struct ChatTextBubble: View {
     let isLoading: Bool
     let content: String
     let isUser: Bool
-    
+
     var style: ChatMessageStyle {
         ChatMessageStyle(isUser: isUser)
     }
@@ -20,7 +20,6 @@ struct ChatTextBubble: View {
         HStack {
             if isLoading {
                 EllipsesLoadingView()
-                    
             } else {
                 Text(content)
                     .fixedSize(horizontal: false, vertical: true)

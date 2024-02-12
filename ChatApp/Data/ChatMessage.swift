@@ -15,27 +15,27 @@ struct ChatMessage: Identifiable {
     var text = ""
     var image: String?
     var isLoading = false
-    
+
     static let loadingMessage = ChatMessage(
         role: .assistant,
         isLoading: true
     )
-    
+
     var aiChatMessage: OpenAI.ChatMessage {
         OpenAI.ChatMessage(role: sender.role, text: text, image: image)
     }
-    
+
     init(role: Role, isLoading: Bool) {
         sender = MessageSender(role: role)
         self.isLoading = isLoading
     }
-    
+
     init(role: Role, text: String, image: String? = nil) {
         sender = MessageSender(role: role)
         self.text = text
         self.image = image
     }
-    
+
     init(response: ChatCompletionResponse) {
         let message = response.choices.first?.message
 

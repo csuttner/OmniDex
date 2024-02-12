@@ -10,11 +10,11 @@ import SwiftUI
 struct ChatImageBubble: View {
     let image: UIImage
     let isUser: Bool
-    
+
     var style: ChatMessageStyle {
         ChatMessageStyle(isUser: isUser)
     }
-    
+
     var body: some View {
         Image(uiImage: image)
             .resizable()

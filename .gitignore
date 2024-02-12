@@ -8,3 +8,7 @@ ChatApp.xcodeproj/project.xcworkspace/xcuserdata/claysuttner.xcuserdatad/UserInt
 ChatApp.xcodeproj/xcuserdata/claysuttner.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
 
 OpenAI/Util/Secrets.swift
+
+.swiftformat
+
+.swift-version

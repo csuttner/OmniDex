@@ -9,13 +9,13 @@ import SwiftUI
 
 struct KeyboardDismissableScrollView<Content: View>: View {
     @State private var isKeyboardVisible = false
-    
+
     let content: Content
-    
+
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content()
     }
-    
+
     var body: some View {
         ScrollView {
             content
@@ -23,12 +23,12 @@ struct KeyboardDismissableScrollView<Content: View>: View {
         .onReceive(
             NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
         ) { _ in
-            self.isKeyboardVisible = true
+            isKeyboardVisible = true
         }
         .onReceive(
             NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
         ) { _ in
-            self.isKeyboardVisible = false
+            isKeyboardVisible = false
         }
         .onTapGesture {
             if isKeyboardVisible {
