@@ -19,7 +19,7 @@
 		F307673E29F5C73200B93286 /* ChatCompletionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E1B29F59DAF00EC757F /* ChatCompletionRequest.swift */; };
 		F307673F29F5C73200B93286 /* AIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E2529F59EA300EC757F /* AIModel.swift */; };
 		F307674329F5C7E900B93286 /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307674229F5C7E900B93286 /* MessageSender.swift */; };
-		F3257E0B29F58DB100EC757F /* ChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E0A29F58DB100EC757F /* ChatAppApp.swift */; };
+		F3257E0B29F58DB100EC757F /* OmniAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E0A29F58DB100EC757F /* OmniAIApp.swift */; };
 		F3257E0D29F58DB100EC757F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E0C29F58DB100EC757F /* ChatView.swift */; };
 		F3257E0F29F58DB200EC757F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3257E0E29F58DB200EC757F /* Assets.xcassets */; };
 		F3257E1229F58DB200EC757F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3257E1129F58DB200EC757F /* Preview Assets.xcassets */; };
@@ -93,8 +93,8 @@
 		F307671E29F5C32000B93286 /* OpenAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F307672A29F5C4AE00B93286 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		F307674229F5C7E900B93286 /* MessageSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
-		F3257E0729F58DB100EC757F /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3257E0A29F58DB100EC757F /* ChatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppApp.swift; sourceTree = "<group>"; };
+		F3257E0729F58DB100EC757F /* OmniAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3257E0A29F58DB100EC757F /* OmniAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniAIApp.swift; sourceTree = "<group>"; };
 		F3257E0C29F58DB100EC757F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		F3257E0E29F58DB200EC757F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3257E1129F58DB200EC757F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 		F3257DFE29F58DB100EC757F = {
 			isa = PBXGroup;
 			children = (
-				F3257E0929F58DB100EC757F /* ChatApp */,
+				F3257E0929F58DB100EC757F /* OmniAI */,
 				F307671F29F5C32000B93286 /* OpenAI */,
 				F3257E0829F58DB100EC757F /* Products */,
 			);
@@ -215,16 +215,16 @@
 		F3257E0829F58DB100EC757F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F3257E0729F58DB100EC757F /* ChatApp.app */,
+				F3257E0729F58DB100EC757F /* OmniAI.app */,
 				F307671E29F5C32000B93286 /* OpenAI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F3257E0929F58DB100EC757F /* ChatApp */ = {
+		F3257E0929F58DB100EC757F /* OmniAI */ = {
 			isa = PBXGroup;
 			children = (
-				F3257E0A29F58DB100EC757F /* ChatAppApp.swift */,
+				F3257E0A29F58DB100EC757F /* OmniAIApp.swift */,
 				F307672929F5C42D00B93286 /* Data */,
 				F3257E2E29F5A51D00EC757F /* UI */,
 				F35635FE29F5DB530099CC30 /* Util */,
@@ -232,7 +232,7 @@
 				F3257E0E29F58DB200EC757F /* Assets.xcassets */,
 				F3257E1029F58DB200EC757F /* Preview Content */,
 			);
-			path = ChatApp;
+			path = OmniAI;
 			sourceTree = "<group>";
 		};
 		F3257E1029F58DB200EC757F /* Preview Content */ = {
@@ -380,9 +380,9 @@
 			productReference = F307671E29F5C32000B93286 /* OpenAI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F3257E0629F58DB100EC757F /* ChatApp */ = {
+		F3257E0629F58DB100EC757F /* OmniAI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F3257E1529F58DB200EC757F /* Build configuration list for PBXNativeTarget "ChatApp" */;
+			buildConfigurationList = F3257E1529F58DB200EC757F /* Build configuration list for PBXNativeTarget "OmniAI" */;
 			buildPhases = (
 				F3257E0329F58DB100EC757F /* Sources */,
 				F3257E0429F58DB100EC757F /* Frameworks */,
@@ -394,9 +394,9 @@
 			dependencies = (
 				F3D1136129F5CB60003273A8 /* PBXTargetDependency */,
 			);
-			name = ChatApp;
-			productName = ChatApp;
-			productReference = F3257E0729F58DB100EC757F /* ChatApp.app */;
+			name = OmniAI;
+			productName = OmniAI;
+			productReference = F3257E0729F58DB100EC757F /* OmniAI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -418,7 +418,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F3257E0229F58DB100EC757F /* Build configuration list for PBXProject "ChatApp" */;
+			buildConfigurationList = F3257E0229F58DB100EC757F /* Build configuration list for PBXProject "OmniAI" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -431,7 +431,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F3257E0629F58DB100EC757F /* ChatApp */,
+				F3257E0629F58DB100EC757F /* OmniAI */,
 				F307671D29F5C32000B93286 /* OpenAI */,
 			);
 		};
@@ -517,7 +517,7 @@
 				F3BD5E532B789CE400D63E0F /* FlipGroup.swift in Sources */,
 				F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */,
 				F3B358552B79590300E2FA3F /* ChatImagePickerButton.swift in Sources */,
-				F3257E0B29F58DB100EC757F /* ChatAppApp.swift in Sources */,
+				F3257E0B29F58DB100EC757F /* OmniAIApp.swift in Sources */,
 				F3711FED2B77DFF90096A084 /* MaskedCornerShape.swift in Sources */,
 				F3257E3229F5A5C500EC757F /* ChatMessageView.swift in Sources */,
 			);
@@ -739,7 +739,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ChatApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"OmniAI/Preview Content\"";
 				DEVELOPMENT_TEAM = DFVB576FM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -753,7 +753,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ClaySuttner.ChatApp;
+				PRODUCT_BUNDLE_IDENTIFIER = ClaySuttner.OmniAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -769,7 +769,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ChatApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"OmniAI/Preview Content\"";
 				DEVELOPMENT_TEAM = DFVB576FM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -783,7 +783,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ClaySuttner.ChatApp;
+				PRODUCT_BUNDLE_IDENTIFIER = ClaySuttner.OmniAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -803,7 +803,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F3257E0229F58DB100EC757F /* Build configuration list for PBXProject "ChatApp" */ = {
+		F3257E0229F58DB100EC757F /* Build configuration list for PBXProject "OmniAI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F3257E1329F58DB200EC757F /* Debug */,
@@ -812,7 +812,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F3257E1529F58DB200EC757F /* Build configuration list for PBXNativeTarget "ChatApp" */ = {
+		F3257E1529F58DB200EC757F /* Build configuration list for PBXNativeTarget "OmniAI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F3257E1629F58DB200EC757F /* Debug */,

@@ -12,3 +12,15 @@ OpenAI/Util/Secrets.swift
 .swiftformat
 
 .swift-version
+
+.rename_project.sh
+
+OmniAI.xcodeproj/project.xcworkspace/xcuserdata/claysuttner.xcuserdatad/UserInterfaceState.xcuserstate
+
+OmniAI.xcodeproj/xcuserdata/claysuttner.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+
+OmniAI.xcodeproj/project.xcworkspace/
+
+OmniAI.xcodeproj/xcshareddata/xcschemes/
+
+OmniAI.xcodeproj/xcuserdata/claysuttner.xcuserdatad/xcschemes/
