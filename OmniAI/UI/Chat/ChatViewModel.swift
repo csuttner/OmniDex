@@ -9,6 +9,7 @@ import Foundation
 import OpenAI
 import UIKit
 
+@MainActor
 class ChatViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
     @Published var text: String
@@ -57,19 +58,15 @@ class ChatViewModel: ObservableObject {
     }
 
     private func handle(response: ChatCompletionResponse) {
-        DispatchQueue.main.async { [weak self] in
-            self?.chatMessages.removeAll { $0.isLoading }
-            self?.chatMessages.append(ChatMessage(response: response))
-        }
+        chatMessages.removeAll { $0.isLoading }
+        chatMessages.append(ChatMessage(response: response))
     }
 
     private func handle(error: Error, newMessage: ChatMessage) {
-        DispatchQueue.main.async { [weak self] in
-            self?.chatMessages.removeAll { $0.isLoading }
-            self?.chatMessages.removeAll { $0 == newMessage }
-            self?.errorItem = ErrorItem(error: error)
-            self?.text = newMessage.text
-            self?.image = UIImage.fromBase64(newMessage.image)
-        }
+        chatMessages.removeAll { $0.isLoading }
+        chatMessages.removeAll { $0 == newMessage }
+        errorItem = ErrorItem(error: error)
+        text = newMessage.text
+        image = UIImage.fromBase64(newMessage.image)
     }
 }

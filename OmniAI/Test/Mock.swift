@@ -9,6 +9,7 @@ import Foundation
 import OpenAI
 import UIKit
 
+@MainActor
 enum Mock {
     private static var lamboImageString: String? {
         UIImage(named: "Lambo")!.base64String
