@@ -16,4 +16,26 @@ class MockChatService: ChatService {
 
         return ChatCompletionResponse.mockResponse(message: message)
     }
+    
+    func fetchChatCompletionStream(text: String, image: String?, history: [OpenAI.ChatMessage]) async throws -> AsyncThrowingStream<OpenAI.ChatCompletionChunk, Error> {
+        
+        let chunk = OpenAI.ChatCompletionChunk(
+            id: UUID().uuidString,
+            choices: [ChatCompletionChoice(
+                delta: OpenAI.ChatMessage(role: .assistant, text: MockConstants.glad)
+            )]
+        )
+        
+        return AsyncThrowingStream { continuation in
+            Task {
+                for index in 0..<10 {
+                    continuation.yield(chunk)
+                    
+                    try await Task.sleep(for: .milliseconds(300))
+                }
+
+                continuation.finish()
+            }
+        }
+    }
 }

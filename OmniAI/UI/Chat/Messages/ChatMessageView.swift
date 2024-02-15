@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatMessageView: View {
-    let message: ChatMessage
+    @ObservedObject var message: ChatMessage
 
     var style: ChatMessageStyle {
         ChatMessageStyle(isUser: message.sender.isUser)
@@ -35,8 +35,8 @@ struct ChatMessageView: View {
                     )
 
                     ChatTextBubble(
+                        text: $message.text,
                         isLoading: message.isLoading,
-                        content: message.text,
                         isUser: message.sender.isUser
                     )
                 }

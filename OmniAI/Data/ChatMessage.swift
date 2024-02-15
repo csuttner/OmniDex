@@ -8,11 +8,12 @@
 import Foundation
 import OpenAI
 
-struct ChatMessage: Identifiable {
+class ChatMessage: ObservableObject, Identifiable {
+    @Published var text = ""
+
     var id = UUID().uuidString
     var date = Date()
     var sender: MessageSender
-    var text = ""
     var image: String?
     var isLoading = false
 
@@ -44,6 +45,15 @@ struct ChatMessage: Identifiable {
         sender = MessageSender(role: message?.role ?? .assistant)
         text = message?.textContent ?? ""
         image = message?.imageContent ?? ""
+    }
+    
+    init(chunk: ChatCompletionChunk) {
+        let message = chunk.choices.first?.delta
+        
+        id = chunk.id
+        date = chunk.created
+        sender = MessageSender(role: message?.role ?? .assistant)
+        text = message?.textContent ?? ""
     }
 }
 

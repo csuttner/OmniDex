@@ -10,11 +10,13 @@ import Foundation
 struct ChatCompletionRequest: Encodable {
     let messages: [ChatMessage]
     let model: AIModel
-    let maxTokens = 1000
+    let maxTokens: Int?
+    let stream: Bool?
 
-    init(messages: [ChatMessage]) {
+    init(messages: [ChatMessage], model: AIModel, maxTokens: Int? = nil, stream: Bool? = nil) {
         self.messages = messages
-
-        model = .gpt4VisionPreview
+        self.model = model
+        self.maxTokens = maxTokens
+        self.stream = stream
     }
 }

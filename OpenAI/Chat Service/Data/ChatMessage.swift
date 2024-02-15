@@ -8,9 +8,9 @@
 import Foundation
 
 public struct ChatMessage: Codable {
-    public let role: Role
+    public let role: Role?
 
-    let content: ChatContent
+    let content: ChatContent?
 
     public var textContent: String? {
         switch content {
@@ -19,6 +19,9 @@ public struct ChatMessage: Codable {
 
         case let .array(array):
             array.first { $0.type == .text }?.text
+            
+        default:
+            nil
         }
     }
 

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ChatTextBubble: View {
+    @Binding var text: String
+
     let isLoading: Bool
-    let content: String
     let isUser: Bool
 
     var style: ChatMessageStyle {
@@ -21,7 +22,7 @@ struct ChatTextBubble: View {
             if isLoading {
                 EllipsesLoadingView()
             } else {
-                Text(content)
+                Text(text)
                     .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(.white)
             }
@@ -43,8 +44,8 @@ struct ChatTextBubble: View {
 
 #Preview {
     ChatTextBubble(
+        text: .constant(MockConstants.longResponse),
         isLoading: false,
-        content: MockConstants.longResponse,
         isUser: true
     )
 }

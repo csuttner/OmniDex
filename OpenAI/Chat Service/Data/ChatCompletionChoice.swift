@@ -14,7 +14,7 @@ public struct ChatCompletionChoice: Decodable {
     public let logprobs: String?
     public let finishReason: String?
 
-    public init(index: Int, delta: ChatMessage?, message: ChatMessage?, logprobs: String?, finishReason: String?) {
+    public init(index: Int = 0, delta: ChatMessage? = nil, message: ChatMessage? = nil, logprobs: String? = nil, finishReason: String? = nil) {
         self.index = index
         self.delta = delta
         self.message = message

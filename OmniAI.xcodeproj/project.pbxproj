@@ -27,6 +27,8 @@
 		F3257E3229F5A5C500EC757F /* ChatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3129F5A5C500EC757F /* ChatMessageView.swift */; };
 		F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */; };
 		F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */; };
+		F33E3A0E2B7DAB3C00AD0642 /* ChatStreamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E3A0D2B7DAB3C00AD0642 /* ChatStreamViewModel.swift */; };
+		F33E3A102B7DAD7700AD0642 /* ChatStreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E3A0F2B7DAD7700AD0642 /* ChatStreamView.swift */; };
 		F356360029F5DB640099CC30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35635FF29F5DB640099CC30 /* Constants.swift */; };
 		F356360229F5DBCE0099CC30 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F356360129F5DBCE0099CC30 /* Mock.swift */; };
 		F3711FED2B77DFF90096A084 /* MaskedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */; };
@@ -110,6 +112,8 @@
 		F3257E3129F5A5C500EC757F /* ChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageView.swift; sourceTree = "<group>"; };
 		F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsesLoadingView.swift; sourceTree = "<group>"; };
 		F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircleView.swift; sourceTree = "<group>"; };
+		F33E3A0D2B7DAB3C00AD0642 /* ChatStreamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStreamViewModel.swift; sourceTree = "<group>"; };
+		F33E3A0F2B7DAD7700AD0642 /* ChatStreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStreamView.swift; sourceTree = "<group>"; };
 		F35635FF29F5DB640099CC30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F356360129F5DBCE0099CC30 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedCornerShape.swift; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 			children = (
 				F3257E0C29F58DB100EC757F /* ChatView.swift */,
 				F3257E2F29F5A56700EC757F /* ChatViewModel.swift */,
+				F33E3A0F2B7DAD7700AD0642 /* ChatStreamView.swift */,
+				F33E3A0D2B7DAB3C00AD0642 /* ChatStreamViewModel.swift */,
 				F3B3585E2B7985E100E2FA3F /* Input */,
 				F3B3585F2B79860300E2FA3F /* Messages */,
 			);
@@ -501,12 +507,14 @@
 				F3B358612B798A5C00E2FA3F /* ChatMessageStyle.swift in Sources */,
 				F380E6422B7859FB007456D3 /* ChatCompletionResponse+MockResponse.swift in Sources */,
 				F3B85DBE2B798F0800B2564C /* UIImage+Base64.swift in Sources */,
+				F33E3A0E2B7DAB3C00AD0642 /* ChatStreamViewModel.swift in Sources */,
 				F380E6382B784B7E007456D3 /* ChatService.swift in Sources */,
 				F380E6462B78697F007456D3 /* ChatUserCircle.swift in Sources */,
 				F3B358592B7968DF00E2FA3F /* ChatInputBar.swift in Sources */,
 				F307674329F5C7E900B93286 /* MessageSender.swift in Sources */,
 				F3257E3029F5A56700EC757F /* ChatViewModel.swift in Sources */,
 				F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */,
+				F33E3A102B7DAD7700AD0642 /* ChatStreamView.swift in Sources */,
 				F3B3585B2B79778600E2FA3F /* UIImage+Resize.swift in Sources */,
 				F3B3585D2B79831400E2FA3F /* ChatImageBubble.swift in Sources */,
 				F380E6402B7859C0007456D3 /* MockChatService.swift in Sources */,

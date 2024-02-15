@@ -12,8 +12,9 @@ import SwiftUI
 struct OmniAIApp: App {
     var body: some Scene {
         WindowGroup {
-//            Mock.chatView
-            ChatView(viewModel: ChatViewModel(chatService: OpenAIChatService()))
+//            Mock.chatStreamView
+//            ChatView(viewModel: ChatViewModel(chatService: OpenAIChatService()))
+            ChatStreamView(viewModel: ChatStreamViewModel(chatService: OpenAIChatService()))
         }
     }
 }

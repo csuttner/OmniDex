@@ -1,5 +1,5 @@
 //
-//  ChatViewModel.swift
+//  ChatStreamViewModel.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 4/23/23.
@@ -10,7 +10,7 @@ import OpenAI
 import UIKit
 
 @MainActor
-class ChatViewModel: ObservableObject {
+class ChatStreamViewModel: ObservableObject {
     @Published var chatMessages: [ChatMessage]
     @Published var text: String
     @Published var image: UIImage?
@@ -44,19 +44,38 @@ class ChatViewModel: ObservableObject {
 
         Task {
             do {
-                let response = try await chatService.fetchChatCompletion(
-                    text: newMessage.text,
-                    image: newMessage.image,
-                    history: history
-                )
+                let stream = try await chatService
+                    .fetchChatCompletionStream(
+                        text: newMessage.text,
+                        image: newMessage.image,
+                        history: history
+                    )
+                
+                for try await chunk in stream {
+                    updateResponse(with: chunk)
+                }
 
-                handle(response: response)
             } catch {
                 handle(error: error, newMessage: newMessage)
             }
         }
     }
 
+    private func updateResponse(with chunk: ChatCompletionChunk) {
+        guard let textDelta = chunk.choices.first?.delta?.textContent else {
+            return
+        }
+
+        if let index = chatMessages
+            .firstIndex(where: { $0.id == chunk.id }) {
+            chatMessages[index].text.append(textDelta)
+
+        } else {
+            chatMessages.removeAll { $0.isLoading }
+            chatMessages.append(ChatMessage(chunk: chunk))
+        }
+    }
+    
     private func handle(response: ChatCompletionResponse) {
         chatMessages.removeAll { $0.isLoading }
         chatMessages.append(ChatMessage(response: response))
