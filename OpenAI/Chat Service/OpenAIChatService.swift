@@ -11,11 +11,11 @@ public class OpenAIChatService: Fetchable {
     public init() {}
 
     public func fetchChatCompletion(text: String, image: String?, history: [ChatMessage]) async throws -> ChatCompletionResponse {
-        try await fetchDecodable(ChatServiceRouter.chatCompletion(text, image, history))
+        try await fetch(ChatServiceRouter.chatCompletion(text, image, history))
     }
     
-    public func fetchChatCompletionStream(text: String, image: String?, history: [ChatMessage]) async throws -> AsyncThrowingStream<ChatCompletionChunk, Error> {
-        try await fetchDecodableStream(ChatServiceRouter.chatCompletionStream(text, image, history))
+    public func streamChatCompletion(text: String, image: String?, history: [ChatMessage]) async throws -> AsyncThrowingStream<ChatCompletionChunk, Error> {
+        try await stream(ChatServiceRouter.chatCompletionStream(text, image, history))
     }
 }
 

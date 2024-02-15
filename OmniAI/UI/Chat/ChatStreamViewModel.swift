@@ -44,12 +44,11 @@ class ChatStreamViewModel: ObservableObject {
 
         Task {
             do {
-                let stream = try await chatService
-                    .fetchChatCompletionStream(
-                        text: newMessage.text,
-                        image: newMessage.image,
-                        history: history
-                    )
+                let stream = try await chatService.streamChatCompletion(
+                    text: newMessage.text,
+                    image: newMessage.image,
+                    history: history
+                )
                 
                 for try await chunk in stream {
                     updateResponse(with: chunk)

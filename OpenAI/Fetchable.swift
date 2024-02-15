@@ -10,7 +10,52 @@ import Foundation
 protocol Fetchable {}
 
 extension Fetchable {
-    func fetchDecodable<T: Decodable>(_ router: ServiceRouter) async throws -> T {
+    func fetch<T: Decodable>(_ router: ServiceRouter) async throws -> T {
+        let data = try await fetchData(router)
+
+        return try JSONDecoder.shared.decode(T.self, from: data)
+    }
+    
+    func stream<T: Decodable>(_ router: ServiceRouter) async throws -> AsyncThrowingStream<T, Error> {
+        AsyncThrowingStream { continuation in
+            Task {
+                do {
+                    let bytes = try await fetchBytes(router)
+
+                    for try await buffer in bytes.lines {
+                        parse(buffer).forEach { continuation.yield($0) }
+                    }
+
+                    continuation.finish()
+
+                } catch {
+                    continuation.finish(throwing: error)
+                }
+            }
+        }
+    }
+    
+    private func parse<T: Decodable>(_ buffer: String) -> [T] {
+        buffer
+            .components(separatedBy: "data: ")
+            .filter { $0 != "data: " }
+            .compactMap { $0.data(using: .utf8) }
+            .compactMap { try? JSONDecoder.shared.decode(T.self, from: $0) }
+    }
+    
+    private func fetchBytes(_ router: ServiceRouter) async throws -> URLSession.AsyncBytes {
+        let request = try router.asURLRequest()
+        
+        let (bytes, response) = try await URLSession.shared.bytes(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw URLError(.badServerResponse)
+        }
+        
+        return bytes
+    }
+    
+    private func fetchData(_ router: ServiceRouter) async throws -> Data {
         let request = try router.asURLRequest()
 
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -22,47 +67,7 @@ extension Fetchable {
         if let apiError = APIError(data: data, httpResponse: httpResponse) {
             throw apiError
         }
-
-        return try JSONDecoder.shared.decode(T.self, from: data)
-    }
-    
-    func fetchDecodableStream(_ router: ServiceRouter) async throws -> AsyncThrowingStream<ChatCompletionChunk, Error> {
-        AsyncThrowingStream { continuation in
-            Task {
-                do {
-                    let request = try router.asURLRequest()
-
-                    let (data, response) = try await URLSession.shared.data(for: request)
-                    
-                    guard let httpResponse = response as? HTTPURLResponse else {
-                        throw URLError(.badServerResponse)
-                    }
-
-                    if let apiError = APIError(data: data, httpResponse: httpResponse) {
-                        throw apiError
-                    }
-
-                    let rawChunks = data.split(separator: UInt8(ascii: "\n"))
-                    
-                    for rawChunk in rawChunks {
-                        guard
-                            let chunkString = String(bytes: rawChunk, encoding: .utf8),
-                            chunkString.hasPrefix("data:"),
-                            let payload = String(chunkString.dropFirst(5)).data(using: .utf8) else {
-                            continue
-                        }
-                        
-                        if let chunk = try? JSONDecoder.shared.decode(ChatCompletionChunk.self, from: payload) {
-                            continuation.yield(chunk)
-                        }
-                    }
-
-                    continuation.finish()
-
-                } catch {
-                    continuation.finish(throwing: error)
-                }
-            }
-        }
+        
+        return data
     }
 }
