@@ -51,7 +51,12 @@ enum ChatServiceRouter: ServiceRouter {
 
         case .chatCompletionStream(let prompt, let image, var history):
             history.append(ChatMessage(role: .user, text: prompt, image: image))
-            return ChatCompletionRequest(messages: history, model: .gpt3_5Turbo, stream: true)
+            return ChatCompletionRequest(
+                messages: history,
+                model: .gpt4VisionPreview,
+                maxTokens: 1000,
+                stream: true
+            )
         }
     }
 

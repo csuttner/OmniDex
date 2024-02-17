@@ -13,9 +13,9 @@ struct ChatImagePickerButton: View {
     @State private var isImagePickerPresented = false
 
     var body: some View {
-        Button(action: {
+        Button {
             isImagePickerPresented.toggle()
-        }) {
+        } label: {
             Image(systemName: "photo.circle.fill")
                 .resizable()
                 .aspectRatio(contentMode: .fit)

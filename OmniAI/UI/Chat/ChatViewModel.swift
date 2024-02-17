@@ -1,5 +1,5 @@
 //
-//  ChatViewModel.swift
+//  ChatStreamViewModel.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 4/23/23.
@@ -44,19 +44,37 @@ class ChatViewModel: ObservableObject {
 
         Task {
             do {
-                let response = try await chatService.fetchChatCompletion(
+                let stream = try await chatService.streamChatCompletion(
                     text: newMessage.text,
                     image: newMessage.image,
                     history: history
                 )
+                
+                for try await chunk in stream {
+                    updateResponse(with: chunk)
+                }
 
-                handle(response: response)
             } catch {
                 handle(error: error, newMessage: newMessage)
             }
         }
     }
 
+    private func updateResponse(with chunk: ChatCompletionChunk) {
+        guard let textDelta = chunk.choices.first?.delta?.textContent else {
+            return
+        }
+
+        if let index = chatMessages
+            .firstIndex(where: { $0.id == chunk.id }) {
+            chatMessages[index].text.append(textDelta)
+
+        } else {
+            chatMessages.removeAll { $0.isLoading }
+            chatMessages.append(ChatMessage(chunk: chunk))
+        }
+    }
+    
     private func handle(response: ChatCompletionResponse) {
         chatMessages.removeAll { $0.isLoading }
         chatMessages.append(ChatMessage(response: response))

@@ -16,10 +16,6 @@ enum Mock {
     }
 
     static let chatView = ChatView(viewModel: chatViewModel)
-    
-    static let chatStreamView = ChatStreamView(viewModel: chatStreamViewModel)
-    
-    static let chatStreamViewModel = ChatStreamViewModel(chatService: MockChatService(), chatMessages: chatMessages, prompt: "")
 
     static let chatViewModel = ChatViewModel(chatService: MockChatService(), chatMessages: chatMessages, prompt: "")
 

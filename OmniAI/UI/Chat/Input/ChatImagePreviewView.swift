@@ -20,9 +20,9 @@ struct ChatImagePreviewView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
 
-            Button(action: {
+            Button {
                 image = nil
-            }) {
+            } label: {
                 Image(systemName: "multiply.circle.fill")
                     .resizable()
                     .frame(width: 18, height: 18)

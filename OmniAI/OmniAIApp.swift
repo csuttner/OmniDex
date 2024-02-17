@@ -14,7 +14,7 @@ struct OmniAIApp: App {
         WindowGroup {
 //            Mock.chatStreamView
 //            ChatView(viewModel: ChatViewModel(chatService: OpenAIChatService()))
-            ChatStreamView(viewModel: ChatStreamViewModel(chatService: OpenAIChatService()))
+            ChatView(viewModel: ChatViewModel(chatService: OpenAIChatService()))
         }
     }
 }

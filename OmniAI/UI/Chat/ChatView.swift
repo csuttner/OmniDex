@@ -1,14 +1,14 @@
 //
 //  ChatView.swift
-//  ChatApp
+//  OmniAI
 //
-//  Created by Clay Suttner on 4/23/23.
+//  Created by Clay Suttner on 2/14/24.
 //
 
 import SwiftUI
 
 struct ChatView: View {
-    @ObservedObject var viewModel: ChatViewModel
+    @StateObject var viewModel: ChatViewModel
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -33,8 +33,6 @@ struct ChatView: View {
     }
 }
 
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView(viewModel: Mock.chatViewModel)
-    }
+#Preview {
+    ChatView(viewModel: ChatViewModel(chatService: MockChatService()))
 }
