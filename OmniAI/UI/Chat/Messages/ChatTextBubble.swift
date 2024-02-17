@@ -39,6 +39,9 @@ struct ChatTextBubble: View {
             MaskedCornerShape(cornerRadius: style.cornerRadius, isUser: isUser)
                 .stroke(style.accentColor, lineWidth: style.lineWidth)
         )
+        .onChange(of: text) { _ in
+            UIImpactFeedbackGenerator().impactOccurred()
+        }
     }
 }
 
