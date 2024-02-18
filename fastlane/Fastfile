@@ -59,7 +59,7 @@ platform :ios do
     gym(
       configuration: "Release",
       project: "OmniDex.xcodeproj",
-      scheme: "OmniDex",
+      scheme: "OmniDex (Release)",
       export_method: "app-store",
       export_options: {
         provisioningProfiles: { 
