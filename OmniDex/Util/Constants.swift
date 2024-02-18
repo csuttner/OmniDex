@@ -13,7 +13,7 @@ enum Constants {
     }
 
     enum Color {
-        static let interactive = "Interactive"
+        static let interactive = "Mint"
     }
 
     enum Chat {
