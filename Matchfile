@@ -1,4 +1,4 @@
-git_url("git@github.com:csuttner/Mobile-Certificates")
+git_url("https://github.com/csuttner/Mobile-Certificates")
 
 storage_mode("git")
 
