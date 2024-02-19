@@ -1,30 +1,30 @@
+## User settings
+xcuserdata/
 
-ChatApp/Util/Secrets.swift
+## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
+*.xcscmblueprint
+*.xccheckout
 
-ChatApp.xcodeproj/project.xcworkspace/xcuserdata/claysuttner.xcuserdatad/UserInterfaceState.xcuserstate
+## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
+build/
+DerivedData/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+fastlane/.env
+Secrets.*
 
 .DS_Store
 
-ChatApp.xcodeproj/xcuserdata/claysuttner.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
-
-OpenAI/Util/Secrets.swift
-
-.swiftformat
+.rename_project.sh
 
 .swift-version
 
-.rename_project.sh
-
-OmniAI.xcodeproj/project.xcworkspace/xcuserdata/claysuttner.xcuserdatad/UserInterfaceState.xcuserstate
-
-OmniAI.xcodeproj/xcuserdata/claysuttner.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
-
-OmniAI.xcodeproj/project.xcworkspace/
-
-OmniAI.xcodeproj/xcshareddata/xcschemes/
-
-OmniAI.xcodeproj/xcuserdata/claysuttner.xcuserdatad/xcschemes/
-
-OmniDex.xcodeproj/project.xcworkspace/xcuserdata/claysuttner.xcuserdatad/
-
-fastlane/.env
+.swiftformat
