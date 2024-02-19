@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import OpenAI
 
 class ChatMessage: ObservableObject, Identifiable {
     @Published var text = ""
@@ -22,8 +21,8 @@ class ChatMessage: ObservableObject, Identifiable {
         isLoading: true
     )
 
-    var aiChatMessage: OpenAI.ChatMessage {
-        OpenAI.ChatMessage(role: sender.role, text: text, image: image)
+    var aiChatMessage: OpenAIChatMessage {
+        OpenAIChatMessage(role: sender.role, text: text, image: image)
     }
 
     init(role: Role, isLoading: Bool) {

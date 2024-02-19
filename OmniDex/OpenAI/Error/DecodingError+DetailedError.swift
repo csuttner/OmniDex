@@ -9,7 +9,7 @@ import Foundation
 
 extension DecodingError: DetailedError {
     public var detailedErrorType: String {
-        Constants.Error.decodingError
+        OpenAIConstants.Error.decodingError
     }
 
     public var detailedDescription: String {

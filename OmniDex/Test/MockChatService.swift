@@ -6,23 +6,22 @@
 //
 
 import Foundation
-import OpenAI
 
 class MockChatService: ChatService {
-    func fetchChatCompletion(text: String, image _: String?, history _: [OpenAI.ChatMessage]) async throws -> OpenAI.ChatCompletionResponse {
+    func fetchChatCompletion(text: String, image _: String?, history _: [OpenAIChatMessage]) async throws -> ChatCompletionResponse {
         try await Task.sleep(for: .seconds(1))
 
-        let message = OpenAI.ChatMessage(role: .assistant, text: MockConstants.longResponse)
+        let message = OpenAIChatMessage(role: .assistant, text: MockConstants.longResponse)
 
         return ChatCompletionResponse.mockResponse(message: message)
     }
     
-    func streamChatCompletion(text: String, image: String?, history: [OpenAI.ChatMessage]) async throws -> AsyncThrowingStream<OpenAI.ChatCompletionChunk, Error> {
+    func streamChatCompletion(text: String, image: String?, history: [OpenAIChatMessage]) async throws -> AsyncThrowingStream<ChatCompletionChunk, Error> {
         
-        let chunk = OpenAI.ChatCompletionChunk(
+        let chunk = ChatCompletionChunk(
             id: UUID().uuidString,
             choices: [ChatCompletionChoice(
-                delta: OpenAI.ChatMessage(role: .assistant, text: MockConstants.glad)
+                delta: OpenAIChatMessage(role: .assistant, text: MockConstants.glad)
             )]
         )
         

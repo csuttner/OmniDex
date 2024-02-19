@@ -12,7 +12,7 @@ public struct APIError: DetailedError {
     let message: String
 
     public var detailedErrorType: String {
-        Constants.Error.apiError
+        OpenAIConstants.Error.apiError
     }
 
     public var detailedDescription: String {

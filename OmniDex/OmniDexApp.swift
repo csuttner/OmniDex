@@ -5,7 +5,6 @@
 //  Created by Clay Suttner on 4/23/23.
 //
 
-import OpenAI
 import SwiftUI
 
 @main

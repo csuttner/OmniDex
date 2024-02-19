@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import OpenAI
 
 struct ErrorItem: Identifiable {
     let id = UUID()

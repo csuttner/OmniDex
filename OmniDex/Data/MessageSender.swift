@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import OpenAI
 
 struct MessageSender {
     let role: Role

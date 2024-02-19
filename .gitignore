@@ -26,3 +26,5 @@ OmniAI.xcodeproj/xcshareddata/xcschemes/
 OmniAI.xcodeproj/xcuserdata/claysuttner.xcuserdatad/xcschemes/
 
 OmniDex.xcodeproj/project.xcworkspace/xcuserdata/claysuttner.xcuserdatad/
+
+fastlane/.env

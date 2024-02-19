@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import OpenAI
 
 extension ChatCompletionResponse {
-    static func mockResponse(message: OpenAI.ChatMessage) -> ChatCompletionResponse {
+    static func mockResponse(message: OpenAIChatMessage) -> ChatCompletionResponse {
         ChatCompletionResponse(
             id: UUID().uuidString,
             choices: [

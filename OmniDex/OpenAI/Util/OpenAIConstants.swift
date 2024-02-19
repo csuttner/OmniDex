@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Constants {
+enum OpenAIConstants {
     enum Error {
         static let apiError = "API Error"
         static let clientError = "Client Error"
