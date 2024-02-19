@@ -10,7 +10,7 @@ import UIKit
 
 @MainActor
 class ChatViewModel: ObservableObject {
-    @Published var chatMessages: [ChatMessage]
+    @Published var messages: [Message]
     @Published var text: String
     @Published var image: UIImage?
     @Published var errorItem: ErrorItem?
@@ -19,27 +19,27 @@ class ChatViewModel: ObservableObject {
 
     init(
         chatService: ChatService,
-        chatMessages: [ChatMessage] = [],
+        chatMessages: [Message] = [],
         prompt: String = ""
     ) {
         self.chatService = chatService
-        self.chatMessages = chatMessages
+        self.messages = chatMessages
         text = prompt
     }
 
     func submit() {
-        let newMessage = ChatMessage(
+        let newMessage = Message(
             role: .user,
             text: text,
             image: image?.base64String
         )
 
-        let history = chatMessages.map(\.aiChatMessage)
+        let history = messages.map(\.remoteMessage)
 
         text = ""
         image = nil
-        chatMessages.append(newMessage)
-        chatMessages.append(.loadingMessage)
+        messages.append(newMessage)
+        messages.append(.loadingMessage)
 
         Task {
             do {
@@ -50,7 +50,7 @@ class ChatViewModel: ObservableObject {
                 )
                 
                 for try await chunk in stream {
-                    updateResponse(with: chunk)
+                    updateMessage(with: chunk)
                 }
 
             } catch {
@@ -59,29 +59,24 @@ class ChatViewModel: ObservableObject {
         }
     }
 
-    private func updateResponse(with chunk: ChatCompletionChunk) {
+    private func updateMessage(with chunk: ChatCompletionChunk) {
         guard let textDelta = chunk.choices.first?.delta?.textContent else {
             return
         }
 
-        if let index = chatMessages
+        if let index = messages
             .firstIndex(where: { $0.id == chunk.id }) {
-            chatMessages[index].text.append(textDelta)
+            messages[index].text.append(textDelta)
 
         } else {
-            chatMessages.removeAll { $0.isLoading }
-            chatMessages.append(ChatMessage(chunk: chunk))
+            messages.removeAll { $0.isLoading }
+            messages.append(Message(chunk: chunk))
         }
     }
-    
-    private func handle(response: ChatCompletionResponse) {
-        chatMessages.removeAll { $0.isLoading }
-        chatMessages.append(ChatMessage(response: response))
-    }
 
-    private func handle(error: Error, newMessage: ChatMessage) {
-        chatMessages.removeAll { $0.isLoading }
-        chatMessages.removeAll { $0 == newMessage }
+    private func handle(error: Error, newMessage: Message) {
+        messages.removeAll { $0.isLoading }
+        messages.removeAll { $0 == newMessage }
         errorItem = ErrorItem(error: error)
         text = newMessage.text
         image = UIImage.fromBase64(newMessage.image)

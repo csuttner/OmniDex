@@ -48,7 +48,7 @@ extension Fetchable {
         
         let (bytes, response) = try await URLSession.shared.bytes(for: request)
         
-        guard let httpResponse = response as? HTTPURLResponse else {
+        guard response is HTTPURLResponse else {
             throw URLError(.badServerResponse)
         }
         

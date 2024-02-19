@@ -12,7 +12,7 @@ struct ChatView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ChatScrollView(chatMessages: $viewModel.chatMessages)
+            ChatScrollView(chatMessages: $viewModel.messages)
 
             ChatInputBar(
                 text: $viewModel.text,

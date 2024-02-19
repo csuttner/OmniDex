@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatMessageView: View {
-    @ObservedObject var message: ChatMessage
+    @ObservedObject var message: Message
 
     var style: ChatMessageStyle {
         ChatMessageStyle(isUser: message.sender.isUser)

@@ -9,12 +9,12 @@ import Foundation
 
 public struct ChatCompletionChoice: Decodable {
     public let index: Int
-    public let delta: OpenAIChatMessage?
-    public let message: OpenAIChatMessage?
+    public let delta: ChatMessage?
+    public let message: ChatMessage?
     public let logprobs: String?
     public let finishReason: String?
 
-    public init(index: Int = 0, delta: OpenAIChatMessage? = nil, message: OpenAIChatMessage? = nil, logprobs: String? = nil, finishReason: String? = nil) {
+    public init(index: Int = 0, delta: ChatMessage? = nil, message: ChatMessage? = nil, logprobs: String? = nil, finishReason: String? = nil) {
         self.index = index
         self.delta = delta
         self.message = message

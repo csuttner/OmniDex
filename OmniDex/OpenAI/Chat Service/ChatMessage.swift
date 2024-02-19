@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct OpenAIChatMessage: Codable {
+public struct ChatMessage: Codable {
     public let role: Role?
 
     let content: ChatContent?

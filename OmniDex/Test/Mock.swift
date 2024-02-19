@@ -18,34 +18,34 @@ enum Mock {
 
     static let chatViewModel = ChatViewModel(chatService: MockChatService(), chatMessages: chatMessages, prompt: "")
 
-    static let chatMessage = ChatMessage(role: .user, text: MockConstants.nearbyLocations)
+    static let chatMessage = Message(role: .user, text: MockConstants.nearbyLocations)
 
-    static var chatMessageWithImage: ChatMessage {
+    static var chatMessageWithImage: Message {
         var message = chatMessage
         message.image = lamboImageString
         return message
     }
 
-    static var chatMessages: [ChatMessage] {
+    static var chatMessages: [Message] {
         [
-            ChatMessage(role: .assistant, text: MockConstants.glad),
-            ChatMessage(role: .user, text: MockConstants.nearbyLocations),
-            ChatMessage(role: .assistant, text: MockConstants.glad),
-            ChatMessage(role: .user, text: MockConstants.nearbyLocations),
-            ChatMessage(role: .assistant, text: MockConstants.glad),
-            ChatMessage(role: .user, text: MockConstants.nearbyLocations),
-            ChatMessage(role: .assistant, text: MockConstants.glad),
-            ChatMessage(role: .user, text: MockConstants.nearbyLocations),
-            ChatMessage(role: .assistant, text: MockConstants.no),
-            ChatMessage(role: .user, text: MockConstants.nearbyLocations),
-            ChatMessage(role: .assistant, text: MockConstants.glad),
-            ChatMessage(role: .user, text: MockConstants.nearbyLocations),
-            ChatMessage(role: .assistant, text: MockConstants.glad),
-            ChatMessage(role: .user, text: MockConstants.nearbyLocations),
-            ChatMessage(role: .assistant, text: MockConstants.glad),
-            ChatMessage(role: .user, text: MockConstants.nearbyLocations),
-            ChatMessage(role: .assistant, text: MockConstants.glad),
-            ChatMessage(role: .user, text: MockConstants.nearbyLocations, image: lamboImageString),
+            Message(role: .assistant, text: MockConstants.glad),
+            Message(role: .user, text: MockConstants.nearbyLocations),
+            Message(role: .assistant, text: MockConstants.glad),
+            Message(role: .user, text: MockConstants.nearbyLocations),
+            Message(role: .assistant, text: MockConstants.glad),
+            Message(role: .user, text: MockConstants.nearbyLocations),
+            Message(role: .assistant, text: MockConstants.glad),
+            Message(role: .user, text: MockConstants.nearbyLocations),
+            Message(role: .assistant, text: MockConstants.no),
+            Message(role: .user, text: MockConstants.nearbyLocations),
+            Message(role: .assistant, text: MockConstants.glad),
+            Message(role: .user, text: MockConstants.nearbyLocations),
+            Message(role: .assistant, text: MockConstants.glad),
+            Message(role: .user, text: MockConstants.nearbyLocations),
+            Message(role: .assistant, text: MockConstants.glad),
+            Message(role: .user, text: MockConstants.nearbyLocations),
+            Message(role: .assistant, text: MockConstants.glad),
+            Message(role: .user, text: MockConstants.nearbyLocations, image: lamboImageString),
         ]
     }
 }

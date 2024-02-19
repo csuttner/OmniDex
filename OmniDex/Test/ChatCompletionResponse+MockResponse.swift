@@ -8,7 +8,7 @@
 import Foundation
 
 extension ChatCompletionResponse {
-    static func mockResponse(message: OpenAIChatMessage) -> ChatCompletionResponse {
+    static func mockResponse(message: ChatMessage) -> ChatCompletionResponse {
         ChatCompletionResponse(
             id: UUID().uuidString,
             choices: [

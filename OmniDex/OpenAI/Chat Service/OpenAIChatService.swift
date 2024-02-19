@@ -10,18 +10,18 @@ import Foundation
 public class OpenAIChatService: Fetchable {
     public init() {}
 
-    public func fetchChatCompletion(text: String, image: String?, history: [OpenAIChatMessage]) async throws -> ChatCompletionResponse {
+    public func fetchChatCompletion(text: String, image: String?, history: [ChatMessage]) async throws -> ChatCompletionResponse {
         try await fetch(ChatServiceRouter.chatCompletion(text, image, history))
     }
     
-    public func streamChatCompletion(text: String, image: String?, history: [OpenAIChatMessage]) async throws -> AsyncThrowingStream<ChatCompletionChunk, Error> {
+    public func streamChatCompletion(text: String, image: String?, history: [ChatMessage]) async throws -> AsyncThrowingStream<ChatCompletionChunk, Error> {
         try await stream(ChatServiceRouter.chatCompletionStream(text, image, history))
     }
 }
 
 enum ChatServiceRouter: ServiceRouter {
-    case chatCompletion(String, String?, [OpenAIChatMessage])
-    case chatCompletionStream(String, String?, [OpenAIChatMessage])
+    case chatCompletion(String, String?, [ChatMessage])
+    case chatCompletionStream(String, String?, [ChatMessage])
 
     private static let baseURL = "https://api.openai.com/v1"
 
@@ -46,11 +46,11 @@ enum ChatServiceRouter: ServiceRouter {
     var body: Encodable? {
         switch self {
         case .chatCompletion(let prompt, let image, var history):
-            history.append(OpenAIChatMessage(role: .user, text: prompt, image: image))
+            history.append(ChatMessage(role: .user, text: prompt, image: image))
             return ChatCompletionRequest(messages: history, model: .gpt4VisionPreview)
 
         case .chatCompletionStream(let prompt, let image, var history):
-            history.append(OpenAIChatMessage(role: .user, text: prompt, image: image))
+            history.append(ChatMessage(role: .user, text: prompt, image: image))
             return ChatCompletionRequest(
                 messages: history,
                 model: .gpt4VisionPreview,

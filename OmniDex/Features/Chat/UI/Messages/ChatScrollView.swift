@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatScrollView: View {
-    @Binding var chatMessages: [ChatMessage]
+    @Binding var chatMessages: [Message]
 
     var body: some View {
         ScrollViewReader { proxy in

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ChatMessage: ObservableObject, Identifiable {
+class Message: ObservableObject, Identifiable {
     @Published var text = ""
 
     var id = UUID().uuidString
@@ -16,13 +16,13 @@ class ChatMessage: ObservableObject, Identifiable {
     var image: String?
     var isLoading = false
 
-    static let loadingMessage = ChatMessage(
+    static let loadingMessage = Message(
         role: .assistant,
         isLoading: true
     )
 
-    var aiChatMessage: OpenAIChatMessage {
-        OpenAIChatMessage(role: sender.role, text: text, image: image)
+    var remoteMessage: ChatMessage {
+        ChatMessage(role: sender.role, text: text, image: image)
     }
 
     init(role: Role, isLoading: Bool) {
@@ -56,8 +56,8 @@ class ChatMessage: ObservableObject, Identifiable {
     }
 }
 
-extension ChatMessage: Equatable {
-    static func == (lhs: ChatMessage, rhs: ChatMessage) -> Bool {
+extension Message: Equatable {
+    static func == (lhs: Message, rhs: Message) -> Bool {
         lhs.id == rhs.id
     }
 }

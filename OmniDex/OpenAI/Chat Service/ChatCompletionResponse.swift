@@ -16,7 +16,7 @@ public struct ChatCompletionResponse: Decodable {
     public let object: String
     public let usage: ChatUsage
 
-    var messages: [OpenAIChatMessage] {
+    var messages: [ChatMessage] {
         choices.compactMap(\.message)
     }
 
