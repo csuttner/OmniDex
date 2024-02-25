@@ -8,8 +8,12 @@
 import Foundation
 
 enum Constants {
-    enum Common {
+    enum Error {
         static let error = "Error"
+        static let noMessage = "No message was found in the response"
+    }
+    
+    enum Common {
     }
 
     enum Color {

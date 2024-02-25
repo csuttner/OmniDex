@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import OpenAISwift
 
 @MainActor
 class ChatViewModel: ObservableObject {
@@ -30,17 +29,16 @@ class ChatViewModel: ObservableObject {
 
     func submit() {
         let newMessage = Message(
-            role: .user,
             text: text,
             image: image?.base64String
         )
-
-        let history = messages.map(\.remoteMessage)
+        
+        let history = messages
 
         text = ""
         image = nil
         messages.append(newMessage)
-        messages.append(.loadingMessage)
+        messages.append(Message(isUser: false, isLoading: true))
 
         Task {
             do {
@@ -60,18 +58,14 @@ class ChatViewModel: ObservableObject {
         }
     }
 
-    private func updateMessage(with chunk: CompletionChunk) {
-        guard let textDelta = chunk.choices.first?.delta?.textContent else {
-            return
-        }
-
+    private func updateMessage(with chunk: MessageChunk) {
         if let index = messages
             .firstIndex(where: { $0.id == chunk.id }) {
-            messages[index].text.append(textDelta)
+            messages[index].text.append(chunk.text)
 
         } else {
             messages.removeAll { $0.isLoading }
-            messages.append(Message(chunk: chunk))
+            messages.append(chunk.message)
         }
     }
 

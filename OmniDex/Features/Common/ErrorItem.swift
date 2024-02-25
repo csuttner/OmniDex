@@ -18,7 +18,7 @@ struct ErrorItem: Identifiable {
             title = detailedError.detailedErrorType
             message = detailedError.detailedDescription
         } else {
-            title = Constants.Common.error
+            title = Constants.Error.error
             message = error.localizedDescription
         }
     }

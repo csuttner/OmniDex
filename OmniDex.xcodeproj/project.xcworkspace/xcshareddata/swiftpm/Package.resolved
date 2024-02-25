@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/csuttner/OpenAISwift",
       "state" : {
-        "revision" : "9d6d0e75e55d41dff2052c229b826cc5ab9c30b4",
-        "version" : "1.0.3"
+        "revision" : "29129c130dea13ef4adef7ae1c68215dcbf10dcb",
+        "version" : "1.0.4"
       }
     }
   ],
