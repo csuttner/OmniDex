@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import OpenAISwift
 
-extension ChatCompletionResponse {
-    static func mockResponse(message: ChatMessage) -> ChatCompletionResponse {
-        ChatCompletionResponse(
+extension CompletionResponse {
+    static func mockResponse(message: OpenAISwift.Message) -> CompletionResponse {
+        CompletionResponse(
             id: UUID().uuidString,
             choices: [
-                ChatCompletionChoice(
+                CompletionChoice(
                     index: 0,
                     delta: nil,
                     message: message,
@@ -24,7 +25,7 @@ extension ChatCompletionResponse {
             model: "",
             systemFingerprint: nil,
             object: "",
-            usage: ChatUsage(promptTokens: 0, completionTokens: 0, totalTokens: 0)
+            usage: Usage(promptTokens: 0, completionTokens: 0, totalTokens: 0)
         )
     }
 }

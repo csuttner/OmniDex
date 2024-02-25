@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OpenAISwift
 
 struct MessageSender {
     let role: Role

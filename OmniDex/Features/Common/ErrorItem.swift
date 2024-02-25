@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OpenAISwift
 
 struct ErrorItem: Identifiable {
     let id = UUID()

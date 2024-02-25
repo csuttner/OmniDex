@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import OpenAISwift
 
 @MainActor
 class ChatViewModel: ObservableObject {
@@ -59,7 +60,7 @@ class ChatViewModel: ObservableObject {
         }
     }
 
-    private func updateMessage(with chunk: ChatCompletionChunk) {
+    private func updateMessage(with chunk: CompletionChunk) {
         guard let textDelta = chunk.choices.first?.delta?.textContent else {
             return
         }

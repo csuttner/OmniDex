@@ -6,22 +6,23 @@
 //
 
 import Foundation
+import OpenAISwift
 
 class MockChatService: ChatService {
-    func fetchChatCompletion(text: String, image _: String?, history _: [ChatMessage]) async throws -> ChatCompletionResponse {
+    func fetchChatCompletion(text: String, image _: String?, history _: [OpenAISwift.Message]) async throws -> CompletionResponse {
         try await Task.sleep(for: .seconds(1))
 
-        let message = ChatMessage(role: .assistant, text: MockConstants.longResponse)
+        let message = OpenAISwift.Message(role: .assistant, text: MockConstants.longResponse)
 
-        return ChatCompletionResponse.mockResponse(message: message)
+        return CompletionResponse.mockResponse(message: message)
     }
     
-    func streamChatCompletion(text: String, image: String?, history: [ChatMessage]) async throws -> AsyncThrowingStream<ChatCompletionChunk, Error> {
+    func streamChatCompletion(text: String, image: String?, history: [OpenAISwift.Message]) async throws -> AsyncThrowingStream<CompletionChunk, Error> {
         
-        let chunk = ChatCompletionChunk(
+        let chunk = CompletionChunk(
             id: UUID().uuidString,
-            choices: [ChatCompletionChoice(
-                delta: ChatMessage(role: .assistant, text: MockConstants.glad)
+            choices: [CompletionChoice(
+                delta: OpenAISwift.Message(role: .assistant, text: MockConstants.glad)
             )]
         )
         

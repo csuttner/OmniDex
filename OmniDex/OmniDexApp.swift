@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
+import OpenAISwift
 
 @main
 struct OmniDexApp: App {
+    let chatService: ChatService = {
+        let service = OpenAISwift.ChatService()
+        OpenAISwift.Auth.apiKey = Secrets.apiKey
+        return service
+    }()
+    
     var body: some Scene {
         WindowGroup {
-//            Mock.chatStreamView
-//            ChatView(viewModel: ChatViewModel(chatService: OpenAIChatService()))
-            ChatView(viewModel: ChatViewModel(chatService: OpenAIChatService()))
+            ChatView(viewModel: ChatViewModel(chatService: chatService))
         }
     }
 }

@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import OpenAISwift
 
 protocol ChatService {
-    func fetchChatCompletion(text: String, image: String?, history: [ChatMessage]) async throws -> ChatCompletionResponse
-    func streamChatCompletion(text: String, image: String?, history: [ChatMessage]) async throws -> AsyncThrowingStream<ChatCompletionChunk, Error>
+    func fetchChatCompletion(text: String, image: String?, history: [OpenAISwift.Message]) async throws -> CompletionResponse
+    func streamChatCompletion(text: String, image: String?, history: [OpenAISwift.Message]) async throws -> AsyncThrowingStream<CompletionChunk, Error>
 }
 
-extension OpenAIChatService: ChatService {}
+extension OpenAISwift.ChatService: ChatService {}

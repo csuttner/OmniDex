@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OpenAISwift
 
 class Message: ObservableObject, Identifiable {
     @Published var text = ""
@@ -21,8 +22,12 @@ class Message: ObservableObject, Identifiable {
         isLoading: true
     )
 
-    var remoteMessage: ChatMessage {
-        ChatMessage(role: sender.role, text: text, image: image)
+    var remoteMessage: OpenAISwift.Message {
+        OpenAISwift.Message(
+            role: sender.role,
+            text: text,
+            image: image
+        )
     }
 
     init(role: Role, isLoading: Bool) {
@@ -36,7 +41,7 @@ class Message: ObservableObject, Identifiable {
         self.image = image
     }
 
-    init(response: ChatCompletionResponse) {
+    init(response: CompletionResponse) {
         let message = response.choices.first?.message
 
         id = response.id
@@ -46,7 +51,7 @@ class Message: ObservableObject, Identifiable {
         image = message?.imageContent ?? ""
     }
     
-    init(chunk: ChatCompletionChunk) {
+    init(chunk: CompletionChunk) {
         let message = chunk.choices.first?.delta
         
         id = chunk.id
