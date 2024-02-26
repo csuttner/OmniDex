@@ -28,8 +28,8 @@ struct ChatTextBubble: View {
             }
         }
         .frame(minHeight: style.minHeight)
-        .padding([.top, .bottom], style.padding / 2)
-        .padding([.leading, .trailing], style.padding)
+        .padding(.vertical, style.padding / 2)
+        .padding(.horizontal, style.padding)
         .background(
             MaskedCornerShape(cornerRadius: style.cornerRadius, isUser: isUser)
                 .foregroundColor(style.accentColor)

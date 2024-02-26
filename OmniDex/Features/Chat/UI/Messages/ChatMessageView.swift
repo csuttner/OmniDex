@@ -47,8 +47,8 @@ struct ChatMessageView: View {
                 alignment: message.isUser ? .trailing : .leading
             )
         }
-        .padding([.leading, .trailing], style.padding * 2)
-        .padding([.top, .bottom], style.padding)
+        .padding(.horizontal, style.padding * 2)
+        .padding(.vertical, style.padding)
     }
 }
 
