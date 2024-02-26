@@ -32,49 +32,69 @@ struct ChatInputBar: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            if selectedImage != nil {
-                ChatImagePreviewView(image: $selectedImage)
-                    .padding(10)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(
-                        MaskedCornerShape(
-                            cornerRadius: cornerRadius,
-                            corners: [.topLeft, .topRight]
+        HStack(alignment: .bottom, spacing: stackSpacing) {
+            ChatImagePickerButton(selectedImage: $selectedImage)
+                .frame(
+                    width: buttonDimension,
+                    height: buttonDimension
+                )
+                .padding(.bottom, 1)
+            
+            VStack(alignment: .leading, spacing: 0) {
+                if selectedImage != nil {
+                    ChatImagePreviewView(image: $selectedImage)
+                        .padding(10)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(
+                            MaskedCornerShape(
+                                cornerRadius: cornerRadius,
+                                corners: [.topLeft, .topRight]
+                            )
+                            .stroke(.gray)
                         )
-                        .stroke(.gray)
-                    )
-                    .padding([.leading], buttonDimension + stackSpacing)
-            }
+                }
 
-            HStack(alignment: .center, spacing: stackSpacing) {
-                ChatImagePickerButton(selectedImage: $selectedImage)
-                    .frame(
-                        width: buttonDimension,
-                        height: buttonDimension
+                HStack(alignment: .bottom, spacing: 10) {
+                    TextField(
+                        Constants.Chat.message,
+                        text: $text,
+                        axis: .vertical
                     )
-
-                TextField(Constants.Chat.message, text: $text)
-                    .submitLabel(.send)
-                    .cornerRadius(cornerRadius)
-                    .padding([.leading, .trailing], 10)
-                    .padding([.top, .bottom], 8)
-                    .background(textFieldShape)
-                    .onSubmit {
-                        onSubmit?()
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 8)
+                    
+                    if !text.isEmpty {
+                        Button {
+                            onSubmit?()
+                        } label: {
+                            Image(systemName: "arrow.up.circle.fill")
+                                .resizable()
+                                .foregroundStyle(Color(Constants.Color.interactive))
+                                .frame(width: 30, height: 30)
+                        }
+                        .padding(4)
                     }
+                }
+                .background(textFieldShape)
             }
         }
-        .padding([.top, .bottom], 6)
-        .padding([.leading, .trailing], 12)
+        .padding(.vertical, 6)
+        .padding(.horizontal, 12)
         .background(.regularMaterial)
     }
 }
 
 #Preview {
     ChatInputBar(
-        text: .constant(Constants.Chat.message),
+        text: .constant(MockConstants.nearbyLocations),
         selectedImage: .constant(UIImage(named: "Lambo"))
+    )
+}
+
+#Preview {
+    ChatInputBar(
+        text: .constant(MockConstants.glad),
+        selectedImage: .constant(nil)
     )
 }
