@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ChatMessageView: View {
-    @ObservedObject var message: Message
+    @Environment (Message.self) private var message
 
     var style: ChatMessageStyle {
         ChatMessageStyle(isUser: message.isUser)
     }
 
     var body: some View {
+        @Bindable var bindable = message
+
         VStack(alignment: message.isUser ? .trailing : .leading, spacing: style.padding) {
             if
                 let imageString = message.image,
-                let image = UIImage.fromBase64(imageString)
-            {
+                let image = UIImage.fromBase64(imageString) {
                 ChatImageBubble(
                     image: image,
                     isUser: message.isUser
@@ -35,7 +36,7 @@ struct ChatMessageView: View {
                     )
 
                     ChatTextBubble(
-                        text: $message.text,
+                        text: $bindable.text,
                         isLoading: message.isLoading,
                         isUser: message.isUser
                     )
@@ -53,9 +54,8 @@ struct ChatMessageView: View {
 
 struct ChatMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatMessageView(
-            message: Mock.chatMessageWithImage
-        )
-        .padding()
+        ChatMessageView()
+            .environment(Mock.chatMessageWithImage)
+            .padding()
     }
 }

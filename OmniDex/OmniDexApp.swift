@@ -10,15 +10,20 @@ import OpenAISwift
 
 @main
 struct OmniDexApp: App {
-    let chatService: ChatService = {
+    @State private var chatViewModel = ChatViewModel(chatService: ServiceProvider.openAiChatService)
+    
+    var body: some Scene {
+        WindowGroup {
+            ChatView()
+                .environment(chatViewModel)
+        }
+    }
+}
+
+class ServiceProvider {
+    static let openAiChatService: ChatService = {
         let service = OpenAISwift.ChatService()
         OpenAISwift.Auth.apiKey = Secrets.apiKey
         return service
     }()
-    
-    var body: some Scene {
-        WindowGroup {
-            ChatView(viewModel: ChatViewModel(chatService: chatService))
-        }
-    }
 }

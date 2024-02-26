@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import Observation
 
-class Message: ObservableObject, Identifiable {
+@Observable class Message: Identifiable {
     let id: String
     let date: Date
     let isUser: Bool
-    @Published var text = ""
+    var text = ""
     var image: String?
     var isLoading: Bool
     

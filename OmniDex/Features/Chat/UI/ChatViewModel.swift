@@ -7,35 +7,35 @@
 
 import Foundation
 import UIKit
+import Observation
 
-@MainActor
-class ChatViewModel: ObservableObject {
-    @Published var messages: [Message]
-    @Published var text: String
-    @Published var image: UIImage?
-    @Published var errorItem: ErrorItem?
+@Observable class ChatViewModel: ObservableObject {
+    var messages: [Message]
+    var prompt: String
+    var image: UIImage?
+    var errorItem: ErrorItem?
 
     private let chatService: ChatService
 
     init(
         chatService: ChatService,
-        chatMessages: [Message] = [],
+        messages: [Message] = [],
         prompt: String = ""
     ) {
         self.chatService = chatService
-        self.messages = chatMessages
-        text = prompt
+        self.messages = messages
+        self.prompt = prompt
     }
 
     func submit() {
         let newMessage = Message(
-            text: text,
+            text: prompt,
             image: image?.base64String
         )
         
         let history = messages
 
-        text = ""
+        prompt = ""
         image = nil
         messages.append(newMessage)
         messages.append(Message(isUser: false, isLoading: true))
@@ -73,7 +73,7 @@ class ChatViewModel: ObservableObject {
         messages.removeAll { $0.isLoading }
         messages.removeAll { $0 == newMessage }
         errorItem = ErrorItem(error: error)
-        text = newMessage.text
+        prompt = newMessage.text
         image = UIImage.fromBase64(newMessage.image)
     }
 }
