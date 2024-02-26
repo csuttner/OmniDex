@@ -15,6 +15,7 @@ private extension CGSize {
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
+    let willUseCamera: Bool
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -53,6 +54,11 @@ struct ImagePicker: UIViewControllerRepresentable {
     ) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
+        
+        if willUseCamera {
+            picker.sourceType = .camera
+        }
+
         return picker
     }
 

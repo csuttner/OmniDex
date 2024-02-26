@@ -34,10 +34,6 @@ struct ChatInputBar: View {
     var body: some View {
         HStack(alignment: .bottom, spacing: stackSpacing) {
             ChatImagePickerButton(selectedImage: $selectedImage)
-                .frame(
-                    width: buttonDimension,
-                    height: buttonDimension
-                )
                 .padding(.bottom, 1)
             
             VStack(alignment: .leading, spacing: 0) {

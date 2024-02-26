@@ -22,5 +22,7 @@ enum Constants {
 
     enum Chat {
         static let message = "Message"
+        static let library = "Library"
+        static let camera = "Camera"
     }
 }
