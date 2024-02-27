@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Observation
 
-@Observable class ChatViewModel: ObservableObject {
+@Observable class ChatModel: ObservableObject {
     var messages: [Message]
     var prompt: String
     var image: UIImage?

@@ -10,12 +10,9 @@ import OpenAISwift
 
 @main
 struct OmniDexApp: App {
-    @State private var chatViewModel = ChatViewModel(chatService: ServiceProvider.openAiChatService)
-    
     var body: some Scene {
         WindowGroup {
-            ChatView()
-                .environment(chatViewModel)
+            MainTabView()
         }
     }
 }

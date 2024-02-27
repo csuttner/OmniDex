@@ -15,7 +15,7 @@
 		F3257E3229F5A5C500EC757F /* ChatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3129F5A5C500EC757F /* ChatMessageView.swift */; };
 		F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */; };
 		F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */; };
-		F33E3A0E2B7DAB3C00AD0642 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E3A0D2B7DAB3C00AD0642 /* ChatViewModel.swift */; };
+		F33E3A0E2B7DAB3C00AD0642 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E3A0D2B7DAB3C00AD0642 /* ChatModel.swift */; };
 		F33E3A102B7DAD7700AD0642 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E3A0F2B7DAD7700AD0642 /* ChatView.swift */; };
 		F356360029F5DB640099CC30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35635FF29F5DB640099CC30 /* Constants.swift */; };
 		F356360229F5DBCE0099CC30 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F356360129F5DBCE0099CC30 /* Mock.swift */; };
@@ -29,6 +29,10 @@
 		F380E6442B785C53007456D3 /* MockConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6432B785C53007456D3 /* MockConstants.swift */; };
 		F380E6462B78697F007456D3 /* ChatUserCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6452B78697F007456D3 /* ChatUserCircle.swift */; };
 		F380E6482B786A70007456D3 /* ChatTextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6472B786A70007456D3 /* ChatTextBubble.swift */; };
+		F38FE4402B8D75440043B3BB /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE43F2B8D75440043B3BB /* MainTabView.swift */; };
+		F38FE4452B8D766F0043B3BB /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE4442B8D766F0043B3BB /* TranslateView.swift */; };
+		F38FE4472B8D76810043B3BB /* ImagineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE4462B8D76810043B3BB /* ImagineView.swift */; };
+		F38FE4492B8D76B00043B3BB /* SummarizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE4482B8D76B00043B3BB /* SummarizeView.swift */; };
 		F3B358512B79571D00E2FA3F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358502B79571D00E2FA3F /* ImagePicker.swift */; };
 		F3B358552B79590300E2FA3F /* ChatImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358542B79590300E2FA3F /* ChatImagePickerButton.swift */; };
 		F3B358572B795D4000E2FA3F /* ChatImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358562B795D4000E2FA3F /* ChatImagePreviewView.swift */; };
@@ -64,7 +68,7 @@
 		F3257E3129F5A5C500EC757F /* ChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageView.swift; sourceTree = "<group>"; };
 		F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsesLoadingView.swift; sourceTree = "<group>"; };
 		F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircleView.swift; sourceTree = "<group>"; };
-		F33E3A0D2B7DAB3C00AD0642 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		F33E3A0D2B7DAB3C00AD0642 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		F33E3A0F2B7DAD7700AD0642 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		F35635FF29F5DB640099CC30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F356360129F5DBCE0099CC30 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
@@ -77,6 +81,10 @@
 		F380E6432B785C53007456D3 /* MockConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConstants.swift; sourceTree = "<group>"; };
 		F380E6452B78697F007456D3 /* ChatUserCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserCircle.swift; sourceTree = "<group>"; };
 		F380E6472B786A70007456D3 /* ChatTextBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextBubble.swift; sourceTree = "<group>"; };
+		F38FE43F2B8D75440043B3BB /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		F38FE4442B8D766F0043B3BB /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
+		F38FE4462B8D76810043B3BB /* ImagineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineView.swift; sourceTree = "<group>"; };
+		F38FE4482B8D76B00043B3BB /* SummarizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummarizeView.swift; sourceTree = "<group>"; };
 		F3B358502B79571D00E2FA3F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F3B358542B79590300E2FA3F /* ChatImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImagePickerButton.swift; sourceTree = "<group>"; };
 		F3B358562B795D4000E2FA3F /* ChatImagePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImagePreviewView.swift; sourceTree = "<group>"; };
@@ -151,7 +159,11 @@
 		F3257E2E29F5A51D00EC757F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F38FE43E2B8D74BD0043B3BB /* Root */,
 				F37120022B78229F0096A084 /* Chat */,
+				F38FE4412B8D76300043B3BB /* Translate */,
+				F38FE4422B8D763D0043B3BB /* Imagine */,
+				F38FE4432B8D76440043B3BB /* Summarize */,
 				F35635FE29F5DB530099CC30 /* Common */,
 			);
 			path = Features;
@@ -160,8 +172,8 @@
 		F347C7D82B8312C300DC2FF2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F33E3A0D2B7DAB3C00AD0642 /* ChatModel.swift */,
 				F33E3A0F2B7DAD7700AD0642 /* ChatView.swift */,
-				F33E3A0D2B7DAB3C00AD0642 /* ChatViewModel.swift */,
 				F3B3585E2B7985E100E2FA3F /* Input */,
 				F3B3585F2B79860300E2FA3F /* Messages */,
 			);
@@ -208,6 +220,38 @@
 				F380E63F2B7859C0007456D3 /* MockChatService.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		F38FE43E2B8D74BD0043B3BB /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				F38FE43F2B8D75440043B3BB /* MainTabView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		F38FE4412B8D76300043B3BB /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				F38FE4442B8D766F0043B3BB /* TranslateView.swift */,
+			);
+			path = Translate;
+			sourceTree = "<group>";
+		};
+		F38FE4422B8D763D0043B3BB /* Imagine */ = {
+			isa = PBXGroup;
+			children = (
+				F38FE4462B8D76810043B3BB /* ImagineView.swift */,
+			);
+			path = Imagine;
+			sourceTree = "<group>";
+		};
+		F38FE4432B8D76440043B3BB /* Summarize */ = {
+			isa = PBXGroup;
+			children = (
+				F38FE4482B8D76B00043B3BB /* SummarizeView.swift */,
+			);
+			path = Summarize;
 			sourceTree = "<group>";
 		};
 		F3B3585E2B7985E100E2FA3F /* Input */ = {
@@ -313,17 +357,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F31EB1ED2B82E10C00164B9A /* Secrets.swift in Sources */,
+				F38FE4472B8D76810043B3BB /* ImagineView.swift in Sources */,
 				F380E6442B785C53007456D3 /* MockConstants.swift in Sources */,
 				F356360229F5DBCE0099CC30 /* Mock.swift in Sources */,
 				F3B358512B79571D00E2FA3F /* ImagePicker.swift in Sources */,
+				F38FE4492B8D76B00043B3BB /* SummarizeView.swift in Sources */,
 				F3711FEF2B77E6AB0096A084 /* ErrorItem.swift in Sources */,
 				F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */,
 				F380E6482B786A70007456D3 /* ChatTextBubble.swift in Sources */,
 				F307672B29F5C4AE00B93286 /* Message.swift in Sources */,
 				F3E31AC12B8BE54900BD6335 /* MessageChunk.swift in Sources */,
 				F3B358612B798A5C00E2FA3F /* ChatMessageStyle.swift in Sources */,
+				F38FE4402B8D75440043B3BB /* MainTabView.swift in Sources */,
 				F3B85DBE2B798F0800B2564C /* UIImage+Base64.swift in Sources */,
-				F33E3A0E2B7DAB3C00AD0642 /* ChatViewModel.swift in Sources */,
+				F33E3A0E2B7DAB3C00AD0642 /* ChatModel.swift in Sources */,
 				F380E6382B784B7E007456D3 /* ChatService.swift in Sources */,
 				F380E6462B78697F007456D3 /* ChatUserCircle.swift in Sources */,
 				F3B358592B7968DF00E2FA3F /* ChatInputBar.swift in Sources */,
@@ -333,6 +380,7 @@
 				F3B3585D2B79831400E2FA3F /* ChatImageBubble.swift in Sources */,
 				F380E6402B7859C0007456D3 /* MockChatService.swift in Sources */,
 				F37120082B7833F70096A084 /* ChatScrollView.swift in Sources */,
+				F38FE4452B8D766F0043B3BB /* TranslateView.swift in Sources */,
 				F3B358572B795D4000E2FA3F /* ChatImagePreviewView.swift in Sources */,
 				F356360029F5DB640099CC30 /* Constants.swift in Sources */,
 				F3BD5E532B789CE400D63E0F /* FlipGroup.swift in Sources */,

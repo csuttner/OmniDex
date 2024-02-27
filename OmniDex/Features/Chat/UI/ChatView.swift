@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ChatView: View {
-    @Environment(ChatViewModel.self) private var viewModel
+    @State private var chatModel = ChatModel(chatService: ServiceProvider.openAiChatService)
 
     var body: some View {
-        @Bindable var bindable = viewModel
+        @Bindable var bindable = chatModel
 
         ZStack(alignment: .bottom) {
             ChatScrollView(messages: $bindable.messages)
@@ -20,7 +20,7 @@ struct ChatView: View {
                 text: $bindable.prompt,
                 selectedImage: $bindable.image
             ) {
-                viewModel.submit()
+                chatModel.submit()
             }
         }
         .alert(item: $bindable.errorItem) { errorItem in
@@ -28,7 +28,7 @@ struct ChatView: View {
                 title: Text(errorItem.title),
                 message: Text(errorItem.message),
                 dismissButton: .default(Text("OK")) {
-                    viewModel.errorItem = nil
+                    chatModel.errorItem = nil
                 }
             )
         }
@@ -37,5 +37,4 @@ struct ChatView: View {
 
 #Preview {
     ChatView()
-        .environment(ChatViewModel(chatService: MockChatService()))
 }

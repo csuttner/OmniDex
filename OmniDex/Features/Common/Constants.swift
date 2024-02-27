@@ -8,6 +8,13 @@
 import Foundation
 
 enum Constants {
+    enum Tabs {
+        static let chat = "Chat"
+        static let translate = "Translate"
+        static let imagine = "Imagine"
+        static let summarize = "Summarize"
+    }
+    
     enum Error {
         static let error = "Error"
         static let noMessage = "No message was found in the response"
