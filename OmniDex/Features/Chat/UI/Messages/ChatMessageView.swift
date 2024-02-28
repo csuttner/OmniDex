@@ -17,35 +17,35 @@ struct ChatMessageView: View {
     var body: some View {
         @Bindable var bindable = message
 
-        VStack(alignment: message.isUser ? .trailing : .leading, spacing: style.padding) {
-            if
-                let imageString = message.image,
-                let image = UIImage.fromBase64(imageString) {
-                ChatImageBubble(
-                    image: image,
-                    isUser: message.isUser
-                )
-                .padding(message.isUser ? .trailing : .leading, style.minHeight + style.padding)
-            }
-
-            HStack(alignment: .bottom, spacing: style.padding) {
-                FlipGroup(if: message.isUser) {
-                    ChatUserCircle(
-                        imageName: message.imageName,
-                        style: style
-                    )
-
+        HStack {
+            FlipGroup(if: message.isUser) {
+                VStack(
+                    alignment: message.isUser ? .trailing : .leading,
+                    spacing: style.padding
+                ) {
+                    if
+                        let imageString = message.image,
+                        let image = UIImage.fromBase64(imageString) {
+                        ChatImageBubble(
+                            image: image,
+                            isUser: message.isUser
+                        )
+                    }
+                    
                     ChatTextBubble(
                         text: $bindable.text,
                         isLoading: message.isLoading,
                         isUser: message.isUser
                     )
+                    
+                    ChatUserCircle(
+                        imageName: message.imageName,
+                        style: style
+                    )
                 }
+                
+                Spacer()
             }
-            .frame(
-                maxWidth: .infinity,
-                alignment: message.isUser ? .trailing : .leading
-            )
         }
         .padding(.horizontal, style.padding * 2)
         .padding(.vertical, style.padding)

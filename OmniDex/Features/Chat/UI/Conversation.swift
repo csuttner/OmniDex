@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Observation
 
-@Observable class ChatModel: ObservableObject {
+@Observable class Conversation: ObservableObject {
     var messages: [Message]
     var prompt: String
     var image: UIImage?
@@ -27,7 +27,7 @@ import Observation
         self.prompt = prompt
     }
 
-    func submit() {
+    func sendMessage() {
         let newMessage = Message(
             text: prompt,
             image: image?.base64String

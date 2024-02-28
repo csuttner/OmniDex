@@ -14,7 +14,7 @@ enum Mock {
         UIImage(named: "Lambo")!.base64String
     }
 
-    static let chatViewModel = ChatModel(chatService: MockChatService(), messages: chatMessages, prompt: "")
+    static let chatViewModel = Conversation(chatService: MockChatService(), messages: chatMessages, prompt: "")
 
     static let chatMessage = Message(text: MockConstants.nearbyLocations)
 

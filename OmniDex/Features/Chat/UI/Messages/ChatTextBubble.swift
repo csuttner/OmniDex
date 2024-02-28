@@ -23,6 +23,7 @@ struct ChatTextBubble: View {
                 EllipsesLoadingView()
             } else {
                 Text(text)
+                    .textSelection(.enabled)
                     .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(.white)
             }
