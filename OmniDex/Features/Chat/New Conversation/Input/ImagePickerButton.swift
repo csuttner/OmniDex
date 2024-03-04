@@ -1,5 +1,5 @@
 //
-//  ChatImagePickerButton.swift
+//  ImagePickerButton.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 2/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatImagePickerButton: View {
+struct ImagePickerButton: View {
     @Binding var selectedImage: UIImage?
 
     @State private var isImagePickerPresented = false
@@ -52,7 +52,7 @@ struct ChatImagePickerButton: View {
 }
 
 #Preview {
-    ChatImagePickerButton(
+    ImagePickerButton(
         selectedImage: .constant(nil)
     )
 }

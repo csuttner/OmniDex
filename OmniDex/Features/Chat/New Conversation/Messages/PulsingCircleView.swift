@@ -43,8 +43,6 @@ struct PulsingCircleView: View {
     }
 }
 
-struct PulsingCircleView_Previews: PreviewProvider {
-    static var previews: some View {
-        PulsingCircleView()
-    }
+#Preview {
+    PulsingCircleView()
 }

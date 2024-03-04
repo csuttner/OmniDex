@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct ChatImageBubble: View {
+struct MessageImageBubble: View {
     let image: UIImage
     let isUser: Bool
 
-    var style: ChatMessageStyle {
-        ChatMessageStyle(isUser: isUser)
+    var style: MessageStyle {
+        MessageStyle(isUser: isUser)
     }
 
     var body: some View {
@@ -29,7 +29,7 @@ struct ChatImageBubble: View {
 }
 
 #Preview {
-    ChatImageBubble(
+    MessageImageBubble(
         image: UIImage(named: "Lambo")!,
         isUser: true
     )

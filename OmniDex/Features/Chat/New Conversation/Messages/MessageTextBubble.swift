@@ -1,5 +1,5 @@
 //
-//  ChatTextBubble.swift
+//  MessageTextBubble.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 2/10/24.
@@ -7,22 +7,19 @@
 
 import SwiftUI
 
-struct ChatTextBubble: View {
-    @Binding var text: String
+struct MessageTextBubble: View {
+    var message: Message
 
-    let isLoading: Bool
-    let isUser: Bool
-
-    var style: ChatMessageStyle {
-        ChatMessageStyle(isUser: isUser)
+    var style: MessageStyle {
+        MessageStyle(isUser: message.isUser)
     }
 
     var body: some View {
         HStack {
-            if isLoading {
+            if message.isLoading {
                 EllipsesLoadingView()
             } else {
-                Text(text)
+                Text(message.text)
                     .textSelection(.enabled)
                     .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(.white)
@@ -32,24 +29,20 @@ struct ChatTextBubble: View {
         .padding(.vertical, style.padding / 2)
         .padding(.horizontal, style.padding)
         .background(
-            MaskedCornerShape(cornerRadius: style.cornerRadius, isUser: isUser)
+            MaskedCornerShape(cornerRadius: style.cornerRadius, isUser: message.isUser)
                 .foregroundColor(style.accentColor)
                 .opacity(0.5)
         )
         .overlay(
-            MaskedCornerShape(cornerRadius: style.cornerRadius, isUser: isUser)
+            MaskedCornerShape(cornerRadius: style.cornerRadius, isUser: message.isUser)
                 .stroke(style.accentColor, lineWidth: style.lineWidth)
         )
-        .onChange(of: text) {
+        .onChange(of: message.text) {
             UIImpactFeedbackGenerator().impactOccurred()
         }
     }
 }
 
 #Preview {
-    ChatTextBubble(
-        text: .constant(MockConstants.longResponse),
-        isLoading: false,
-        isUser: true
-    )
+    MessageTextBubble(message: Preview.messageWithImage)
 }

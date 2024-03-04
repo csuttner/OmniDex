@@ -1,5 +1,5 @@
 //
-//  ChatScrollView.swift
+//  ConversationScrollView.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 2/10/24.
@@ -7,21 +7,20 @@
 
 import SwiftUI
 
-struct ChatScrollView: View {
-    @Binding var messages: [Message]
-
+struct ConversationScrollView: View {
+    @Environment(Conversation.self) private var conversation
+    
     var body: some View {
         ScrollViewReader { proxy in
-            KeyboardDismissableScrollView {
+            ScrollView {
                 LazyVStack(alignment: .leading) {
-                    ForEach(messages) { message in
-                        ChatMessageView()
-                            .environment(message)
+                    ForEach(conversation.messages) { message in
+                        MessageView(message: message)
                     }
                 }
                 .padding(.bottom, 60)
             }
-            .onChange(of: messages) { _, messages in
+            .onChange(of: conversation.messages) { _, messages in
                 withAnimation {
                     if let id = messages.last?.id {
                         proxy.scrollTo(id)
@@ -33,5 +32,6 @@ struct ChatScrollView: View {
 }
 
 #Preview {
-    ChatScrollView(messages: .constant(Mock.chatMessages))
+    ConversationScrollView()
+        .environment(Preview.conversation)
 }

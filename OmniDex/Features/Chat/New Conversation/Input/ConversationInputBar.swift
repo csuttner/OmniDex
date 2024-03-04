@@ -1,5 +1,5 @@
 //
-//  ChatInputBar.swift
+//  ConversationInputBar.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 2/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatInputBar: View {
+struct ConversationInputBar: View {
     @Binding var text: String
     @Binding var selectedImage: UIImage?
 
@@ -33,12 +33,12 @@ struct ChatInputBar: View {
 
     var body: some View {
         HStack(alignment: .bottom, spacing: stackSpacing) {
-            ChatImagePickerButton(selectedImage: $selectedImage)
+            ImagePickerButton(selectedImage: $selectedImage)
                 .padding(.bottom, 1)
             
             VStack(alignment: .leading, spacing: 0) {
                 if selectedImage != nil {
-                    ChatImagePreviewView(image: $selectedImage)
+                    ImagePreviewView(image: $selectedImage)
                         .padding(10)
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -82,15 +82,15 @@ struct ChatInputBar: View {
 }
 
 #Preview {
-    ChatInputBar(
-        text: .constant(MockConstants.nearbyLocations),
+    ConversationInputBar(
+        text: .constant(PreviewConstants.nearbyLocations),
         selectedImage: .constant(UIImage(named: "Lambo"))
     )
 }
 
 #Preview {
-    ChatInputBar(
-        text: .constant(MockConstants.glad),
+    ConversationInputBar(
+        text: .constant(PreviewConstants.glad),
         selectedImage: .constant(nil)
     )
 }

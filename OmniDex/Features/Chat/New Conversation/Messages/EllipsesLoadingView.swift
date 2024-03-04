@@ -17,8 +17,6 @@ struct EllipsesLoadingView: View {
     }
 }
 
-struct EllipsesLoadingView_Previews: PreviewProvider {
-    static var previews: some View {
-        EllipsesLoadingView()
-    }
+#Preview {
+    EllipsesLoadingView()
 }

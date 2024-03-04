@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatMessageStyle {
+struct MessageStyle {
     var cornerRadius: CGFloat = 12
     var minHeight: CGFloat = 24
     var lineWidth: CGFloat = 1

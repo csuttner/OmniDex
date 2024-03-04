@@ -21,6 +21,7 @@ enum Constants {
     }
     
     enum Common {
+        static let new = "New"
     }
 
     enum Color {
@@ -28,8 +29,16 @@ enum Constants {
     }
 
     enum Chat {
+        static let conversations = "Conversations"
         static let message = "Message"
         static let library = "Library"
         static let camera = "Camera"
+        static let noSummary = "No summary"
+    }
+    
+    enum Prompts {
+        static func summary(wordCount: Int) -> String {
+            "Summarize this conversation's topic in \(wordCount) words"
+        }
     }
 }

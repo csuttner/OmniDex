@@ -12,7 +12,7 @@ import Observation
     let id: String
     let date: Date
     let isUser: Bool
-    var text = ""
+    var text: String
     var image: String?
     var isLoading: Bool
     

@@ -1,5 +1,5 @@
 //
-//  ChatImagePreviewView.swift
+//  ImagePreviewView.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 2/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatImagePreviewView: View {
+struct ImagePreviewView: View {
     @Binding var image: UIImage?
 
     var body: some View {
@@ -37,5 +37,5 @@ struct ChatImagePreviewView: View {
 }
 
 #Preview {
-    ChatImagePreviewView(image: .constant(UIImage(named: "Lambo")))
+    ImagePreviewView(image: .constant(UIImage(named: "Lambo")))
 }

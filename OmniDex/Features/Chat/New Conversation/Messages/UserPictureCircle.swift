@@ -1,5 +1,5 @@
 //
-//  ChatUserCircle.swift
+//  UserPictureCircle.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 2/10/24.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ChatUserCircle: View {
+struct UserPictureCircle: View {
     let imageName: String
-    let style: ChatMessageStyle
+    let style: MessageStyle
 
     var body: some View {
         Image(imageName)
@@ -25,5 +25,5 @@ struct ChatUserCircle: View {
 }
 
 #Preview {
-    ChatUserCircle(imageName: "Clay", style: ChatMessageStyle(isUser: true))
+    UserPictureCircle(imageName: "Clay", style: MessageStyle(isUser: true))
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct MainTabView: View {
     var body: some View {
         TabView {
-            ChatView()
+            ConversationListView()
                 .tabItem {
                     Label(Constants.Tabs.chat, systemImage: "ellipsis.message")
                 }
