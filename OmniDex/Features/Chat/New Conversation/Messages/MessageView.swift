@@ -47,5 +47,5 @@ struct MessageView: View {
 }
 
 #Preview {
-    MessageView(message: Preview.messageWithImage)
+    MessageView(message: Mock.messageWithImage)
 }

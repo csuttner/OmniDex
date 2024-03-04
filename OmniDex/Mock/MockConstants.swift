@@ -1,5 +1,5 @@
 //
-//  PreviewConstants.swift
+//  MockConstants.swift
 //  ChatApp
 //
 //  Created by Clay Suttner on 2/10/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PreviewConstants {
+enum MockConstants {
     static let no = "No."
     static let glad = "I'm glad you found that helpful."
     static let nearbyLocations = "Can you also provide a list of nearby locations?"

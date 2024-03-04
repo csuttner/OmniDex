@@ -8,11 +8,8 @@
 import Foundation
 
 protocol DataStore {
-    associatedtype StoreModel
-    
-    func store(item: StoreModel) async throws
-    func store(items: [StoreModel]) async throws
-    func fetchAll() async throws -> [StoreModel]
-    func delete(item: StoreModel) async throws
-    func delete(items: [StoreModel]) async throws
+    func store(conversation: Conversation) async throws
+    func fetchConversations() async throws -> [Conversation]
+    func delete(conversation: Conversation) async throws
+    func delete(conversations: [Conversation]) async throws
 }

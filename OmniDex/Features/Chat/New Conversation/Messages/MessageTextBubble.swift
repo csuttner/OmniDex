@@ -44,5 +44,5 @@ struct MessageTextBubble: View {
 }
 
 #Preview {
-    MessageTextBubble(message: Preview.messageWithImage)
+    MessageTextBubble(message: Mock.messageWithImage)
 }

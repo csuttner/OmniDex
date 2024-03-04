@@ -33,5 +33,5 @@ struct ConversationScrollView: View {
 
 #Preview {
     ConversationScrollView()
-        .environment(Preview.conversation)
+        .environment(Mock.conversation)
 }

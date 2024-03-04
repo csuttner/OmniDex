@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ConversationListView: View {
-    @State private var dataStore: SwiftDataStore?
+    let dataStore: DataStore
+    let chatService: ChatService
+
     @State private var conversations = [Conversation]()
     @State private var path = [Conversation]()
     @State private var errorItem: ErrorItem?
@@ -17,10 +19,7 @@ struct ConversationListView: View {
         NavigationStack(path: $path) {
             List(conversations) { conversation in
                 NavigationLink(value: conversation) {
-                    HStack {
-                        Text(conversation.updated.formatted(date: .abbreviated, time: .shortened))
-                        Text(conversation.summary)
-                    }
+                    ConversationListRow(conversation: conversation)
                 }
             }
             .navigationTitle(Constants.Chat.conversations)
@@ -38,15 +37,11 @@ struct ConversationListView: View {
                 }
             }
             .navigationDestination(for: Conversation.self) { conversation in
-                ConversationView(dataStore: dataStore)
+                ConversationView(chatService: chatService, dataStore: dataStore)
                     .environment(conversation)
             }
         }
         .task(id: path) {
-            if dataStore == nil {
-                dataStore = SwiftDataStore()
-            }
-            
             if path.isEmpty {
                 await loadStoredConversations()
             }
@@ -64,9 +59,7 @@ struct ConversationListView: View {
     
     private func loadStoredConversations() async {
         do {
-            let stored: [StoredConversation] = try await dataStore?.fetchAll() ?? []
-            
-            conversations = stored.map(\.conversation).sorted { $0.updated > $1.updated }
+            conversations = try await dataStore.fetchConversations()
 
         } catch {
             errorItem = ErrorItem(error: error)
@@ -75,5 +68,8 @@ struct ConversationListView: View {
 }
 
 #Preview {
-    ConversationListView()
+    ConversationListView(
+        dataStore: MockDataStore(),
+        chatService: MockChatService()
+    )
 }

@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct MainTabView: View {
+    let dataStore: DataStore
+    let chatService: ChatService
+    
     var body: some View {
         TabView {
-            ConversationListView()
+            ConversationListView(dataStore: dataStore, chatService: chatService)
                 .tabItem {
                     Label(Constants.Tabs.chat, systemImage: "ellipsis.message")
                 }

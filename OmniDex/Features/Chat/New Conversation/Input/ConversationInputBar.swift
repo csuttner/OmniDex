@@ -83,14 +83,14 @@ struct ConversationInputBar: View {
 
 #Preview {
     ConversationInputBar(
-        text: .constant(PreviewConstants.nearbyLocations),
+        text: .constant(MockConstants.nearbyLocations),
         selectedImage: .constant(UIImage(named: "Lambo"))
     )
 }
 
 #Preview {
     ConversationInputBar(
-        text: .constant(PreviewConstants.glad),
+        text: .constant(MockConstants.glad),
         selectedImage: .constant(nil)
     )
 }

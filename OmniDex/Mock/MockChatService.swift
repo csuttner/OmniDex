@@ -11,14 +11,14 @@ class MockChatService: ChatService {
     func fetchChatCompletion(text: String, image _: String?, history _: [Message]) async throws -> Message {
         try await Task.sleep(for: .seconds(1))
 
-        return Message(text: PreviewConstants.nearbyLocations)
+        return Message(text: MockConstants.nearbyLocations)
     }
     
     func streamChatCompletion(text: String, image _: String?, history _: [Message]) async throws -> AsyncThrowingStream<MessageChunk, Error> {
         let chunk = MessageChunk(
             id: UUID().uuidString,
             date: Date(),
-            text: PreviewConstants.glad
+            text: MockConstants.glad
         )
         
         return AsyncThrowingStream { continuation in

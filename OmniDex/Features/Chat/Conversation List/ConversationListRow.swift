@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct ConversationListRow: View {
+    let conversation: Conversation
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text(conversation.updated.formatted(date: .abbreviated, time: .shortened))
+            Text(conversation.summary)
+        }
     }
 }
 
 #Preview {
-    ConversationListRow()
+    ConversationListRow(conversation: Mock.conversation)
 }

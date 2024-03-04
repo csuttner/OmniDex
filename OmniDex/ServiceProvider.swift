@@ -7,7 +7,7 @@
 
 import OpenAISwift
 
-class ServiceProvider {
+enum ServiceProvider {
     static let openAiChatService: ChatService = {
         let service = OpenAISwift.ChatService()
         OpenAISwift.Auth.apiKey = Secrets.apiKey

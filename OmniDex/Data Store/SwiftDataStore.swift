@@ -9,8 +9,6 @@ import Foundation
 import SwiftData
 
 actor SwiftDataStore {
-    typealias StoreModel = PersistentModel
-    
     @MainActor init?() {
         if let container = try? ModelContainer(
             for: StoredConversation.self,
@@ -44,8 +42,8 @@ actor SwiftDataStore {
         }
     }
     
-    func fetchAll<T: PersistentModel>() async throws -> [T] {
-        try context.fetch(FetchDescriptor<T>())
+    func fetch<T: PersistentModel>(_ descriptor: FetchDescriptor<T>) async throws -> [T] {
+        try context.fetch(descriptor)
     }
     
     func delete<T: PersistentModel>(item: T) async throws {
@@ -67,3 +65,22 @@ actor SwiftDataStore {
     }
 }
 
+extension SwiftDataStore: DataStore {
+    func store(conversation: Conversation) async throws {
+        try await store(item: StoredConversation(conversation: conversation))
+    }
+    
+    func fetchConversations() async throws -> [Conversation] {
+        try await fetch(FetchDescriptor<StoredConversation>())
+            .map(\.conversation)
+            .sorted { $0.updated > $1.updated }
+    }
+    
+    func delete(conversation: Conversation) async throws {
+        try await delete(item: StoredConversation(conversation: conversation))
+    }
+    
+    func delete(conversations: [Conversation]) async throws {
+        try await delete(items: conversations.map(StoredConversation.init))
+    }
+}

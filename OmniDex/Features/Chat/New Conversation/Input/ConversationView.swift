@@ -9,8 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct ConversationView: View {
-    let chatService = ServiceProvider.openAiChatService
-    let dataStore: SwiftDataStore?
+    let chatService: ChatService
+    let dataStore: DataStore
     
     @Environment(Conversation.self) private var conversation
     
@@ -120,7 +120,7 @@ struct ConversationView: View {
         }
         
         do {
-            try await dataStore?.store(item: StoredConversation(conversation: conversation))
+            try await dataStore.store(conversation: conversation)
 
         } catch {
             print(error)
@@ -129,6 +129,9 @@ struct ConversationView: View {
 }
 
 #Preview {
-    ConversationView(dataStore: nil)
-        .environment(Preview.conversation)
+    ConversationView(
+        chatService: MockChatService(),
+        dataStore: MockDataStore()
+    )
+    .environment(Mock.conversation)
 }
