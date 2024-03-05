@@ -8,8 +8,8 @@
 import Foundation
 
 protocol DataStore {
-    func store(conversation: Conversation) async throws
     func fetchConversations() async throws -> [Conversation]
     func delete(conversation: Conversation) async throws
     func delete(conversations: [Conversation]) async throws
+    func save(conversation: Conversation) async throws
 }

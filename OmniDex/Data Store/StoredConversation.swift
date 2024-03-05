@@ -29,4 +29,15 @@ import SwiftData
         self.updated = conversation.updated
         self.summary = conversation.summary
     }
+    
+    func update(with conversation: Conversation) {
+        let storedIds = Set(messages.map(\.id))
+        let diff = conversation.messages.filter { !storedIds.contains($0.id) }
+        
+        print("message diff:", diff)
+
+        messages.append(contentsOf: diff.map(StoredMessage.init))
+        updated = diff.first?.date ?? updated
+        summary = conversation.summary
+    }
 }

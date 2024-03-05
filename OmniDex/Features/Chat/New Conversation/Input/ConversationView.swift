@@ -53,6 +53,11 @@ struct ConversationView: View {
         }
         .navigationTitle(conversation.summary.isEmpty ? "New Conversation" : conversation.summary)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            conversation.messages.forEach {
+                print($0.text.prefix(100))
+            }
+        }
     }
 
     func send(newMessage: Message) async {
@@ -115,13 +120,8 @@ struct ConversationView: View {
     }
     
     private func saveConversation() async {
-        guard !conversation.messages.isEmpty else {
-            return
-        }
-        
         do {
-            try await dataStore.store(conversation: conversation)
-
+            try await dataStore.save(conversation: conversation)
         } catch {
             print(error)
         }

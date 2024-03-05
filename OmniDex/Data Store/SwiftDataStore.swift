@@ -66,14 +66,40 @@ actor SwiftDataStore {
 }
 
 extension SwiftDataStore: DataStore {
-    func store(conversation: Conversation) async throws {
-        try await store(item: StoredConversation(conversation: conversation))
+    func save(conversation: Conversation) async throws {
+        let conversationId = conversation.id
+        
+        let descriptor = FetchDescriptor<StoredConversation>(
+            predicate: #Predicate { $0.id == conversationId }
+        )
+        
+        if let existing = try await fetch(descriptor).first {
+            existing.update(with: conversation)
+
+            try context.save()
+            
+            print("updated conversation:", conversation.summary)
+
+        } else {
+            try await store(item: StoredConversation(conversation: conversation))
+            
+            print("stored conversation:", conversation.summary)
+        }
     }
     
     func fetchConversations() async throws -> [Conversation] {
-        try await fetch(FetchDescriptor<StoredConversation>())
-            .map(\.conversation)
-            .sorted { $0.updated > $1.updated }
+        let descriptor = FetchDescriptor<StoredConversation>(
+            sortBy: [.init(\.updated)]
+        )
+        
+        return try await fetch(descriptor)
+            .map { stored in
+                let conversation = stored.conversation
+                
+                conversation.messages.sort { $0.date < $1.date }
+                
+                return conversation
+            }
     }
     
     func delete(conversation: Conversation) async throws {

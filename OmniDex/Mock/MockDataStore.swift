@@ -8,7 +8,7 @@
 import Foundation
 
 actor MockDataStore: DataStore {
-    func store(conversation: Conversation) async throws {}
+    func save(conversation: Conversation) async throws {}
     
     func fetchConversations() async throws -> [Conversation] {
         [Mock.conversation]
