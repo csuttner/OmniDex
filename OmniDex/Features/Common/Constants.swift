@@ -38,7 +38,7 @@ enum Constants {
     
     enum Prompts {
         static func summary(wordCount: Int) -> String {
-            "Summarize this conversation's topic in \(wordCount) words"
+            "Summarize this conversation's topic in \(wordCount) words - no punctuation"
         }
     }
 }

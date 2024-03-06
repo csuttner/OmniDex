@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    let dataStore: DataStore
+    let dataStore: ConversationStore
     let chatService: ChatService
     
     var body: some View {

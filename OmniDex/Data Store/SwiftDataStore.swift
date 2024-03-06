@@ -9,16 +9,18 @@ import Foundation
 import SwiftData
 
 actor SwiftDataStore {
-    @MainActor init?() {
+
+    init?() {
         if let container = try? ModelContainer(
             for: StoredConversation.self,
             configurations: ModelConfiguration()
         ) {
-            self.context = container.mainContext
+            self.context = ModelContext(container)
         } else {
             return nil
         }
     }
+    
     
     private let context: ModelContext
 
@@ -65,7 +67,7 @@ actor SwiftDataStore {
     }
 }
 
-extension SwiftDataStore: DataStore {
+extension SwiftDataStore: ConversationStore {
     func save(conversation: Conversation) async throws {
         let conversationId = conversation.id
         
@@ -74,39 +76,56 @@ extension SwiftDataStore: DataStore {
         )
         
         if let existing = try await fetch(descriptor).first {
-            existing.update(with: conversation)
-
-            try context.save()
+            try await update(stored: existing, with: conversation)
             
-            print("updated conversation:", conversation.summary)
+            print("updated conversation:", conversation.summary ?? Constants.Chat.noSummary)
 
         } else {
-            try await store(item: StoredConversation(conversation: conversation))
+            try await store(item: makeStored(conversation: conversation))
             
-            print("stored conversation:", conversation.summary)
+            print("stored conversation:", conversation.summary ?? Constants.Chat.noSummary)
         }
     }
     
     func fetchConversations() async throws -> [Conversation] {
         let descriptor = FetchDescriptor<StoredConversation>(
-            sortBy: [.init(\.updated)]
+            sortBy: [.init(\.updated, order: .reverse)]
         )
         
-        return try await fetch(descriptor)
-            .map { stored in
-                let conversation = stored.conversation
-                
-                conversation.messages.sort { $0.date < $1.date }
-                
-                return conversation
-            }
+        return try await fetch(descriptor).map(\.conversation)
     }
     
     func delete(conversation: Conversation) async throws {
-        try await delete(item: StoredConversation(conversation: conversation))
+        try await delete(item: makeStored(conversation: conversation))
     }
     
     func delete(conversations: [Conversation]) async throws {
-        try await delete(items: conversations.map(StoredConversation.init))
+        try await delete(items: conversations.map(makeStored))
+    }
+    
+    func makeStored(conversation: Conversation) -> StoredConversation {
+        let stored = StoredConversation(
+            id: conversation.id,
+            updated: conversation.updated,
+            summary: conversation.summary
+        )
+        
+        stored.messages = conversation.messages.map(StoredMessage.init)
+        
+        return stored
+    }
+    
+    func update(stored: StoredConversation, with conversation: Conversation) async throws {
+        let messageIds = stored.messages.map(\.id)
+
+        let newMessages = conversation.messages
+            .filter { !messageIds.contains($0.id) }
+            .map(StoredMessage.init)
+
+        stored.messages.append(contentsOf: newMessages)
+        stored.updated = conversation.updated
+        stored.summary = conversation.summary
+        
+        try context.save()
     }
 }

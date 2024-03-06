@@ -15,7 +15,7 @@
 		F3257E3229F5A5C500EC757F /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3129F5A5C500EC757F /* MessageView.swift */; };
 		F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */; };
 		F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */; };
-		F32A5EBC2B9541040037546F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A5EBB2B9541040037546F /* DataStore.swift */; };
+		F32A5EBC2B9541040037546F /* ConversationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A5EBB2B9541040037546F /* ConversationStore.swift */; };
 		F33E3A0E2B7DAB3C00AD0642 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E3A0D2B7DAB3C00AD0642 /* Conversation.swift */; };
 		F33E3A102B7DAD7700AD0642 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E3A0F2B7DAD7700AD0642 /* ConversationView.swift */; };
 		F356360029F5DB640099CC30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35635FF29F5DB640099CC30 /* Constants.swift */; };
@@ -27,7 +27,7 @@
 		F3711FED2B77DFF90096A084 /* MaskedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */; };
 		F3711FEF2B77E6AB0096A084 /* ErrorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3711FEE2B77E6AB0096A084 /* ErrorItem.swift */; };
 		F37120042B7829120096A084 /* KeyboardDismissableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */; };
-		F37120082B7833F70096A084 /* ConversationScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120072B7833F70096A084 /* ConversationScrollView.swift */; };
+		F37120082B7833F70096A084 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37120072B7833F70096A084 /* MessageListView.swift */; };
 		F380E6382B784B7E007456D3 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6372B784B7E007456D3 /* ChatService.swift */; };
 		F380E6402B7859C0007456D3 /* MockChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E63F2B7859C0007456D3 /* MockChatService.swift */; };
 		F380E6442B785C53007456D3 /* MockConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6432B785C53007456D3 /* MockConstants.swift */; };
@@ -39,6 +39,7 @@
 		F38FE4492B8D76B00043B3BB /* SummarizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE4482B8D76B00043B3BB /* SummarizeView.swift */; };
 		F39F04562B90221400E620CE /* ConversationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F04552B90221400E620CE /* ConversationListView.swift */; };
 		F39F04592B90243600E620CE /* ConversationListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F04582B90243600E620CE /* ConversationListRow.swift */; };
+		F3AC33862B98093700B27452 /* ErrorItemAlertViewModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AC33852B98093700B27452 /* ErrorItemAlertViewModifer.swift */; };
 		F3B358512B79571D00E2FA3F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358502B79571D00E2FA3F /* ImagePicker.swift */; };
 		F3B358552B79590300E2FA3F /* ImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358542B79590300E2FA3F /* ImagePickerButton.swift */; };
 		F3B358572B795D4000E2FA3F /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358562B795D4000E2FA3F /* ImagePreviewView.swift */; };
@@ -76,7 +77,7 @@
 		F3257E3129F5A5C500EC757F /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsesLoadingView.swift; sourceTree = "<group>"; };
 		F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircleView.swift; sourceTree = "<group>"; };
-		F32A5EBB2B9541040037546F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		F32A5EBB2B9541040037546F /* ConversationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationStore.swift; sourceTree = "<group>"; };
 		F33E3A0D2B7DAB3C00AD0642 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		F33E3A0F2B7DAD7700AD0642 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		F35635FF29F5DB640099CC30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -87,7 +88,7 @@
 		F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedCornerShape.swift; sourceTree = "<group>"; };
 		F3711FEE2B77E6AB0096A084 /* ErrorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorItem.swift; sourceTree = "<group>"; };
 		F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissableScrollView.swift; sourceTree = "<group>"; };
-		F37120072B7833F70096A084 /* ConversationScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationScrollView.swift; sourceTree = "<group>"; };
+		F37120072B7833F70096A084 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		F380E6372B784B7E007456D3 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		F380E63F2B7859C0007456D3 /* MockChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatService.swift; sourceTree = "<group>"; };
 		F380E6432B785C53007456D3 /* MockConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConstants.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		F38FE4482B8D76B00043B3BB /* SummarizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummarizeView.swift; sourceTree = "<group>"; };
 		F39F04552B90221400E620CE /* ConversationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListView.swift; sourceTree = "<group>"; };
 		F39F04582B90243600E620CE /* ConversationListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListRow.swift; sourceTree = "<group>"; };
+		F3AC33852B98093700B27452 /* ErrorItemAlertViewModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorItemAlertViewModifer.swift; sourceTree = "<group>"; };
 		F3B358502B79571D00E2FA3F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F3B358542B79590300E2FA3F /* ImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerButton.swift; sourceTree = "<group>"; };
 		F3B358562B795D4000E2FA3F /* ImagePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				F3711FEC2B77DFF90096A084 /* MaskedCornerShape.swift */,
 				F3711FEE2B77E6AB0096A084 /* ErrorItem.swift */,
+				F3AC33852B98093700B27452 /* ErrorItemAlertViewModifer.swift */,
 				F37120032B7829120096A084 /* KeyboardDismissableScrollView.swift */,
 				F3BD5E522B789CE400D63E0F /* FlipGroup.swift */,
 				F3B358502B79571D00E2FA3F /* ImagePicker.swift */,
@@ -208,7 +211,7 @@
 			children = (
 				F36C95292B953C24007DCAB1 /* StoredMessage.swift */,
 				F36C95272B953BF9007DCAB1 /* StoredConversation.swift */,
-				F32A5EBB2B9541040037546F /* DataStore.swift */,
+				F32A5EBB2B9541040037546F /* ConversationStore.swift */,
 				F3F054712B955B6800FFFFA1 /* SwiftDataStore.swift */,
 			);
 			path = "Data Store";
@@ -299,7 +302,7 @@
 		F3B3585F2B79860300E2FA3F /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				F37120072B7833F70096A084 /* ConversationScrollView.swift */,
+				F37120072B7833F70096A084 /* MessageListView.swift */,
 				F3257E3129F5A5C500EC757F /* MessageView.swift */,
 				F3B358602B798A5C00E2FA3F /* MessageStyle.swift */,
 				F380E6472B786A70007456D3 /* MessageTextBubble.swift */,
@@ -391,6 +394,7 @@
 				F31EB1ED2B82E10C00164B9A /* Secrets.swift in Sources */,
 				F38FE4472B8D76810043B3BB /* ImagineView.swift in Sources */,
 				F39F04592B90243600E620CE /* ConversationListRow.swift in Sources */,
+				F3AC33862B98093700B27452 /* ErrorItemAlertViewModifer.swift in Sources */,
 				F380E6442B785C53007456D3 /* MockConstants.swift in Sources */,
 				F3F054742B9586C200FFFFA1 /* MockDataStore.swift in Sources */,
 				F3B358512B79571D00E2FA3F /* ImagePicker.swift in Sources */,
@@ -403,7 +407,7 @@
 				F3F054722B955B6800FFFFA1 /* SwiftDataStore.swift in Sources */,
 				F3E31AC12B8BE54900BD6335 /* MessageChunk.swift in Sources */,
 				F36C95002B951322007DCAB1 /* ServiceProvider.swift in Sources */,
-				F32A5EBC2B9541040037546F /* DataStore.swift in Sources */,
+				F32A5EBC2B9541040037546F /* ConversationStore.swift in Sources */,
 				F36C95282B953BF9007DCAB1 /* StoredConversation.swift in Sources */,
 				F3B358612B798A5C00E2FA3F /* MessageStyle.swift in Sources */,
 				F38FE4402B8D75440043B3BB /* MainTabView.swift in Sources */,
@@ -417,7 +421,7 @@
 				F3B3585B2B79778600E2FA3F /* UIImage+Resize.swift in Sources */,
 				F3B3585D2B79831400E2FA3F /* MessageImageBubble.swift in Sources */,
 				F380E6402B7859C0007456D3 /* MockChatService.swift in Sources */,
-				F37120082B7833F70096A084 /* ConversationScrollView.swift in Sources */,
+				F37120082B7833F70096A084 /* MessageListView.swift in Sources */,
 				F38FE4452B8D766F0043B3BB /* TranslateView.swift in Sources */,
 				F39F04562B90221400E620CE /* ConversationListView.swift in Sources */,
 				F3B358572B795D4000E2FA3F /* ImagePreviewView.swift in Sources */,

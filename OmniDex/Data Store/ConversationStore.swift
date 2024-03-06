@@ -1,5 +1,5 @@
 //
-//  DataStore.swift
+//  ConversationStore.swift
 //  OmniDex
 //
 //  Created by Clay Suttner on 3/3/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol DataStore {
+protocol ConversationStore {
     func fetchConversations() async throws -> [Conversation]
     func delete(conversation: Conversation) async throws
     func delete(conversations: [Conversation]) async throws

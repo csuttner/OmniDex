@@ -9,11 +9,13 @@ import Foundation
 import SwiftData
 
 @Model class StoredConversation {
-    var id: String
-    var messages: [StoredMessage]
+    @Attribute(.unique) let id: String
     var updated: Date
-    var summary: String
+    var summary: String?
     
+    @Relationship(deleteRule: .cascade, inverse: \StoredMessage.conversation)
+    var messages: [StoredMessage]
+
     var conversation: Conversation {
         Conversation(
             id: id,
@@ -23,21 +25,10 @@ import SwiftData
         )
     }
     
-    init(conversation: Conversation) {
-        self.id = conversation.id
-        self.messages = conversation.messages.map(StoredMessage.init)
-        self.updated = conversation.updated
-        self.summary = conversation.summary
-    }
-    
-    func update(with conversation: Conversation) {
-        let storedIds = Set(messages.map(\.id))
-        let diff = conversation.messages.filter { !storedIds.contains($0.id) }
-        
-        print("message diff:", diff)
-
-        messages.append(contentsOf: diff.map(StoredMessage.init))
-        updated = diff.first?.date ?? updated
-        summary = conversation.summary
+    init(id: String, updated: Date, summary: String? = nil, messages: [StoredMessage] = []) {
+        self.id = id
+        self.updated = updated
+        self.summary = summary
+        self.messages = messages
     }
 }

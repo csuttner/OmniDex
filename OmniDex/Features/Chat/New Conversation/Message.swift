@@ -10,7 +10,7 @@ import Observation
 
 @Observable class Message: Identifiable {
     let id: String
-    let date: Date
+    var date: Date
     let isUser: Bool
     var text: String
     var image: String?
@@ -40,5 +40,11 @@ import Observation
 extension Message: Equatable {
     static func == (lhs: Message, rhs: Message) -> Bool {
         lhs.id == rhs.id
+    }
+}
+
+extension Message: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

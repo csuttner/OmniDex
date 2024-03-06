@@ -10,7 +10,7 @@ import SwiftData
 
 struct ConversationView: View {
     let chatService: ChatService
-    let dataStore: DataStore
+    let dataStore: ConversationStore
     
     @Environment(Conversation.self) private var conversation
     
@@ -18,10 +18,11 @@ struct ConversationView: View {
     @State private var image: UIImage?
     @State private var errorItem: ErrorItem?
     @State private var newMessage: Message?
+    @State private var lastMessage: Message?
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ConversationScrollView()
+            MessageListView(lastMessage: $lastMessage)
 
             ConversationInputBar(
                 text: $prompt,
@@ -33,15 +34,6 @@ struct ConversationView: View {
                 )
             }
         }
-        .alert(item: $errorItem) { errorItem in
-            Alert(
-                title: Text(errorItem.title),
-                message: Text(errorItem.message),
-                dismissButton: .default(Text("OK")) {
-                    self.errorItem = nil
-                }
-            )
-        }
         .task(id: newMessage) {
             guard let newMessage else {
                 return
@@ -51,16 +43,15 @@ struct ConversationView: View {
             await fetchSummary()
             await saveConversation()
         }
-        .navigationTitle(conversation.summary.isEmpty ? "New Conversation" : conversation.summary)
+        .alert(errorItem: $errorItem)
+        .navigationTitle(conversation.summary ?? "New Conversation")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            conversation.messages.forEach {
-                print($0.text.prefix(100))
-            }
+        .onChange(of: conversation.messages) {
+            lastMessage = conversation.messages.last
         }
     }
 
-    func send(newMessage: Message) async {
+    private func send(newMessage: Message) async {
         let history = conversation.messages
 
         prompt = ""
@@ -78,7 +69,7 @@ struct ConversationView: View {
             for try await chunk in stream {
                 updateMessage(with: chunk)
             }
-
+            
             conversation.updated = Date()
             
         } catch {
@@ -90,6 +81,7 @@ struct ConversationView: View {
         if let index = conversation.messages
             .firstIndex(where: { $0.id == chunk.id }) {
             conversation.messages[index].text.append(chunk.text)
+            conversation.messages[index].date = Date()
 
         } else {
             conversation.messages.removeAll { $0.isLoading }
@@ -105,8 +97,8 @@ struct ConversationView: View {
         image = UIImage.fromBase64(newMessage.image)
     }
     
-    func fetchSummary() async {
-        guard conversation.summary.isEmpty else {
+    private func fetchSummary() async {
+        guard conversation.summary == nil else {
             return
         }
         
@@ -116,7 +108,7 @@ struct ConversationView: View {
             history: conversation.messages
         )
         
-        conversation.summary = summaryMessage?.text ?? Constants.Chat.noSummary
+        conversation.summary = summaryMessage?.text
     }
     
     private func saveConversation() async {

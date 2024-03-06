@@ -7,6 +7,7 @@
 
 import Foundation
 import OpenAISwift
+import SwiftUI
 
 struct ErrorItem: Identifiable {
     let id = UUID()
@@ -21,5 +22,14 @@ struct ErrorItem: Identifiable {
             title = Constants.Error.error
             message = error.localizedDescription
         }
+    }
+}
+
+extension Binding where Value == ErrorItem? {
+    var isSome: Binding<Bool> {
+        Binding<Bool>(
+            get: { wrappedValue != nil },
+            set: { if !$0 { wrappedValue = nil } }
+        )
     }
 }

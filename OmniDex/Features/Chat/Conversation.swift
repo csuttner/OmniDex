@@ -12,13 +12,13 @@ import Observation
     var id: String
     var messages: [Message]
     var updated: Date
-    var summary: String
+    var summary: String?
     
     init(
         id: String = UUID().uuidString,
         messages: [Message] = [Message](),
         updated: Date = Date(),
-        summary: String = ""
+        summary: String? = nil
     ) {
         self.id = id
         self.messages = messages

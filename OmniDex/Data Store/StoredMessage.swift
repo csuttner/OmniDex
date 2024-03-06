@@ -9,11 +9,13 @@ import Foundation
 import SwiftData
 
 @Model class StoredMessage {
-    let id: String
+    @Attribute(.unique) let id: String
     let date: Date
     let isUser: Bool
     var text: String
     var image: String?
+    
+    var conversation: StoredConversation?
     
     var message: Message {
         Message(

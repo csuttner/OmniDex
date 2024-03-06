@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConversationListView: View {
-    let dataStore: DataStore
+    let dataStore: ConversationStore
     let chatService: ChatService
 
     @State private var conversations = [Conversation]()
@@ -18,10 +18,13 @@ struct ConversationListView: View {
     var body: some View {
         NavigationStack(path: $path) {
             List(conversations) { conversation in
-                NavigationLink(value: conversation) {
+                Button {
+                    path.append(conversation)
+                } label: {
                     ConversationListRow(conversation: conversation)
                 }
             }
+            .listStyle(.plain)
             .navigationTitle(Constants.Chat.conversations)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -46,15 +49,7 @@ struct ConversationListView: View {
                 await loadStoredConversations()
             }
         }
-        .alert(item: $errorItem) { errorItem in
-            Alert(
-                title: Text(errorItem.title),
-                message: Text(errorItem.message),
-                dismissButton: .default(Text("OK")) {
-                    self.errorItem = nil
-                }
-            )
-        }
+        .alert(errorItem: $errorItem)
     }
     
     private func loadStoredConversations() async {

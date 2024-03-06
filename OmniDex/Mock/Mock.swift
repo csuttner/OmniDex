@@ -50,7 +50,7 @@ enum Mock {
             (14, MockConstants.glad, nil),
             (15, MockConstants.nearbyLocations, nil),
             (16, MockConstants.glad, nil),
-            (17, MockConstants.nearbyLocations, image: lamboImageString),
+            (17, MockConstants.longResponse, image: lamboImageString),
         ]
     }
 }

@@ -32,17 +32,23 @@ struct MessageView: View {
                     
                     MessageTextBubble(message: message)
                     
-                    UserPictureCircle(
-                        imageName: message.imageName,
-                        style: style
-                    )
+                    HStack {
+                        FlipGroup(if: message.isUser) {
+                            UserPictureCircle(
+                                imageName: message.imageName,
+                                style: style
+                            )
+                            
+                            Text(message.date.formatted(date: .omitted, time: .complete))
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                 }
                 
                 Spacer()
             }
         }
-        .padding(.horizontal, style.padding * 2)
-        .padding(.vertical, style.padding)
     }
 }
 
