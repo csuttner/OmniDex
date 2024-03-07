@@ -22,6 +22,7 @@ enum Constants {
     
     enum Common {
         static let new = "New"
+        static let delete = "Delete"
     }
 
     enum Color {

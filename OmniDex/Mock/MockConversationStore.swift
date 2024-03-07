@@ -1,5 +1,5 @@
 //
-//  MockDataStore.swift
+//  MockConversationStore.swift
 //  OmniDex
 //
 //  Created by Clay Suttner on 3/3/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-actor MockDataStore: ConversationStore {
+actor MockConversationStore: ConversationStore {
     func save(conversation: Conversation) async throws {}
     
     func fetchConversations() async throws -> [Conversation] {

@@ -9,14 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct ConversationView: View {
-    let chatService: ChatService
-    let dataStore: ConversationStore
+    let service: ChatService
+    let store: ConversationStore
     
     @Environment(Conversation.self) private var conversation
     
     @State private var prompt = ""
     @State private var image: UIImage?
-    @State private var errorItem: ErrorItem?
+    @State private var alertItem = AlertItem()
     @State private var newMessage: Message?
     @State private var lastMessage: Message?
 
@@ -43,7 +43,7 @@ struct ConversationView: View {
             await fetchSummary()
             await saveConversation()
         }
-        .alert(errorItem: $errorItem)
+        .alert(item: $alertItem)
         .navigationTitle(conversation.summary ?? "New Conversation")
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: conversation.messages) {
@@ -60,7 +60,7 @@ struct ConversationView: View {
         conversation.messages.append(Message(isUser: false, isLoading: true))
 
         do {
-            let stream = try await chatService.streamChatCompletion(
+            let stream = try await service.streamChatCompletion(
                 text: newMessage.text,
                 image: newMessage.image,
                 history: history
@@ -92,7 +92,7 @@ struct ConversationView: View {
     private func handle(error: Error, newMessage: Message) {
         conversation.messages.removeAll { $0.isLoading }
         conversation.messages.removeAll { $0 == newMessage }
-        errorItem = ErrorItem(error: error)
+        alertItem = AlertItem(error: error)
         prompt = newMessage.text
         image = UIImage.fromBase64(newMessage.image)
     }
@@ -102,7 +102,7 @@ struct ConversationView: View {
             return
         }
         
-        let summaryMessage = try? await chatService.fetchChatCompletion(
+        let summaryMessage = try? await service.fetchChatCompletion(
             text: Constants.Prompts.summary(wordCount: 4),
             image: nil,
             history: conversation.messages
@@ -113,7 +113,7 @@ struct ConversationView: View {
     
     private func saveConversation() async {
         do {
-            try await dataStore.save(conversation: conversation)
+            try await store.save(conversation: conversation)
         } catch {
             print(error)
         }
@@ -122,8 +122,8 @@ struct ConversationView: View {
 
 #Preview {
     ConversationView(
-        chatService: MockChatService(),
-        dataStore: MockDataStore()
+        service: MockChatService(),
+        store: MockConversationStore()
     )
     .environment(Mock.conversation)
 }

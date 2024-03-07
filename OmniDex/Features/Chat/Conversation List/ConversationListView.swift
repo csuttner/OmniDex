@@ -2,69 +2,39 @@
 //  ConversationListView.swift
 //  OmniDex
 //
-//  Created by Clay Suttner on 2/28/24.
+//  Created by Clay Suttner on 3/6/24.
 //
 
 import SwiftUI
 
 struct ConversationListView: View {
-    let dataStore: ConversationStore
-    let chatService: ChatService
-
-    @State private var conversations = [Conversation]()
-    @State private var path = [Conversation]()
-    @State private var errorItem: ErrorItem?
+    var results: [Conversation]
+    
+    @Binding var config: ConversationRootConfig
     
     var body: some View {
-        NavigationStack(path: $path) {
-            List(conversations) { conversation in
-                Button {
-                    path.append(conversation)
+        List(results, id: \.id, selection: $config.selection) { conversation in
+            Button {
+                config.path.append(conversation)
+            } label: {
+                ConversationListRow(conversation: conversation)
+            }
+            .swipeActions(edge: .trailing) {
+                Button() {
+                    config.deleteSelection = Set([conversation.id])
                 } label: {
-                    ConversationListRow(conversation: conversation)
+                    Label(Constants.Common.delete, systemImage: "trash")
                 }
-            }
-            .listStyle(.plain)
-            .navigationTitle(Constants.Chat.conversations)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        path.append(Conversation())
-                    } label: {
-                        HStack {
-                            Image(systemName: "plus")
-                            Text(Constants.Common.new)
-                        }
-                        .fontWeight(.semibold)
-                    }
-                }
-            }
-            .navigationDestination(for: Conversation.self) { conversation in
-                ConversationView(chatService: chatService, dataStore: dataStore)
-                    .environment(conversation)
+                .tint(.red)
             }
         }
-        .task(id: path) {
-            if path.isEmpty {
-                await loadStoredConversations()
-            }
-        }
-        .alert(errorItem: $errorItem)
-    }
-    
-    private func loadStoredConversations() async {
-        do {
-            conversations = try await dataStore.fetchConversations()
-
-        } catch {
-            errorItem = ErrorItem(error: error)
-        }
+        .listStyle(.plain)
     }
 }
 
 #Preview {
     ConversationListView(
-        dataStore: MockDataStore(),
-        chatService: MockChatService()
+        results: [Mock.conversation],
+        config: .constant(ConversationRootConfig())
     )
 }

@@ -9,27 +9,37 @@ import Foundation
 import OpenAISwift
 import SwiftUI
 
-struct ErrorItem: Identifiable {
-    let id = UUID()
-    let title: String
-    let message: String
+struct AlertItem {
+    var isPresented: Bool
+    var title: String
+    var message: String?
+    
+    init(
+        isPresented: Bool = false,
+        title: String = "",
+        message: String? = nil
+    ) {
+        self.isPresented = isPresented
+        self.title = title
+        self.message = message
+    }
 
     init(error: Error) {
+        isPresented = true
+        
         if let detailedError = error as? DetailedError {
             title = detailedError.detailedErrorType
             message = detailedError.detailedDescription
+
         } else {
             title = Constants.Error.error
             message = error.localizedDescription
         }
     }
-}
 
-extension Binding where Value == ErrorItem? {
-    var isSome: Binding<Bool> {
-        Binding<Bool>(
-            get: { wrappedValue != nil },
-            set: { if !$0 { wrappedValue = nil } }
-        )
+    mutating func reset() {
+        isPresented = false
+        title = ""
+        message = nil
     }
 }

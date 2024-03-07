@@ -13,8 +13,8 @@ struct OmniDexApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView(
-                dataStore: SwiftDataStore()!,
-                chatService: ServiceProvider.openAiChatService
+                store: SwiftDataStore()!,
+                service: ServiceProvider.openAiChatService
             )
         }
     }
