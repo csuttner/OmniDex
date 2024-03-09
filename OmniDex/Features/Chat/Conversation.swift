@@ -25,6 +25,14 @@ import Observation
         self.updated = updated
         self.summary = summary
     }
+    
+    func matches(_ query: String) -> Bool {
+        messages
+            .map { $0.text.lowercased() }
+            .joined()
+            .appending(summary ?? "")
+            .contains(query.lowercased())
+    }
 
     static func ==(lhs: Conversation, rhs: Conversation) -> Bool {
         lhs.id == rhs.id
