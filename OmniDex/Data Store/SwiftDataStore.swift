@@ -95,31 +95,15 @@ extension SwiftDataStore: ConversationStore {
         return try await fetch(descriptor).map(\.conversation)
     }
     
-    func delete(conversation: Conversation) async throws {
-        let conversationId = conversation.id
-        
-        let descriptor = FetchDescriptor<StoredConversation>(
-            predicate: #Predicate { $0.id == conversationId }
-        )
-        
-        if let existing = try await fetch(descriptor).first {
-            try await delete(item: existing)
-        }
-    }
-    
     func delete(conversations: [Conversation]) async throws {
-        let conversationIds = conversations.map(\.id)
+        let existing = try await fetch(FetchDescriptor<StoredConversation>())
+
+        let ids = conversations.map(\.id)
         
-        let descriptor = FetchDescriptor<StoredConversation>(
-            predicate: #Predicate { conversationIds.contains($0.id) }
-        )
-        
-        let existing = try await fetch(descriptor)
-        
-        try await delete(items: existing)
+        try await delete(items: existing.filter { ids.contains($0.id) })
     }
     
-    func makeStored(conversation: Conversation) -> StoredConversation {
+    private func makeStored(conversation: Conversation) -> StoredConversation {
         let stored = StoredConversation(
             id: conversation.id,
             updated: conversation.updated,
@@ -131,7 +115,7 @@ extension SwiftDataStore: ConversationStore {
         return stored
     }
     
-    func update(stored: StoredConversation, with conversation: Conversation) async throws {
+    private func update(stored: StoredConversation, with conversation: Conversation) async throws {
         let messageIds = stored.messages.map(\.id)
 
         let newMessages = conversation.messages

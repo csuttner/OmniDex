@@ -9,7 +9,6 @@ import Foundation
 
 protocol ConversationStore {
     func fetchConversations() async throws -> [Conversation]
-    func delete(conversation: Conversation) async throws
     func delete(conversations: [Conversation]) async throws
     func save(conversation: Conversation) async throws
 }
