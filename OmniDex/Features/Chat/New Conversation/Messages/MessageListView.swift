@@ -10,20 +10,29 @@ import SwiftUI
 struct MessageListView: View {
     @Environment(Conversation.self) private var conversation
     
-    @Binding var lastMessage: Message?
+    @State private var lastMessage: Message?
     
     var body: some View {
-        List(conversation.messages) { message in
-            MessageView(message: message)
-                .listRowSeparator(.hidden)
+        ScrollView {
+            LazyVStack {
+                ForEach(conversation.messages) { message in
+                    MessageView(message: message)
+                        .padding([.top, .leading, .trailing], 12)
+                }
+            }
+            .padding(.bottom, 60)
+            .scrollTargetLayout()
         }
-        .listStyle(.plain)
+        .defaultScrollAnchor(.bottom)
         .scrollPosition(id: $lastMessage, anchor: .bottom)
-        .padding(.bottom, 60)
+        .animation(.easeIn, value: conversation.messages)
+        .onChange(of: conversation.messages) {
+            lastMessage = conversation.messages.last
+        }
     }
 }
 
 #Preview {
-    MessageListView(lastMessage: .constant(nil))
+    MessageListView()
         .environment(Mock.conversation)
 }
