@@ -13,7 +13,7 @@ import SwiftData
     let date: Date
     let isUser: Bool
     var text: String
-    var image: String?
+    @Attribute(.externalStorage) var image: Data?
     
     var conversation: StoredConversation?
     
@@ -23,7 +23,7 @@ import SwiftData
             date: date,
             isUser: isUser,
             text: text,
-            image: image
+            image: image?.base64EncodedString()
         )
     }
     
@@ -32,6 +32,11 @@ import SwiftData
         self.date = message.date
         self.isUser = message.isUser
         self.text = message.text
-        self.image = message.image
+        
+        if let image = message.image {
+            self.image = Data(base64Encoded: image)
+        } else {
+            self.image = nil
+        }
     }
 }
