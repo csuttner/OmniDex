@@ -19,6 +19,8 @@ struct ConversationView: View {
     @State private var alertItem = AlertItem()
     @State private var newMessage: Message?
     @State private var lastMessage: Message?
+    
+    @FocusState private var textFocused: Bool
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -26,7 +28,8 @@ struct ConversationView: View {
 
             ConversationInputBar(
                 text: $prompt,
-                selectedImage: $image
+                selectedImage: $image,
+                textFocused: $textFocused
             ) {
                 newMessage = Message(
                     text: prompt,
@@ -46,6 +49,10 @@ struct ConversationView: View {
         .alert(item: $alertItem)
         .navigationTitle(conversation.summary ?? "New Conversation")
         .navigationBarTitleDisplayMode(.inline)
+        .contentShape(.rect)
+        .onTapGesture {
+            textFocused = false
+        }
         .onChange(of: conversation.messages) {
             lastMessage = conversation.messages.last
         }

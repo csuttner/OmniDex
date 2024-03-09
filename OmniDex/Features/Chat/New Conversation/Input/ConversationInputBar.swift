@@ -10,6 +10,8 @@ import SwiftUI
 struct ConversationInputBar: View {
     @Binding var text: String
     @Binding var selectedImage: UIImage?
+    
+    @FocusState.Binding var textFocused: Bool
 
     var onSubmit: (() -> Void)?
 
@@ -57,6 +59,7 @@ struct ConversationInputBar: View {
                         text: $text,
                         axis: .vertical
                     )
+                    .focused($textFocused)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 8)
                     
@@ -84,13 +87,15 @@ struct ConversationInputBar: View {
 #Preview {
     ConversationInputBar(
         text: .constant(MockConstants.nearbyLocations),
-        selectedImage: .constant(UIImage(named: "Lambo"))
+        selectedImage: .constant(UIImage(named: "Lambo")),
+        textFocused: FocusState().projectedValue
     )
 }
 
 #Preview {
     ConversationInputBar(
         text: .constant(MockConstants.glad),
-        selectedImage: .constant(nil)
+        selectedImage: .constant(nil),
+        textFocused: FocusState().projectedValue
     )
 }
