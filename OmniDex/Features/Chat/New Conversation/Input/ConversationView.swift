@@ -48,6 +48,7 @@ struct ConversationView: View {
         .alert(item: $alertItem)
         .navigationTitle(conversation.summary ?? "New Conversation")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.visible, for: .navigationBar)
         .toolbar(.hidden, for: .tabBar)
         .contentShape(.rect)
         .onTapGesture {
