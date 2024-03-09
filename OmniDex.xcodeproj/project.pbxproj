@@ -186,6 +186,7 @@
 		F347C7D82B8312C300DC2FF2 /* New Conversation */ = {
 			isa = PBXGroup;
 			children = (
+				F33E3A0F2B7DAD7700AD0642 /* ConversationView.swift */,
 				F3E31AC02B8BE54900BD6335 /* MessageChunk.swift */,
 				F307672A29F5C4AE00B93286 /* Message.swift */,
 				F3B3585E2B7985E100E2FA3F /* Input */,
@@ -297,10 +298,9 @@
 		F3B3585E2B7985E100E2FA3F /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				F33E3A0F2B7DAD7700AD0642 /* ConversationView.swift */,
+				F3B358582B7968DF00E2FA3F /* ConversationInputBar.swift */,
 				F3B358542B79590300E2FA3F /* ImagePickerButton.swift */,
 				F3B358562B795D4000E2FA3F /* ImagePreviewView.swift */,
-				F3B358582B7968DF00E2FA3F /* ConversationInputBar.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";

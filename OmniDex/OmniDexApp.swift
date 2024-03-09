@@ -12,10 +12,11 @@ struct OmniDexApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainTabView(
+            ConversationRootView(
                 store: SwiftDataStore()!,
                 service: ServiceProvider.openAiChatService
             )
+            .tint(Color(Constants.Color.interactive))
         }
     }
 }
