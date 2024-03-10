@@ -9,8 +9,8 @@ import Foundation
 import SwiftData
 
 @Model class StoredConversation {
-    @Attribute(.unique) let id: String
-    var updated: Date
+    @Attribute(.unique) let localID: String
+    var date: Date
     var summary: String?
     
     @Relationship(deleteRule: .cascade, inverse: \StoredMessage.conversation)
@@ -18,16 +18,16 @@ import SwiftData
 
     var conversation: Conversation {
         Conversation(
-            id: id,
+            id: localID,
             messages: messages.map(\.message).sorted { $0.date < $1.date },
-            updated: updated,
+            updated: date,
             summary: summary
         )
     }
     
-    init(id: String, updated: Date, summary: String? = nil, messages: [StoredMessage] = []) {
-        self.id = id
-        self.updated = updated
+    init(localID: String, date: Date, summary: String? = nil, messages: [StoredMessage] = []) {
+        self.localID = localID
+        self.date = date
         self.summary = summary
         self.messages = messages
     }

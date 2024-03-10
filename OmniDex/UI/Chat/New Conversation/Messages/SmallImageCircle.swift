@@ -26,8 +26,10 @@ struct SmallImageCircle: View {
                     .resizable()
             }
         }
+        .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
         .foregroundStyle(style.accentColor)
         .frame(width: style.minHeight, height: style.minHeight)
+        .clipped()
         .clipShape(Circle())
         .overlay(
             Circle()

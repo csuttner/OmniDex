@@ -74,7 +74,7 @@ extension SwiftDataStore: ConversationStore {
         let conversationId = conversation.id
         
         let descriptor = FetchDescriptor<StoredConversation>(
-            predicate: #Predicate { $0.id == conversationId }
+            predicate: #Predicate { $0.localID == conversationId }
         )
         
         if let existing = try await fetch(descriptor).first {
@@ -91,7 +91,7 @@ extension SwiftDataStore: ConversationStore {
     
     func fetchConversations() async throws -> [Conversation] {
         let descriptor = FetchDescriptor<StoredConversation>(
-            sortBy: [.init(\.updated, order: .reverse)]
+            sortBy: [.init(\.date, order: .reverse)]
         )
         
         return try await fetch(descriptor).map(\.conversation)
@@ -102,13 +102,13 @@ extension SwiftDataStore: ConversationStore {
 
         let ids = conversations.map(\.id)
         
-        try await delete(items: existing.filter { ids.contains($0.id) })
+        try await delete(items: existing.filter { ids.contains($0.localID) })
     }
     
     private func makeStored(conversation: Conversation) -> StoredConversation {
         let stored = StoredConversation(
-            id: conversation.id,
-            updated: conversation.updated,
+            localID: conversation.id,
+            date: conversation.updated,
             summary: conversation.summary
         )
         
@@ -118,14 +118,14 @@ extension SwiftDataStore: ConversationStore {
     }
     
     private func update(stored: StoredConversation, with conversation: Conversation) async throws {
-        let messageIds = stored.messages.map(\.id)
+        let messageIds = stored.messages.map(\.localID)
 
         let newMessages = conversation.messages
             .filter { !messageIds.contains($0.id) }
             .map(StoredMessage.init)
 
         stored.messages.append(contentsOf: newMessages)
-        stored.updated = conversation.updated
+        stored.date = conversation.updated
         stored.summary = conversation.summary
         
         try context.save()

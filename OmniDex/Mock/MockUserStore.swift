@@ -14,6 +14,6 @@ actor MockUserStore: UserStore {
     }
     
     func fetchUser() async throws -> User {
-        User(id: UUID().uuidString, image: UIImage(named: "Clay")?.pngData())
+        User(id: UUID().uuidString, image: UIImage(named: "Monkey")?.pngData())
     }
 }

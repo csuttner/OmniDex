@@ -33,20 +33,22 @@ struct EditProfileView: View {
                 if let selectedImage {
                     Image(uiImage: selectedImage)
                         .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 300, height: 300)
+                        .clipShape(.circle)
+                        .clipped()
                         .overlay(
                             Circle()
                                 .stroke(Color.accentColor, lineWidth: 6)
                         )
-                        .clipShape(.circle)
                     
                 } else {
                     Image(systemName: "person.circle")
                         .resizable()
+                        .frame(width: 300, height: 300)
                         .foregroundStyle(.gray.opacity(0.5))
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .aspectRatio(contentMode: .fit)
             .padding(.horizontal, 24)
             
             ImagePickerMenu(
@@ -65,23 +67,16 @@ struct EditProfileView: View {
         }
         .alert(item: $alertItem)
         .task {
-            await fetchUser()
-            loadUserInfo()
+            await loadUser()
         }
         .task(id: selectedImage) {
             await saveUser()
         }
     }
     
-    private func fetchUser() async {
-        do {
-            user = try await storeProvider.userStore.fetchUser()
-        } catch {
-            alertItem = AlertItem(error: error)
-        }
-    }
-    
-    private func loadUserInfo() {
+    private func loadUser() async {
+        user = try? await storeProvider.userStore.fetchUser()
+        
         if
             let user,
             let imageData = user.image,

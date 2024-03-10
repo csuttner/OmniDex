@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model class StoredMessage {
-    @Attribute(.unique) let id: String
+    @Attribute(.unique) let localID: String
     let date: Date
     let isUser: Bool
     var text: String
@@ -19,7 +19,7 @@ import SwiftData
     
     var message: Message {
         Message(
-            id: id,
+            id: localID,
             date: date,
             isUser: isUser,
             text: text,
@@ -28,7 +28,7 @@ import SwiftData
     }
     
     init(message: Message) {
-        self.id = message.id
+        self.localID = message.id
         self.date = message.date
         self.isUser = message.isUser
         self.text = message.text
