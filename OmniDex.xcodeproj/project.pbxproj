@@ -38,7 +38,7 @@
 		F380E6382B784B7E007456D3 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6372B784B7E007456D3 /* ChatService.swift */; };
 		F380E6402B7859C0007456D3 /* MockChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E63F2B7859C0007456D3 /* MockChatService.swift */; };
 		F380E6442B785C53007456D3 /* MockConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6432B785C53007456D3 /* MockConstants.swift */; };
-		F380E6462B78697F007456D3 /* UserPictureCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6452B78697F007456D3 /* UserPictureCircle.swift */; };
+		F380E6462B78697F007456D3 /* SmallImageCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6452B78697F007456D3 /* SmallImageCircle.swift */; };
 		F380E6482B786A70007456D3 /* MessageTextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6472B786A70007456D3 /* MessageTextBubble.swift */; };
 		F38FE4402B8D75440043B3BB /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE43F2B8D75440043B3BB /* MainTabView.swift */; };
 		F38FE4452B8D766F0043B3BB /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE4442B8D766F0043B3BB /* TranslateView.swift */; };
@@ -48,7 +48,6 @@
 		F39F04592B90243600E620CE /* ConversationListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F04582B90243600E620CE /* ConversationListRow.swift */; };
 		F3AC33862B98093700B27452 /* AlertItemViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AC33852B98093700B27452 /* AlertItemViewModifier.swift */; };
 		F3B358512B79571D00E2FA3F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358502B79571D00E2FA3F /* ImagePicker.swift */; };
-		F3B358552B79590300E2FA3F /* ImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358542B79590300E2FA3F /* ImagePickerButton.swift */; };
 		F3B358572B795D4000E2FA3F /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358562B795D4000E2FA3F /* ImagePreviewView.swift */; };
 		F3B358592B7968DF00E2FA3F /* ConversationInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B358582B7968DF00E2FA3F /* ConversationInputBar.swift */; };
 		F3B3585B2B79778600E2FA3F /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3585A2B79778600E2FA3F /* UIImage+Resize.swift */; };
@@ -108,7 +107,7 @@
 		F380E6372B784B7E007456D3 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		F380E63F2B7859C0007456D3 /* MockChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatService.swift; sourceTree = "<group>"; };
 		F380E6432B785C53007456D3 /* MockConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConstants.swift; sourceTree = "<group>"; };
-		F380E6452B78697F007456D3 /* UserPictureCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPictureCircle.swift; sourceTree = "<group>"; };
+		F380E6452B78697F007456D3 /* SmallImageCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallImageCircle.swift; sourceTree = "<group>"; };
 		F380E6472B786A70007456D3 /* MessageTextBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextBubble.swift; sourceTree = "<group>"; };
 		F38FE43F2B8D75440043B3BB /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		F38FE4442B8D766F0043B3BB /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
@@ -118,7 +117,6 @@
 		F39F04582B90243600E620CE /* ConversationListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListRow.swift; sourceTree = "<group>"; };
 		F3AC33852B98093700B27452 /* AlertItemViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItemViewModifier.swift; sourceTree = "<group>"; };
 		F3B358502B79571D00E2FA3F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		F3B358542B79590300E2FA3F /* ImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerButton.swift; sourceTree = "<group>"; };
 		F3B358562B795D4000E2FA3F /* ImagePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewView.swift; sourceTree = "<group>"; };
 		F3B358582B7968DF00E2FA3F /* ConversationInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationInputBar.swift; sourceTree = "<group>"; };
 		F3B3585A2B79778600E2FA3F /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
@@ -352,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				F3B358582B7968DF00E2FA3F /* ConversationInputBar.swift */,
-				F3B358542B79590300E2FA3F /* ImagePickerButton.swift */,
 				F3B358562B795D4000E2FA3F /* ImagePreviewView.swift */,
 			);
 			path = Input;
@@ -366,7 +363,7 @@
 				F3B358602B798A5C00E2FA3F /* MessageStyle.swift */,
 				F380E6472B786A70007456D3 /* MessageTextBubble.swift */,
 				F3B3585C2B79831400E2FA3F /* MessageImageBubble.swift */,
-				F380E6452B78697F007456D3 /* UserPictureCircle.swift */,
+				F380E6452B78697F007456D3 /* SmallImageCircle.swift */,
 				F3257E3329F5A7AB00EC757F /* EllipsesLoadingView.swift */,
 				F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */,
 			);
@@ -479,7 +476,7 @@
 				F3B85DBE2B798F0800B2564C /* UIImage+Base64.swift in Sources */,
 				F33E3A0E2B7DAB3C00AD0642 /* Conversation.swift in Sources */,
 				F380E6382B784B7E007456D3 /* ChatService.swift in Sources */,
-				F380E6462B78697F007456D3 /* UserPictureCircle.swift in Sources */,
+				F380E6462B78697F007456D3 /* SmallImageCircle.swift in Sources */,
 				F3B358592B7968DF00E2FA3F /* ConversationInputBar.swift in Sources */,
 				F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */,
 				F3B3585B2B79778600E2FA3F /* UIImage+Resize.swift in Sources */,
@@ -498,7 +495,6 @@
 				F3BD5E532B789CE400D63E0F /* FlipGroup.swift in Sources */,
 				F36C95262B951EBB007DCAB1 /* Mock.swift in Sources */,
 				F3257E3429F5A7AB00EC757F /* EllipsesLoadingView.swift in Sources */,
-				F3B358552B79590300E2FA3F /* ImagePickerButton.swift in Sources */,
 				F3257E0B29F58DB100EC757F /* OmniDexApp.swift in Sources */,
 				F3257E3229F5A5C500EC757F /* MessageView.swift in Sources */,
 			);

@@ -16,10 +16,6 @@ import Observation
     var image: String?
     var isLoading: Bool
     
-    var imageName: String {
-        isUser ? "Clay" : "Robot"
-    }
-    
     init(
         id: String = UUID().uuidString,
         date: Date = Date(),

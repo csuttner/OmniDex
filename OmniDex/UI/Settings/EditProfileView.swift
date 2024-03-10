@@ -15,7 +15,6 @@ struct EditProfileView: View {
     @State private var user: User?
     @State private var alertItem = AlertItem()
     @State private var selectedImage: UIImage?
-    @State private var name: String = ""
     @State private var willUseCamera = true
     
     var body: some View {
@@ -51,8 +50,7 @@ struct EditProfileView: View {
             .padding(.horizontal, 24)
             
             ImagePickerMenu(
-                selectedImage: $selectedImage,
-                willUseCamera: $willUseCamera
+                selectedImage: $selectedImage
             ) {
                 Text(Constants.Common.edit)
                     .fontWeight(.medium)
@@ -63,9 +61,7 @@ struct EditProfileView: View {
                     .clipShape(.capsule)
             }
             
-            List {
-                TextField(Constants.Profile.name, text: $name)
-            }
+            Spacer()
         }
         .alert(item: $alertItem)
         .task {
@@ -86,8 +82,6 @@ struct EditProfileView: View {
     }
     
     private func loadUserInfo() {
-        name = user?.name ?? ""
-
         if
             let user,
             let imageData = user.image,
@@ -99,7 +93,7 @@ struct EditProfileView: View {
     private func saveUser() async {
         do {
             let user = user ?? User()
-            user.name = name
+
             user.image = selectedImage?.pngData()
             
             try await storeProvider.userStore.save(user: user)

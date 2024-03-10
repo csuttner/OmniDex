@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MessageView: View {
+    let userImage: UIImage?
     var message: Message
 
     var style: MessageStyle {
@@ -34,10 +35,7 @@ struct MessageView: View {
                     
                     HStack {
                         FlipGroup(if: message.isUser) {
-                            UserPictureCircle(
-                                imageName: message.imageName,
-                                style: style
-                            )
+                            SmallImageCircle(userImage: userImage, style: style)
                             
                             Text(message.date.formatted(date: .omitted, time: .complete))
                                 .font(.caption)
@@ -53,5 +51,8 @@ struct MessageView: View {
 }
 
 #Preview {
-    MessageView(message: Mock.messageWithImage)
+    MessageView(
+        userImage: UIImage(named: "Clay")!,
+        message: Mock.messageWithImage
+    )
 }

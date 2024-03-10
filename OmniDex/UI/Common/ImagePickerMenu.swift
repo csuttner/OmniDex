@@ -7,37 +7,42 @@
 
 import SwiftUI
 
+enum ImageSource {
+    case camera, library
+}
+
 struct ImagePickerMenu<Content: View>: View {
     @Binding var selectedImage: UIImage?
-    @Binding var willUseCamera: Bool
     
     let label: () -> Content
     
-    @State private var isImagePickerPresented = false
+    @State private var imageSource: ImageSource?
+    @State private var isPresented = false
     
     var body: some View {
         Menu {
             Button {
-                willUseCamera = false
-                isImagePickerPresented.toggle()
-            } label: {
-                Label(Constants.Chat.library, systemImage: "photo")
-            }
-            
-            Button {
-                willUseCamera = true
-                isImagePickerPresented.toggle()
+                imageSource = .camera
             } label: {
                 Label(Constants.Chat.camera, systemImage: "camera")
+            }
+
+            Button {
+                imageSource = .library
+            } label: {
+                Label(Constants.Chat.library, systemImage: "photo")
             }
             
         } label: {
             label()
         }
-        .sheet(isPresented: $isImagePickerPresented) {
+        .onChange(of: imageSource) {
+            isPresented = true
+        }
+        .sheet(isPresented: $isPresented) {
             ImagePicker(
                 selectedImage: $selectedImage,
-                willUseCamera: willUseCamera
+                imageSource: imageSource
             )
         }
     }

@@ -14,8 +14,11 @@ struct MessageStyle {
     var padding: CGFloat = 12
     let accentColor: Color
     let clipShape: UnevenRoundedRectangle
+    let isUser: Bool
 
     init(isUser: Bool) {
+        self.isUser = isUser
+
         accentColor = isUser
             ? Color(Constants.Color.interactive)
             : .gray

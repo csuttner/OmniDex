@@ -6,20 +6,22 @@
 //
 
 import Foundation
-
 import SwiftUI
-
-private extension CGSize {
-    static let lowResSize = CGSize(width: 512, height: 512)
-}
+import PhotosUI
 
 struct ImagePicker: UIViewControllerRepresentable {
+    @Environment(\.dismiss) private var dismiss
+    
     @Binding var selectedImage: UIImage?
-    let willUseCamera: Bool
+    
+    let imageSource: ImageSource?
 
-    @Environment(\.presentationMode) var presentationMode
+    class Coordinator:
+        NSObject,
+        UINavigationControllerDelegate,
+        UIImagePickerControllerDelegate,
+        PHPickerViewControllerDelegate {
 
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let parent: ImagePicker
 
         init(parent: ImagePicker) {
@@ -32,16 +34,31 @@ struct ImagePicker: UIViewControllerRepresentable {
         ) {
             if
                 let image = info[.originalImage] as? UIImage,
-                let resizedImage = image.resize(to: .lowResSize)
-            {
+                let resizedImage = image.resize(to: .lowResSize) {
                 parent.selectedImage = resizedImage
             }
 
-            parent.presentationMode.wrappedValue.dismiss()
+            parent.dismiss()
         }
 
         func imagePickerControllerDidCancel(_: UIImagePickerController) {
-            parent.presentationMode.wrappedValue.dismiss()
+            parent.dismiss()
+        }
+        
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            guard
+                let provider = results.first?.itemProvider,
+                provider.canLoadObject(ofClass: UIImage.self) else {
+                parent.dismiss()
+                return
+            }
+
+            provider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
+                DispatchQueue.main.async {
+                    self?.parent.selectedImage = image as? UIImage
+                    self?.parent.dismiss()
+                }
+            }
         }
     }
 
@@ -51,19 +68,26 @@ struct ImagePicker: UIViewControllerRepresentable {
 
     func makeUIViewController(
         context: UIViewControllerRepresentableContext<ImagePicker>
-    ) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.delegate = context.coordinator
-        
-        if willUseCamera {
+    ) -> UIViewController {
+        if imageSource == .camera {
+            let picker = UIImagePickerController()
+            picker.delegate = context.coordinator
             picker.sourceType = .camera
+            return picker
+            
+        } else {
+            let picker = PHPickerViewController(configuration: PHPickerConfiguration())
+            picker.delegate = context.coordinator
+            return picker
         }
-
-        return picker
     }
 
     func updateUIViewController(
-        _: UIImagePickerController,
+        _: UIViewController,
         context _: UIViewControllerRepresentableContext<ImagePicker>
     ) {}
+}
+
+private extension CGSize {
+    static let lowResSize = CGSize(width: 512, height: 512)
 }

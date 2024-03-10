@@ -37,11 +37,12 @@ struct ConversationInputBar: View {
 
     var body: some View {
         HStack(alignment: .bottom, spacing: stackSpacing) {
-            ImagePickerMenu(
-                selectedImage: $selectedImage,
-                willUseCamera: $willUseCamera
-            ) {
-                ImagePickerCircle(willUseCamera: $willUseCamera)
+            ImagePickerMenu(selectedImage: $selectedImage) {
+                Image(systemName: "photo.circle.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(Color(Constants.Color.interactive))
+                    .frame(width: 36, height: 36)
                     .padding(.bottom, 1)
             }
             
