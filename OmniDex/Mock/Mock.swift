@@ -8,6 +8,14 @@
 import UIKit
 
 enum Mock {
+    
+    static let serviceProvider = ServiceProvider(chatService: MockChatService())
+    
+    static let storeProvider = StoreProvider(
+        conversationStore: MockConversationStore(),
+        userStore: MockUserStore()
+    )
+    
     static var conversation: Conversation {
         let messages = messageContent.map { index, text, image in
             Message(

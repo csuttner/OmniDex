@@ -5,12 +5,14 @@
 //  Created by Clay Suttner on 3/3/24.
 //
 
-import OpenAISwift
+import Foundation
+import Observation
 
-enum ServiceProvider {
-    static let openAiChatService: ChatService = {
-        let service = OpenAISwift.ChatService()
-        OpenAISwift.Auth.apiKey = Secrets.apiKey
-        return service
-    }()
+@Observable class ServiceProvider {
+    let chatService: ChatService
+    
+    init(chatService: ChatService) {
+        self.chatService = chatService
+    }
 }
+

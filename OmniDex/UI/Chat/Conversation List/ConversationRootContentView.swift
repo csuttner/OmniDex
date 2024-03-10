@@ -24,8 +24,8 @@ struct ConversationRootContentView: View {
         VStack {
             if conversations.isEmpty {
                 ContentUnavailableView(
-                    "Tap new to start a conversation",
-                    systemImage: "plus.message"
+                    "You have no saved conversations",
+                    systemImage: "ellipsis.message"
                 )
                 .symbolRenderingMode(.multicolor)
                 

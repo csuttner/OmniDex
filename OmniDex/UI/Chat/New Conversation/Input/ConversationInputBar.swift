@@ -14,6 +14,8 @@ struct ConversationInputBar: View {
     @FocusState.Binding var textFocused: Bool
 
     var onSubmit: (() -> Void)?
+    
+    @State private var willUseCamera = true
 
     private let buttonDimension: CGFloat = 36
     private let stackSpacing: CGFloat = 6
@@ -25,18 +27,23 @@ struct ConversationInputBar: View {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .strokeBorder(.gray)
         } else {
-            MaskedCornerShape(
-                cornerRadius: cornerRadius,
-                corners: [.bottomLeft, .bottomRight]
-            )
+            UnevenRoundedRectangle(cornerRadii: .init(
+                bottomLeading: cornerRadius,
+                bottomTrailing: cornerRadius
+            ))
             .stroke(.gray)
         }
     }
 
     var body: some View {
         HStack(alignment: .bottom, spacing: stackSpacing) {
-            ImagePickerButton(selectedImage: $selectedImage)
-                .padding(.bottom, 1)
+            ImagePickerMenu(
+                selectedImage: $selectedImage,
+                willUseCamera: $willUseCamera
+            ) {
+                ImagePickerCircle(willUseCamera: $willUseCamera)
+                    .padding(.bottom, 1)
+            }
             
             VStack(alignment: .leading, spacing: 0) {
                 if selectedImage != nil {
@@ -45,10 +52,10 @@ struct ConversationInputBar: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(
-                            MaskedCornerShape(
-                                cornerRadius: cornerRadius,
-                                corners: [.topLeft, .topRight]
-                            )
+                            UnevenRoundedRectangle(cornerRadii: .init(
+                                topLeading: cornerRadius,
+                                topTrailing: cornerRadius
+                            ))
                             .stroke(.gray)
                         )
                 }

@@ -21,6 +21,13 @@ struct UserPictureCircle: View {
                 Circle()
                     .stroke(style.accentColor, lineWidth: style.lineWidth)
             )
+            .task {
+                await fetchUser()
+            }
+    }
+    
+    private func fetchUser() async {
+        
     }
 }
 

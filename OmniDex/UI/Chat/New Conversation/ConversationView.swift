@@ -9,9 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct ConversationView: View {
-    let service: ChatService
-    let store: ConversationStore
-    
+    @Environment(StoreProvider.self) private var storeProvider
+    @Environment(ServiceProvider.self) private var serviceProvider
     @Environment(Conversation.self) private var conversation
     
     @State private var prompt = ""
@@ -46,9 +45,9 @@ struct ConversationView: View {
             await saveConversation()
         }
         .alert(item: $alertItem)
+        .toolbarBackground(.visible, for: .navigationBar)
         .navigationTitle(conversation.summary ?? "New Conversation")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(.visible, for: .navigationBar)
         .contentShape(.rect)
         .onTapGesture {
             textFocused = false
@@ -64,11 +63,12 @@ struct ConversationView: View {
         conversation.messages.append(Message(isUser: false, isLoading: true))
 
         do {
-            let stream = try await service.streamChatCompletion(
-                text: newMessage.text,
-                image: newMessage.image,
-                history: history
-            )
+            let stream = try await serviceProvider.chatService
+                .streamChatCompletion(
+                    text: newMessage.text,
+                    image: newMessage.image,
+                    history: history
+                )
             
             for try await chunk in stream {
                 updateMessage(with: chunk)
@@ -106,18 +106,20 @@ struct ConversationView: View {
             return
         }
         
-        let summaryMessage = try? await service.fetchChatCompletion(
-            text: Constants.Prompts.summary(wordCount: 4),
-            image: nil,
-            history: conversation.messages
-        )
+        let summaryMessage = try? await serviceProvider.chatService
+            .fetchChatCompletion(
+                text: Constants.Prompts.summary(wordCount: 4),
+                image: nil,
+                history: conversation.messages
+            )
         
         conversation.summary = summaryMessage?.text
     }
     
     private func saveConversation() async {
         do {
-            try await store.save(conversation: conversation)
+            try await storeProvider.conversationStore
+                .save(conversation: conversation)
         } catch {
             print(error)
         }
@@ -125,10 +127,9 @@ struct ConversationView: View {
 }
 
 #Preview {
-    ConversationView(
-        service: MockChatService(),
-        store: MockConversationStore()
-    )
-    .environment(Mock.conversation)
+    ConversationView()
+        .environment(Mock.conversation)
+        .environment(Mock.serviceProvider)
+        .environment(Mock.storeProvider)
 }
 

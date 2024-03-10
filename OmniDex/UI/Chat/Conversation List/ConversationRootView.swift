@@ -12,6 +12,7 @@ struct ConversationRootConfig {
     var deleteSelection = Set<String>()
     var editMode = EditMode.inactive
     var path = [Conversation]()
+    var editProfilePresented = false
     
     mutating func resetSelection() {
         selection.removeAll()
@@ -20,9 +21,8 @@ struct ConversationRootConfig {
 }
 
 struct ConversationRootView: View {
-    let store: ConversationStore
-    let service: ChatService
-
+    @Environment(StoreProvider.self) private var storeProvider
+    
     @State private var conversations = [Conversation]()
     @State private var config = ConversationRootConfig()
     @State private var alertItem = AlertItem()
@@ -33,15 +33,14 @@ struct ConversationRootView: View {
                 conversations: conversations,
                 config: $config
             )
-            .navigationTitle(Constants.Chat.conversations)
             .toolbar {
-                if !conversations.isEmpty {
-                    ToolbarItem(placement: .topBarLeading) {
-                        EditButton()
+                EditToolbarItem(config: $config)
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("", systemImage: "square.and.pencil") {
+                        config.path.append(Conversation())
                     }
                 }
-                
-                NewConversationToolbarItem(path: $config.path)
                 
                 if !config.selection.isEmpty {
                     ToolbarItem(placement: .bottomBar) {
@@ -57,36 +56,42 @@ struct ConversationRootView: View {
                     config.editMode = .inactive
                 }
             }
+            .navigationTitle(Constants.Chat.conversations)
             .navigationDestination(for: Conversation.self) { conversation in
-                ConversationView(service: service, store: store)
+                ConversationView()
                     .environment(conversation)
             }
-        }
-        .task(id: config.path) {
-            if config.path.isEmpty {
+            .fullScreenCover(isPresented: $config.editProfilePresented) {
+                EditProfileView()
+            }
+            .alert(item: $alertItem)
+            .task(id: config.path) {
+                if config.path.isEmpty {
+                    await loadStoredConversations()
+                }
+            }
+            .task(id: config.deleteSelection) {
+                guard !config.deleteSelection.isEmpty else {
+                    return
+                }
+                
+                let toBeDeleted = conversations.filter {
+                    config.deleteSelection.contains($0.id)
+                }
+                
+                await delete(conversations: toBeDeleted)
+                
+                config.resetSelection()
+                
                 await loadStoredConversations()
             }
-        }
-        .task(id: config.deleteSelection) {
-            guard !config.deleteSelection.isEmpty else {
-                return
-            }
-            
-            let toBeDeleted = conversations.filter {
-                config.deleteSelection.contains($0.id)
-            }
-            
-            await delete(conversations: toBeDeleted)
-            
-            config.resetSelection()
-            
-            await loadStoredConversations()
         }
     }
     
     private func loadStoredConversations() async {
         do {
-            conversations = try await store.fetchConversations()
+            conversations = try await storeProvider
+                .conversationStore.fetchConversations()
 
         } catch {
             alertItem = AlertItem(error: error)
@@ -95,7 +100,8 @@ struct ConversationRootView: View {
     
     private func delete(conversations: [Conversation]) async {
         do {
-            try await store.delete(conversations: conversations)
+            try await storeProvider.conversationStore
+                .delete(conversations: conversations)
             
         } catch {
             alertItem = AlertItem(error: error)
@@ -104,8 +110,6 @@ struct ConversationRootView: View {
 }
 
 #Preview {
-    ConversationRootView(
-        store: MockConversationStore(),
-        service: MockChatService()
-    )
+    ConversationRootView()
+        .environment(Mock.storeProvider)
 }

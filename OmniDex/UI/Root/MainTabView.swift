@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct MainTabView: View {
-    let store: ConversationStore
-    let service: ChatService
-    
     var body: some View {
         TabView {
-            ConversationRootView(store: store, service: service)
+            ConversationRootView()
                 .tabItem {
                     Label(Constants.Tabs.chat, systemImage: "ellipsis.message")
                 }
@@ -36,3 +33,4 @@ struct MainTabView: View {
         .tint(Color(Constants.Color.interactive))
     }
 }
+

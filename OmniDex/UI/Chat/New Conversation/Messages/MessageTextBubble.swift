@@ -28,15 +28,8 @@ struct MessageTextBubble: View {
         .frame(minHeight: style.minHeight)
         .padding(.vertical, style.padding / 2)
         .padding(.horizontal, style.padding)
-        .background(
-            MaskedCornerShape(cornerRadius: style.cornerRadius, isUser: message.isUser)
-                .foregroundColor(style.accentColor)
-                .opacity(0.5)
-        )
-        .overlay(
-            MaskedCornerShape(cornerRadius: style.cornerRadius, isUser: message.isUser)
-                .stroke(style.accentColor, lineWidth: style.lineWidth)
-        )
+        .background(style.accentColor)
+        .clipShape(style.clipShape)
         .onChange(of: message.text) {
             UIImpactFeedbackGenerator().impactOccurred()
         }

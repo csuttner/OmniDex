@@ -12,7 +12,7 @@ actor SwiftDataStore {
 
     init?() {
         if let container = try? ModelContainer(
-            for: StoredConversation.self,
+            for: StoredConversation.self, StoredUser.self,
             configurations: ModelConfiguration()
         ) {
             self.context = ModelContext(container)
@@ -66,6 +66,8 @@ actor SwiftDataStore {
         }
     }
 }
+
+// MARK: Conversation Store
 
 extension SwiftDataStore: ConversationStore {
     func save(conversation: Conversation) async throws {
@@ -127,5 +129,41 @@ extension SwiftDataStore: ConversationStore {
         stored.summary = conversation.summary
         
         try context.save()
+    }
+}
+
+// MARK: User Store
+
+extension SwiftDataStore: UserStore {
+    func save(user: User) async throws {
+        let descriptor = FetchDescriptor<StoredUser>()
+        
+        if let existing = try await fetch(descriptor).first {
+            existing.image = user.image
+            
+            try context.save()
+            
+            print("updated user:", existing.id)
+            
+        } else {
+            try await store(item: makeStored(user: user))
+            
+            print("stored user:", user.id)
+        }
+    }
+    
+    func fetchUser() async throws -> User {
+        let descriptor = FetchDescriptor<StoredUser>()
+
+        if let existing = try await fetch(descriptor).first {
+            return existing.user
+
+        } else {
+            throw StoreError.noUserFound
+        }
+    }
+    
+    private func makeStored(user: User) -> StoredUser {
+        StoredUser(id: user.id, name: user.name, image: user.image)
     }
 }
