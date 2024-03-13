@@ -27,6 +27,9 @@
 		F3257E3629F5B10F00EC757F /* PulsingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */; };
 		F32A5EBC2B9541040037546F /* ConversationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A5EBB2B9541040037546F /* ConversationStore.swift */; };
 		F33E3A0E2B7DAB3C00AD0642 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E3A0D2B7DAB3C00AD0642 /* Conversation.swift */; };
+		F34550042BA13BA600FCD399 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34550032BA13BA600FCD399 /* TabBar.swift */; };
+		F34550062BA143FB00FCD399 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34550052BA143FB00FCD399 /* Tab.swift */; };
+		F34550082BA1440F00FCD399 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34550072BA1440F00FCD399 /* TabItem.swift */; };
 		F356360029F5DB640099CC30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35635FF29F5DB640099CC30 /* Constants.swift */; };
 		F36C95002B951322007DCAB1 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C94FF2B951322007DCAB1 /* ServiceProvider.swift */; };
 		F36C95262B951EBB007DCAB1 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C95252B951EBB007DCAB1 /* Mock.swift */; };
@@ -40,7 +43,7 @@
 		F380E6442B785C53007456D3 /* MockConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6432B785C53007456D3 /* MockConstants.swift */; };
 		F380E6462B78697F007456D3 /* SmallImageCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6452B78697F007456D3 /* SmallImageCircle.swift */; };
 		F380E6482B786A70007456D3 /* MessageTextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E6472B786A70007456D3 /* MessageTextBubble.swift */; };
-		F38FE4402B8D75440043B3BB /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE43F2B8D75440043B3BB /* MainTabView.swift */; };
+		F38FE4402B8D75440043B3BB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE43F2B8D75440043B3BB /* RootView.swift */; };
 		F38FE4452B8D766F0043B3BB /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE4442B8D766F0043B3BB /* TranslateView.swift */; };
 		F38FE4472B8D76810043B3BB /* ImagineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE4462B8D76810043B3BB /* ImagineView.swift */; };
 		F38FE4492B8D76B00043B3BB /* SummarizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FE4482B8D76B00043B3BB /* SummarizeView.swift */; };
@@ -97,6 +100,9 @@
 		F3257E3529F5B10F00EC757F /* PulsingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircleView.swift; sourceTree = "<group>"; };
 		F32A5EBB2B9541040037546F /* ConversationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationStore.swift; sourceTree = "<group>"; };
 		F33E3A0D2B7DAB3C00AD0642 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		F34550032BA13BA600FCD399 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		F34550052BA143FB00FCD399 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		F34550072BA1440F00FCD399 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		F35635FF29F5DB640099CC30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F36C94FF2B951322007DCAB1 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		F36C95252B951EBB007DCAB1 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
@@ -109,7 +115,7 @@
 		F380E6432B785C53007456D3 /* MockConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConstants.swift; sourceTree = "<group>"; };
 		F380E6452B78697F007456D3 /* SmallImageCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallImageCircle.swift; sourceTree = "<group>"; };
 		F380E6472B786A70007456D3 /* MessageTextBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextBubble.swift; sourceTree = "<group>"; };
-		F38FE43F2B8D75440043B3BB /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		F38FE43F2B8D75440043B3BB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		F38FE4442B8D766F0043B3BB /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
 		F38FE4462B8D76810043B3BB /* ImagineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineView.swift; sourceTree = "<group>"; };
 		F38FE4482B8D76B00043B3BB /* SummarizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummarizeView.swift; sourceTree = "<group>"; };
@@ -305,7 +311,10 @@
 		F38FE43E2B8D74BD0043B3BB /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				F38FE43F2B8D75440043B3BB /* MainTabView.swift */,
+				F38FE43F2B8D75440043B3BB /* RootView.swift */,
+				F34550032BA13BA600FCD399 /* TabBar.swift */,
+				F34550072BA1440F00FCD399 /* TabItem.swift */,
+				F34550052BA143FB00FCD399 /* Tab.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -454,6 +463,8 @@
 				F39F04592B90243600E620CE /* ConversationListRow.swift in Sources */,
 				F3AC33862B98093700B27452 /* AlertItemViewModifier.swift in Sources */,
 				F380E6442B785C53007456D3 /* MockConstants.swift in Sources */,
+				F34550062BA143FB00FCD399 /* Tab.swift in Sources */,
+				F34550082BA1440F00FCD399 /* TabItem.swift in Sources */,
 				F304FD252B9D24EF0069CD25 /* StoredUser.swift in Sources */,
 				F3F054742B9586C200FFFFA1 /* MockConversationStore.swift in Sources */,
 				F3B358512B79571D00E2FA3F /* ImagePicker.swift in Sources */,
@@ -470,7 +481,8 @@
 				F36C95282B953BF9007DCAB1 /* StoredConversation.swift in Sources */,
 				F304FD2B2B9D26D60069CD25 /* User.swift in Sources */,
 				F3B358612B798A5C00E2FA3F /* MessageStyle.swift in Sources */,
-				F38FE4402B8D75440043B3BB /* MainTabView.swift in Sources */,
+				F38FE4402B8D75440043B3BB /* RootView.swift in Sources */,
+				F34550042BA13BA600FCD399 /* TabBar.swift in Sources */,
 				F304FD332B9D31790069CD25 /* MockUserStore.swift in Sources */,
 				F3B359952B9963E000F8902F /* ConversationListView.swift in Sources */,
 				F3B85DBE2B798F0800B2564C /* UIImage+Base64.swift in Sources */,

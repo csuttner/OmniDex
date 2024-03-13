@@ -27,7 +27,7 @@ struct OmniDexApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ConversationRootView()
+            RootView()
                 .environment(serviceProvider)
                 .environment(storeProvider)
         }

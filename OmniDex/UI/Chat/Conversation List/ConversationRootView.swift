@@ -23,16 +23,22 @@ struct ConversationRootConfig {
 struct ConversationRootView: View {
     @Environment(StoreProvider.self) private var storeProvider
     
+    @Binding var tab: Tab
+    
     @State private var conversations = [Conversation]()
     @State private var config = ConversationRootConfig()
     @State private var alertItem = AlertItem()
     
     var body: some View {
         NavigationStack(path: $config.path) {
-            ConversationRootContentView(
-                conversations: conversations,
-                config: $config
-            )
+            VStack {
+                ConversationRootContentView(
+                    conversations: conversations,
+                    config: $config
+                )
+                
+                TabBar(tab: $tab)
+            }
             .toolbar {
                 EditToolbarItem(config: $config)
                 
@@ -110,6 +116,6 @@ struct ConversationRootView: View {
 }
 
 #Preview {
-    ConversationRootView()
+    ConversationRootView(tab: .constant(.chat))
         .environment(Mock.storeProvider)
 }

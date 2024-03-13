@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct ImagineView: View {
+    @Binding var tab: Tab
+    
     var body: some View {
-        Text(Constants.Tabs.imagine)
+        VStack {
+            Spacer()
+            
+            Text(Constants.Tabs.imagine)
+            
+            Spacer()
+            
+            TabBar(tab: $tab)
+        }
     }
 }
 
 #Preview {
-    ImagineView()
+    ImagineView(tab: .constant(.imagine))
 }
