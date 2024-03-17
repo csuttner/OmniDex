@@ -1,0 +1,15 @@
+{
+  "originHash" : "da7cece3bea0fadbb2a3048e59c331f15de8f579f9abbba1afe5827c8dada13b",
+  "pins" : [
+    {
+      "identity" : "openaiswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/csuttner/OpenAISwift",
+      "state" : {
+        "revision" : "dd0e97821eb01084e39e7986ebc0fb086e58473b",
+        "version" : "1.0.7"
+      }
+    }
+  ],
+  "version" : 3
+}
