@@ -30,6 +30,7 @@
 		F34550042BA13BA600FCD399 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34550032BA13BA600FCD399 /* TabBar.swift */; };
 		F34550062BA143FB00FCD399 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34550052BA143FB00FCD399 /* Tab.swift */; };
 		F34550082BA1440F00FCD399 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34550072BA1440F00FCD399 /* TabItem.swift */; };
+		F35202C42BA76D9F00D0EDD9 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35202C32BA76D9F00D0EDD9 /* ImageService.swift */; };
 		F356360029F5DB640099CC30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35635FF29F5DB640099CC30 /* Constants.swift */; };
 		F36C95002B951322007DCAB1 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C94FF2B951322007DCAB1 /* ServiceProvider.swift */; };
 		F36C95262B951EBB007DCAB1 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C95252B951EBB007DCAB1 /* Mock.swift */; };
@@ -103,6 +104,7 @@
 		F34550032BA13BA600FCD399 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		F34550052BA143FB00FCD399 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		F34550072BA1440F00FCD399 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		F35202C32BA76D9F00D0EDD9 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		F35635FF29F5DB640099CC30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F36C94FF2B951322007DCAB1 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		F36C95252B951EBB007DCAB1 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				F380E6372B784B7E007456D3 /* ChatService.swift */,
+				F35202C32BA76D9F00D0EDD9 /* ImageService.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				F34550042BA13BA600FCD399 /* TabBar.swift in Sources */,
 				F304FD332B9D31790069CD25 /* MockUserStore.swift in Sources */,
 				F3B359952B9963E000F8902F /* ConversationListView.swift in Sources */,
+				F35202C42BA76D9F00D0EDD9 /* ImageService.swift in Sources */,
 				F3B85DBE2B798F0800B2564C /* UIImage+Base64.swift in Sources */,
 				F33E3A0E2B7DAB3C00AD0642 /* Conversation.swift in Sources */,
 				F380E6382B784B7E007456D3 /* ChatService.swift in Sources */,
