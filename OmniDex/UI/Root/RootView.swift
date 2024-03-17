@@ -19,7 +19,7 @@ struct RootView: View {
             TranslateView(tab: $tab)
             
         case .imagine:
-            ImagineView(tab: $tab)
+            ImagineRootView(tab: $tab)
             
         case .summarize:
             SummarizeView(tab: $tab)

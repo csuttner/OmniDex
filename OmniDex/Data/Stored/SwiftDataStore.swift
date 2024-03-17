@@ -12,7 +12,7 @@ actor SwiftDataStore {
 
     init?() {
         if let container = try? ModelContainer(
-            for: StoredConversation.self, StoredUser.self,
+            for: StoredConversation.self, StoredUser.self, StoredImageCreation.self,
             configurations: ModelConfiguration()
         ) {
             self.context = ModelContext(container)
@@ -70,6 +70,22 @@ actor SwiftDataStore {
 // MARK: Conversation Store
 
 extension SwiftDataStore: ConversationStore {
+    func fetchConversations() async throws -> [Conversation] {
+        let descriptor = FetchDescriptor<StoredConversation>(
+            sortBy: [.init(\.date, order: .reverse)]
+        )
+        
+        return try await fetch(descriptor).map(\.conversation)
+    }
+    
+    func delete(conversations: [Conversation]) async throws {
+        let existing = try await fetch(FetchDescriptor<StoredConversation>())
+
+        let ids = conversations.map(\.id)
+        
+        try await delete(items: existing.filter { ids.contains($0.localID) })
+    }
+    
     func save(conversation: Conversation) async throws {
         let conversationId = conversation.id
         
@@ -87,22 +103,6 @@ extension SwiftDataStore: ConversationStore {
             
             print("stored conversation:", conversation.summary ?? Constants.Chat.noSummary)
         }
-    }
-    
-    func fetchConversations() async throws -> [Conversation] {
-        let descriptor = FetchDescriptor<StoredConversation>(
-            sortBy: [.init(\.date, order: .reverse)]
-        )
-        
-        return try await fetch(descriptor).map(\.conversation)
-    }
-    
-    func delete(conversations: [Conversation]) async throws {
-        let existing = try await fetch(FetchDescriptor<StoredConversation>())
-
-        let ids = conversations.map(\.id)
-        
-        try await delete(items: existing.filter { ids.contains($0.localID) })
     }
     
     private func makeStored(conversation: Conversation) -> StoredConversation {
@@ -135,6 +135,17 @@ extension SwiftDataStore: ConversationStore {
 // MARK: User Store
 
 extension SwiftDataStore: UserStore {
+    func fetchUser() async throws -> User {
+        let descriptor = FetchDescriptor<StoredUser>()
+
+        if let existing = try await fetch(descriptor).first {
+            return existing.user
+
+        } else {
+            throw StoreError.noUserFound
+        }
+    }
+    
     func save(user: User) async throws {
         let descriptor = FetchDescriptor<StoredUser>()
         
@@ -152,18 +163,59 @@ extension SwiftDataStore: UserStore {
         }
     }
     
-    func fetchUser() async throws -> User {
-        let descriptor = FetchDescriptor<StoredUser>()
-
-        if let existing = try await fetch(descriptor).first {
-            return existing.user
-
-        } else {
-            throw StoreError.noUserFound
-        }
-    }
     
     private func makeStored(user: User) -> StoredUser {
-        StoredUser(id: user.id, name: user.name, image: user.image)
+        StoredUser(
+            localID: user.id,
+            name: user.name,
+            image: user.image
+        )
+    }
+}
+
+// MARK: Image Creation Store
+
+extension SwiftDataStore: ImageCreationStore {
+    func fetchCreations() async throws -> [ImageCreation] {
+        let descriptor = FetchDescriptor<StoredImageCreation>(
+            sortBy: [.init(\.date, order: .reverse)]
+        )
+        
+        return try await fetch(descriptor).map(\.imageCreation)
+    }
+    
+    func delete(creations: [ImageCreation]) async throws {
+        let existing = try await fetch(FetchDescriptor<StoredImageCreation>())
+
+        let ids = creations.map(\.id)
+        
+        try await delete(items: existing.filter { ids.contains($0.localID) })
+    }
+    
+    func save(creation: ImageCreation) async throws {
+        let creationID = creation.id
+        
+        let descriptor = FetchDescriptor<StoredImageCreation>(
+            predicate: #Predicate { $0.localID == creationID }
+        )
+        
+        if let stored = makeStored(creation: creation) {
+            try await store(item: stored)
+            
+            print("stored creation:")
+        }
+    }
+
+    private func makeStored(creation: ImageCreation) -> StoredImageCreation? {
+        guard let image = creation.image else {
+            return nil
+        }
+        
+        return StoredImageCreation(
+            localID: creation.id,
+            date: creation.created,
+            image: image,
+            creationType: creation.creationType.rawValue
+        )
     }
 }

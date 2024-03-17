@@ -1,5 +1,5 @@
 //
-//  ConversationListView.swift
+//  ConversationRootListView.swift
 //  OmniDex
 //
 //  Created by Clay Suttner on 3/6/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ConversationListView: View {
+struct ConversationRootListView: View {
     var results: [Conversation]
     
     @Binding var config: ConversationRootConfig
@@ -17,7 +17,7 @@ struct ConversationListView: View {
             Button {
                 config.path.append(conversation)
             } label: {
-                ConversationListRow(conversation: conversation)
+                ConversationRootListRow(conversation: conversation)
             }
             .swipeActions(edge: .trailing) {
                 Button() {
@@ -33,7 +33,7 @@ struct ConversationListView: View {
 }
 
 #Preview {
-    ConversationListView(
+    ConversationRootListView(
         results: [Mock.conversation],
         config: .constant(ConversationRootConfig())
     )

@@ -9,11 +9,23 @@ import UIKit
 
 enum Mock {
     
-    static let serviceProvider = ServiceProvider(chatService: MockChatService())
+    static let serviceProvider = ServiceProvider(
+        chatService: MockChatService(),
+        imageService: MockImageService()
+    )
     
     static let storeProvider = StoreProvider(
         conversationStore: MockConversationStore(),
+        imageCreationStore: MockImageCreationStore(),
         userStore: MockUserStore()
+    )
+    
+    static var imageCreation: ImageCreation {
+        ImageCreation(image: UIImage(named: "Lambo")!.pngData()!)
+    }
+
+    static let user = User(
+        image: UIImage(named: "Monkey")?.pngData()
     )
     
     static var conversation: Conversation {

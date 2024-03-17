@@ -40,7 +40,7 @@ struct ConversationRootView: View {
                 TabBar(tab: $tab)
             }
             .toolbar {
-                EditToolbarItem(config: $config)
+                ConversationRootEditToolbarItem(config: $config)
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("", systemImage: "square.and.pencil") {

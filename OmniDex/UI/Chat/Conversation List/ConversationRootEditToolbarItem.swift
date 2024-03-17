@@ -1,5 +1,5 @@
 //
-//  EditToolbarItem.swift
+//  ConversationRootEditToolbarItem.swift
 //  OmniDex
 //
 //  Created by Clay Suttner on 3/9/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditToolbarItem: ToolbarContent {
+struct ConversationRootEditToolbarItem: ToolbarContent {
     @Binding var config: ConversationRootConfig
     
     var body: some ToolbarContent {

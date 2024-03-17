@@ -8,7 +8,7 @@
 import Foundation
 import Observation
 
-@Observable class Conversation: Identifiable, Hashable {
+@Observable class Conversation: Identifiable {
     var id: String
     var messages: [Message]
     var updated: Date
@@ -33,11 +33,15 @@ import Observation
             .appending(summary ?? "")
             .contains(query.lowercased())
     }
+}
 
-    static func ==(lhs: Conversation, rhs: Conversation) -> Bool {
+extension Conversation: Equatable {
+    static func == (lhs: Conversation, rhs: Conversation) -> Bool {
         lhs.id == rhs.id
     }
+}
 
+extension Conversation: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

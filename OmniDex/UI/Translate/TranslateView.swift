@@ -24,5 +24,5 @@ struct TranslateView: View {
 }
 
 #Preview {
-    ImagineView(tab: .constant(.translate))
+    ImagineRootView(tab: .constant(.translate))
 }

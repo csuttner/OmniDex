@@ -39,7 +39,7 @@ struct ConversationRootContentView: View {
                         .symbolRenderingMode(.multicolor)
                         
                     } else {
-                        ConversationListView(
+                        ConversationRootListView(
                             results: results,
                             config: $config
                         )

@@ -9,11 +9,9 @@ import Foundation
 import UIKit
 
 actor MockUserStore: UserStore {
-    func save(user: User) async throws {
-        
+    func fetchUser() async throws -> User {
+        Mock.user
     }
     
-    func fetchUser() async throws -> User {
-        User(id: UUID().uuidString, image: UIImage(named: "Monkey")?.pngData())
-    }
+    func save(user: User) async throws {}
 }

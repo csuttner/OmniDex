@@ -9,45 +9,43 @@ import Foundation
 import OpenAISwift
 
 protocol ImageService {
-    func fetchImageGeneration(prompt: String) async throws -> URL
-    func fetchImageEdit(image: Data, prompt: String, mask: Data?) async throws -> URL
-    func fetchImageVariation(image: Data) async throws -> URL
+    func fetchImageGeneration(prompt: String) async throws -> Data
+    func fetchImageEdit(image: Data, prompt: String, mask: Data?) async throws -> Data
+    func fetchImageVariation(image: Data) async throws -> Data
 }
 
 extension OpenAISwift.ImageService: ImageService {
-    func fetchImageGeneration(prompt: String) async throws -> URL {
+    func fetchImageGeneration(prompt: String) async throws -> Data {
         let payload = ImageGenerationPayload(prompt: prompt)
         
-        let image = try await fetchImageGeneration(payload: payload)
+        let response = try await fetchImageGeneration(payload: payload)
         
-        guard let url = image.data.first?.url else {
-            throw URLError(.fileDoesNotExist)
-        }
-        
-        return url
+        return try await fetchImageData(from: response)
     }
     
-    func fetchImageEdit(image: Data, prompt: String, mask: Data?) async throws -> URL {
+    func fetchImageEdit(image: Data, prompt: String, mask: Data?) async throws -> Data {
         let payload = ImageEditPayload(image: image, prompt: prompt, mask: mask)
         
-        let image = try await fetchImageEdit(payload: payload)
+        let response = try await fetchImageEdit(payload: payload)
         
-        guard let url = image.data.first?.url else {
-            throw URLError(.fileDoesNotExist)
-        }
-        
-        return url
+        return try await fetchImageData(from: response)
     }
     
-    func fetchImageVariation(image: Data) async throws -> URL {
+    func fetchImageVariation(image: Data) async throws -> Data {
         let payload = ImageVariationPayload(image: image)
         
-        let image = try await fetchImageVariation(payload: payload)
+        let response = try await fetchImageVariation(payload: payload)
         
-        guard let url = image.data.first?.url else {
+        return try await fetchImageData(from: response)
+    }
+    
+    private func fetchImageData(from response: ImageResponse) async throws -> Data {
+        guard let url = response.data.first?.url else {
             throw URLError(.fileDoesNotExist)
         }
         
-        return url
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        return data
     }
 }

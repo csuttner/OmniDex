@@ -8,7 +8,7 @@
 import Foundation
 
 protocol UserStore {
-    func save(user: User) async throws
     func fetchUser() async throws -> User
+    func save(user: User) async throws
 }
 

@@ -9,16 +9,16 @@ import Foundation
 import SwiftData
 
 @Model class StoredUser {
-    @Attribute(.unique) let id: String
+    @Attribute(.unique) let localID: String
     var name: String
     @Attribute(.externalStorage) var image: Data?
     
     var user: User {
-        User(id: id, name: name, image: image)
+        User(id: localID, name: name, image: image)
     }
     
-    init(id: String, name: String, image: Data? = nil) {
-        self.id = id
+    init(localID: String, name: String, image: Data? = nil) {
+        self.localID = localID
         self.name = name
         self.image = image
     }

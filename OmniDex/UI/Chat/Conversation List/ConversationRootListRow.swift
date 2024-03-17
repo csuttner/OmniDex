@@ -1,5 +1,5 @@
 //
-//  ConversationListRow.swift
+//  ConversationRootListRow.swift
 //  OmniDex
 //
 //  Created by Clay Suttner on 2/28/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ConversationListRow: View {
+struct ConversationRootListRow: View {
     let conversation: Conversation
     
     var body: some View {
@@ -49,5 +49,5 @@ struct ConversationListRow: View {
 }
 
 #Preview {
-    ConversationListRow(conversation: Mock.conversation)
+    ConversationRootListRow(conversation: Mock.conversation)
 }

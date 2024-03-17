@@ -10,9 +10,11 @@ import Observation
 
 @Observable class ServiceProvider {
     let chatService: ChatService
+    let imageService: ImageService
     
-    init(chatService: ChatService) {
+    init(chatService: ChatService, imageService: ImageService) {
         self.chatService = chatService
+        self.imageService = imageService
     }
 }
 
